@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What Drives the VN-Index? FFR, Global Markets (Part 2) - Green Chart</title>
+<meta name="description" content="Technical Insights part 2: a Granger causality network and Elastic Net regression rank the S&amp;P 500, VVIX, oil, Singapore and the FFR as VN-Index drivers.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/fed-funds-rate-market-regimes-part-2-dashboard/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>What Drives the VN-Index? FFR, Global Markets (Part 2)</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../technical-insights-ffr-va-anh-huong-den-cac-regimes-phan-2/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../technical-analysis/">Technical Analysis</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market…</span></nav><div class="art-cats"><a class="tag green" href="../technical-analysis/">Technical Analysis</a><a class="tag" href="../technical-analysis-cmt/">Technical Analysis – CMT</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2025-11-25">25 November 2025</time></span><span>Updated 2 July 2026</span><span>8 min read</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/02/a4.jpg" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-fed-funds-rate-market-regimes-part-2-das"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#conclusions-of-part-2">Conclusions of Part 2</a></li><li><a href="#regimes">REGIMES</a></li><li><a href="#technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</a></li></ol></details><p class="lede"><em>Following on from Part 1, in this part we will use the variables observed so far to build a dashboard that tracks their movements and assesses their impact on the VN-Index.</em></p>
+
+<p><strong>Objectives of this post:</strong></p>
+
+<ul>
+<li>Get a basic understanding of the FFR (Done).</li>
+
+<li>Briefly understand how the FedWatch Tool calculates probabilities and build a similar monitoring tool (Done).</li>
+
+<li>Understand the relationships between the variables and factors (Part 2).</li>
+
+<li>From these relationships, find regimes based on how this variable affects markets such as the S&amp;P 500 and the VN-Index, to generate trade ideas (Part 3).</li>
+</ul>
+
+<h2 id="conclusions-of-part-2">Conclusions of Part 2</h2>
+
+<p>Thanks for reading! Subscribe for free to receive new posts and support my work.</p>
+
+<p>Looking further at the movements of other factors:</p>
+
+<ul>
+<li>Market indices: S&amp;P 500, FTSE, DAX, Singapore, JP225</li>
+
+<li>Volatility measures: VIX, VVIX, VN-Index volatility, VN-Index breadth</li>
+
+<li>VN-Index fundamentals: P/E, P/B</li>
+
+<li>Changes in the FFR</li>
+
+<li>Changes in other alternative assets: gold, oil, BTC</li>
+</ul>
+
+<p>we conclude that the variables affecting the VN-Index are (from strongest to weakest):</p>
+
+<ul>
+<li>The SPX and its movements (lags, means): very important, ranked first by weight.</li>
+
+<li>VVIX: the volatility of volatility, ranked second.</li>
+
+<li>Changes in oil prices.</li>
+
+<li>Movements in the Singapore market.</li>
+
+<li>Changes in the FFR, via log_distance.</li>
+
+<li>Movements in the German market.</li>
+
+<li>Past movements of the VN-Index and its fundamentals.</li>
+
+<li>Changes in gold and BTC.</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>This post is purely my personal view and analysis, based on my limited knowledge, so it is somewhat subjective. I would very much welcome everyone's feedback!</li>
+
+<li>The writing style is close to everyday speech, not very academic, and sometimes mixes in English terms; I hope readers will bear with this.</li>
+
+<li>The data is accessed and calculated from the vnstocks library (http://vnstocks.com) and yfinance.</li>
+
+<li>Unlike some academic research, the goal here is to find influential factors to observe and forecast, so I keep speculation and conspiracy theories to a minimum – things like the VN-Index being moved by the SPX because of Trump, because of tariff policy, or "liquidity moves the market" (=]]), blah blah… Why?
+<ul>
+<li>Simply because I don't want to fall into certain biases in financial reasoning, specifically anchoring bias (anchoring on limited knowledge) and confirmation bias (seeking information that confirms my argument and, intentionally or not, leaving out information pointing the other way).</li>
+
+<li>The market is always changing; the information I have now explains only part of the movement, and often only from one angle. That means if we look at it differently, it may still be meaningful and can still be mined.</li>
+
+<li>The goal here is not research either: I am looking for alpha, i.e. trading strategies. So signal testing matters more!</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="regimes">REGIMES</h2>
+
+<h3 id="analysing-and-assessing-the-impact">Analysing and assessing the impact</h3>
+
+<p>In Part 1, I looked at the FFR (Fed Funds Rate), the S&amp;P 500 (SPX), gold prices (GOLD) and oil prices (OIL) to see their causal relationships with the VN-Index. This time it is similar, but extended with some more variables:</p>
+
+<ul>
+<li>Indices: FTSE (UK100), NK225 (Japan), Singapore_iShare (an ETF tracking the Singapore index), DAX (Germany), and the VIX and VVIX to measure S&amp;P 500 volatility and the volatility of volatility (the VIX of the VIX);</li>
+
+<li>Other alternative assets: Bitcoin (BTC).</li>
+</ul>
+
+<p>In addition, to limit the problem of non-stationary time series, I recalculated the "distance" variable from Part 1 (previously Market_FFR minus Current_FFR) as the difference between the logarithms of the two variables. This also reflects the continuous nature of interest rates. Testing all the variables for stationarity (ADF test), I get the following results:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!L4FJ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4040d5d0-6842-4786-8bb8-25a01c6f0df9_750x475.png"><img src="https://substackcdn.com/image/fetch/$s_!L4FJ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4040d5d0-6842-4786-8bb8-25a01c6f0df9_750x475.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>All the variables pass the stationarity test well. I then used these variables to compute a causality network, with Granger causality tests as the central measure and a 20-day return window, with the following result:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!iP9s!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12db6819-6c2c-44b2-b3fe-57ae6cf3e712_1420x1042.png"><img src="https://substackcdn.com/image/fetch/$s_!iP9s!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F12db6819-6c2c-44b2-b3fe-57ae6cf3e712_1420x1042.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>The result is quite a tangle (=.=) and not very clear, but with a magnifying glass I could make out a few findings:</p>
+
+<ul>
+<li>All the indices except JP225 directly affect the VN-Index (very interesting – I usually hear people say to watch JP225 =]]). All the relationships are one-way, with the influence running mainly towards the VN-Index.</li>
+
+<li>The only variable with a two-way causal relationship is oil (very interesting): it affects the VN-Index, and vice versa.</li>
+
+<li>Factor variables such as gold prices or changes in the FFR have no direct effect; instead, they work through some intermediate variable – gold through oil prices, and FFR changes through the FTSE, SPX, Singapore and DAX.</li>
+
+<li>And another interesting point: BTC directly affects the VN-Index (heh).</li>
+</ul>
+
+<p>So based on historical data, with a 20-day window for returns and return lags, I found the results above. Normally, I would look at the charts of all these factors to assess their impact on the VN-Index and "guess" its near-term movement (e.g. over 20 days). But now a new question arises: how do we know which one matters most?</p>
+
+<p>The Granger test only shows that a linear causal relationship exists between the pairs of variables above; it does not say how strongly each variable affects the VN-Index.</p>
+
+<p>To solve this, I will use a measure called "elastic net" regression (sounds seriously scary =]]).</p>
+
+<p>In the post analysing the impact of fundamental factors on the VN-Index, I listed some measures such as correlation and used some regression methods to limit multicollinearity. In this case, this regression method both removes the multicollinearity concern and identifies (linearly) how important each variable is to the target (the VN-Index).</p>
+
+<p>So what is "elastic net" regression? Why does it work like this?</p>
+
+<ul>
+<li>Ordinary least squares (OLS) linear regression is very sensitive to outliers (values far from the observed range pull the regression line off its reasonable path) and to multicollinear variables. This means the OLS model fails at its main goal of minimising the residuals (it is no longer least squares). The model's residual is calculated like this:</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-1024x215.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></figure>
+
+<p>Statisticians have tackled this problem with several regression methods, including Ridge, Lasso and Elastic Net, as follows:</p>
+
+<ul>
+<li>These methods share a common approach: penalisation. What is penalisation? When you run the regression, you get the model's parameters (Betas, or slopes), plus a component that penalises the Betas according to their influence (roughly, whoever talks nonsense or distorts things a lot gets punished). The function looks like this:</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-1-1024x183.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></figure>
+
+<p>Ridge (L2): penalises with a function f(Beta) of this form:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-2.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></figure>
+
+<ul>
+<li>
+<ul>
+<li>That is, the sum of the squares of all the Betas (regardless of their signs). However, with too many features, this sum becomes very sensitive (it can be too large if the Betas are greater than 1, or too small if they are less than 1).</li>
+
+<li>Ridge's penalty function is called L2.</li>
+
+<li>Ridge has a "merciful" trait: it keeps every feature and only penalises each one more or less heavily.</li>
+</ul>
+</li>
+
+<li>Lasso (L1): solves this more thoroughly. Instead of squaring the Betas, Lasso takes their absolute values, like this:</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-3.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></figure>
+
+<ul>
+<li>
+<ul>
+<li>This reduces the Betas' sensitivity because they are not squared, so it can handle higher-dimensional data.</li>
+
+<li>Lasso is more ruthless: it removes variables that are not meaningful to the model outright, thereby reducing the number of features (or dimensions).</li>
+</ul>
+</li>
+
+<li>Elastic Net: combines the two above with L1 and L2 parameters, selecting a moderate number of variables while preserving explanatory power and limiting multicollinearity. The combination can be expressed by the following overall equation:</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-4-1024x149.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></figure>
+
+<ul>
+<li>
+<ul>
+<li>
+<ul>
+<li>You can see both Ridge's and Lasso's Beta penalties combined in the penalty equation above.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>So I use Elastic Net and process the variables a little more, specifically:</p>
+
+<ul>
+<li>I add P/E and P/B variables to include fundamentals. These variables are "cooked" further with their standard deviation, moving average and z-score, as in the post analysing fundamental factors and the VN-Index.</li>
+
+<li>The variables above are cooked the same way, and I also add two lags of each variable.</li>
+
+<li>I also use the ADF test to check the stationarity of the variables before running the Elastic Net regression.</li>
+
+<li>The target variable is the VN-Index's 1-day return. When running the regression, I use TimeseriesCV (mentioned in the fundamental-factors post) to find a suitable penalty constant for the equation and select suitable variables.</li>
+
+<li>After processing, there are 83 variables in total (@@).</li>
+</ul>
+
+<p>In the end, I get the following results:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!gPrI!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F393d5499-6540-493d-af1b-ff4242ad04f4_648x1081.png"><img src="https://substackcdn.com/image/fetch/$s_!gPrI!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F393d5499-6540-493d-af1b-ff4242ad04f4_648x1081.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>After one more round of filtering, the variables affecting the VN-Index are (from strongest to weakest):</p>
+
+<ul>
+<li>The SPX and its movements (lags, means): very important, ranked first by weight.</li>
+
+<li>VVIX: the volatility of volatility, ranked second.</li>
+
+<li>Changes in oil prices.</li>
+
+<li>Movements in the Singapore market.</li>
+
+<li>Changes in the FFR, via log_distance.</li>
+
+<li>Movements in the German market.</li>
+
+<li>Past movements of the VN-Index and its fundamentals.</li>
+
+<li>Changes in gold and BTC.</li>
+</ul>
+
+<p>So based on these effects and the signs of the regression coefficients, I can build a dashboard from these indicators to get an overall view of their impact on the VN-Index. The weights follow each indicator's importance, and the direction (up or down) follows the sign of the coefficient (coef in the table above). It looks like this:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!D_oX!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a5fdd37-b918-403d-96cc-cf5c0049ddaf_1189x1099.png"><img src="https://substackcdn.com/image/fetch/$s_!D_oX!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4a5fdd37-b918-403d-96cc-cf5c0049ddaf_1189x1099.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>More ambitiously, though, I want to build a model to predict regimes from these indicators, for more stability than pure observation; I'll save that for the next post.</p>
+
+<p>That concludes this part; I hope it is useful to readers. Thank you!</p>
+
+<h2 id="technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</h2>
+
+<p>Green Chart designed this course specifically for candidates in Vietnam who want to study and prepare for the CMT Level I exam. The programme includes 25 sessions of theory, practice questions and mock exams. Students also receive the course textbook, question bank and mock exams free of charge for their exam preparation, and can retake the course for free for life.</p>
+
+<p>See more details about the course <a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><strong>here.</strong></a></p><div class="callout ground-cmt"><h3>Technical Analysis – CMT Level 1</h3><p style="color:var(--muted)">The foundations of technical analysis. Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-fed-funds-rate-market-regimes-part-2-das" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-fed-funds-rate-market-regimes-part-2-das" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Technical Analysis – CMT Level 1</b><p>Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../do-statistics-lie-backtesting-multiple-testing-bias/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Do Statistics Lie?</h3><span class="meta tnum">3 May 2026 · 9 min read</span></article></a><a class="u228-c u251 card" href="../event-driven-strategies-vietnam-stock-market/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Event-Driven Strategies in the Vietnamese Market</h3><span class="meta tnum">17 March 2026 · 11 min read</span></article></a><a class="u228-c u251 card" href="../vietnam-stock-market-efficiency-part-3-bayesian-var/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 3)</h3><span class="meta tnum">14 March 2026 · 12 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../technical-analysis/">See the category Technical Analysis</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1" selected>Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading">Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

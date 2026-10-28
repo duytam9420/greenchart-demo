@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>[TECHNICAL INSIGHTS] - EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM - Green Chart</title>
+<meta name="description" content="Trong bài viết lần này, mình sẽ tập trung vào phân tích các chiến lược về event-driven từ 1 số strategies được các Hedge fund sử dụng để hiểu nó là gì và có…">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/technical-insights-event-driven-strategies-tai-thi-truong-viet-nam/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>[TECHNICAL INSIGHTS]</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/event-driven-strategies-vietnam-stock-market/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ…</span></nav><div class="art-cats"><a class="tag green" href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2026-03-17">17/03/2026</time></span><span>Cập nhật 02/07/2026</span><span>14 phút đọc</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/05/Ava.png" alt="TECHNICAL INSIGHTS" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-technical-insights-event-driven-strategi"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#event-driven-strategies">EVENT DRIVEN STRATEGIES</a></li><li><a href="#tim-alpha">TÌM ALPHA</a></li><li><a href="#ket-luan">KẾT LUẬN</a></li><li><a href="#khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật – CMT Level 1</a></li></ol></details><p class="lede"><em>Trong bài viết lần này, mình sẽ tập trung vào phân tích các chiến lược về event-driven từ 1 số strategies được các Hedge fund sử dụng để hiểu nó là gì và có ứng dụng được không tại Việt Nam.</em></p>
+
+<p><strong>Mục tiêu bài viết:</strong></p>
+
+<ul>
+<li>Tìm hiểu về event-driven là gì? Các loại hình chính của event-driven? Trader sẽ lợi dụng việc này như thế nào?</li>
+
+<li>Đánh giá ảnh hưởng của các chiến lược về event-driven tại Việt Nam.</li>
+
+<li>Tìm alpha từ các chiến lược tốt nhất, có thể kết hợp với các strategies phù hợp để linh hoạt hơn.</li>
+</ul>
+
+<p><strong>Kết luận:</strong></p>
+
+<ul>
+<li><strong>Có alpha signals</strong> cho strategy về event-driven (loại cực kỳ bị động) cho việc kinh doanh chênh lệch từ 1 số thông tin khá phổ biến như: <strong>chia cổ phiếu bằng tiền mặt (cash dividend), người nội bộ mua và phát hành cổ phiếu</strong>. Kết quả khá tốt cho thời gian test từ đầu năm 01-01-2024 &#8211; nay.</li>
+
+<li><strong>Bias sectors (08/18):</strong> OnG (dầu khí), Hospitality (dịch vụ nghỉ dưỡng), Healthcare (chăm sóc sức khỏe), Automobiles (công nghiệp ô tô), IT (công nghệ thông tin), Retail (bán lẻ), FnB và Industrial.</li>
+
+<li><strong>Số ngày nắm giữ tối đa:</strong> 10 ngày</li>
+
+<li><strong>Loại Portfolio:</strong> equal weights theo các tín hiệu hiện có.</li>
+</ul>
+
+<p><strong>Ghi chú:</strong></p>
+
+<ul>
+<li>Bài viết thuần túy về nhận định và phân tích cá nhân của mình dựa trên kiến thực hạn hẹp mà mình có, nên sẽ hơi chủ quan. Rất mong nhận được sự góp ý từ mọi người!</li>
+
+<li>Ngôn ngữ viết bài giống văn nói thông thường, ít học thuật đôi lúc lõm bõm tiếng anh, hi vọng mọi người thông cảm cái này.</li>
+
+<li>Dữ liệu sử dụng là được truy cập và tính toán từ thư viện vnstocks (http://vnstocks.com), yfinance.</li>
+
+<li>Bài viết cũng chỉ dựa trên 1 số tài liệu tham khảo có tính chính thống và hữu hạn nên sẽ không đủ bao quát hết các nội dung khác (bao gồm cả không chính thống =]]).</li>
+
+<li>Các thời điểm của event được tính từ ngày công bố, riêng giao dịch của người nội bộ tính từ thời điểm của ngày giao dịch.</li>
+</ul>
+
+<h2 id="event-driven-strategies">EVENT DRIVEN STRATEGIES</h2>
+
+<p>Event-driven trading là chiến lược mà hedge fund hoặc nhà đầu tư khai thác <strong>các biến động giá do sự kiện doanh nghiệp hoặc thị trường gây ra, các sự kiện này thường bao gồm (</strong>M&amp;A, phá sản, tái cấu trúc, chia tách, thay đổi chính sách). Các sự kiện này thường tạo ra sự <strong>bất cân xứng thông tin</strong> và <strong>giá cả chưa phản ánh đầy đủ</strong>, dẫn đến cơ hội sinh lời.</p>
+
+<h3 id="cac-chien-luoc-event-driven-cua-hedge-funds">Các chiến lược Event-Driven của Hedge Funds</h3>
+
+<p>Từ một số nguồn tài liệu (CAIA hoặc sách Investment Banks, Hedge Funds and Private Equity) thì mình có thể tóm lược lại các chiến lược về event-driven như sau:</p>
+
+<ol>
+<li><strong>Merger Arbitrage (Risk Arbitrage)</strong>
+<ul>
+<li><strong>Cách làm:</strong> Long cổ phiếu target, short cổ phiếu acquirer (trong stock-for-stock deal).</li>
+
+<li><strong>Nguồn lợi nhuận:</strong> Spread giữa giá thị trường sau khi công bố và giá chào mua.</li>
+
+<li><strong>Rủi ro:</strong> Regulatory risk (antitrust, chính phủ chặn deal), Financing risk (acquirer không huy động được vốn).</li>
+
+<li><strong>Đặc điểm lợi nhuận:</strong> Trung bình 5.1%/năm, Sharpe ~0.6, low vol (4%), negatively skewed (CAIA họ tính toán cái này thuần túy dựa vào SP500, không phải VN và đây cũng chỉ là dữ liệu lịch sử).</li>
+</ul>
+</li>
+
+<li><strong>Activist Investing</strong>
+<ul>
+<li><strong>Cách làm:</strong> Mua cổ phần (1–10%), gây áp lực lên HĐQT/CEO để thay đổi: giảm chi phí, tăng buyback, chia cổ tức cao hơn, thay đổi cấu trúc vốn, hoặc spin-off.</li>
+
+<li><strong>Chiến thuật:</strong> Proxy battle, wolf pack, capital structure pressure, board representation. Rất lằng nhằng, cụ thể thì như sau:
+<ul>
+<li><strong>Proxy battle</strong> hay còn gọi là lấy “tiền” đè người, các này đơn giản là lấy số phiếu đa số để ép voting (tại sao có đa số thì là vì có tiền), cách này cũng là loại phương thức mạnh nhất, thể hiện ý chí của người có tiền (=]]), sẵn sàn đối đầu trực tiếp với HĐQT công ty mục tiêu.</li>
+
+<li><strong>Wolf pack </strong>hay còn gọi là lấy thịt đè người (theo mình nghĩ). Hedge fund sẽ kêu gọi nhiều funds hoặc các partner khác cùng nhắm đến target, gây áp lực đồng loạt lên target và tạo hiệu ứng kéo theo.</li>
+
+<li><strong>Capital Structure Pressure</strong> (theo mình thì là cây gậy nhưng không có củ cà rốt): với vai trò của activist, fund sẽ bằng nhiều lý do và ép thay đổi hoặc tái cấu trúc tài chính của DN để tối ưu hơn. Có thể là tăng hoặc giảm vay nợ (tùy theo cấu trúc tối ưu) hoặc có thể yêu cầu bán bớt tài sản không hiệu quả (bán bớt đất, nhà xưởng,… =]]).</li>
+
+<li><strong>Board Representation (</strong>cách này hay còn gọi là ra mặt =]]): lúc này activist sẽ can thiệp trực tiếp bằng sự hiện diện và điều hành của người được cử đại diện vào Board để có thể can thiệp trực tiếp. Thực ra, điều này còn phụ thuộc vào phạm vi vốn của người đại diện và quyền biểu quyết, cơ bản cách này là phái sinh của proxy battle.</li>
+</ul>
+</li>
+
+<li><strong>Nguồn lợi nhuận:</strong> Alpha từ cải thiện governance và unlock hidden value.</li>
+
+<li><strong>Đặc điểm lợi nhuận:</strong> Thấp hơn thị trường, return ~3.9% nhưng rất volatile (14.3%), Sharpe ~0.1, negatively skewed.</li>
+</ul>
+</li>
+
+<li><strong>Distressed Securities (Distressed Debt Funds)</strong>
+<ul>
+<li><strong>Cách làm:</strong> Mua nợ của công ty sắp vỡ nợ với chiết khấu lớn; thu hồi khi tái cấu trúc hoặc chuyển đổi sang equity. Có thể short equity như viết naked call option.</li>
+
+<li><strong>Chiến thuật phụ:</strong> Capital structure arbitrage (long senior secured, short junior debt).</li>
+
+<li><strong>Nguồn lợi nhuận:</strong> Mispricing do ít nhà đầu tư được phép nắm giữ distressed debt (regulatory constraints).</li>
+
+<li><strong>Đặc điểm lợi nhuận:</strong> Return ~6.9%/năm, vol ~6.5%, Sharpe ~0.7, negatively skewed.</li>
+</ul>
+</li>
+
+<li><strong>Special Situations</strong>
+<ul>
+<li><strong>Cách làm:</strong> Đầu tư vào spin-offs, split-offs, recapitalizations, restructuring, litigation outcomes.</li>
+
+<li><strong>Ví dụ:</strong> Một công ty tách mảng kinh doanh, tạo ra giá trị nhờ định giá lại; hoặc tái cấu trúc vốn bằng buyback, recap.</li>
+
+<li><strong>Nguồn lợi nhuận:</strong> Thị trường định giá sai tài sản/hình thức pháp lý sau sự kiện.</li>
+
+<li><strong>Đặc điểm:</strong> Thường kết hợp trong multi-strategy funds, giúp đa dạng hóa khi M&amp;A giảm nhưng default tăng.</li>
+</ul>
+</li>
+
+<li><strong>Zero Events</strong>
+<ul>
+<li>Hedge fund lúc này sẽ đóng vai trò tạo “game” (=]]), game ở đây không phải là thao túng CP mà là bằng 1 số hình thức sau:
+<ul>
+<li><strong>Kiện tụng (Litigation/Lawsuit): </strong>Đơn giản là kiện nó hoặc làm nó bị kiện (hoặc bị thanh tra :))). Tạo yếu tố bất ngờ cho thị trường và có kỳ vọng có market shock.</li>
+
+<li><strong>Truyền thông (Public Campaigns &amp; Media Shocks): </strong>Chiến lược này thì activist sẽ tập trung nhiều vào PR, vào báo chỉ để cho thấy sự liên tục trong quản lý IR (investor relations). Mức độ ảnh hưởng của chiến lược này thì cần phải làm rõ hơn.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+
+<p>Vậy có thể thấy Hedge Fund sẽ đóng vai trò rất chủ động trong việc ra chiến lược đầu tư và can thiệp trực tiếp vào các yếu tố tạo ra alpha. Nhưng nếu hedge fund là quant fund hoặc thuần túy chỉ là trading thì có chiến lược nào khác hay không? Thực ra là có, và có 1 số cách sau đây:</p>
+
+<ol>
+<li><strong>Earning surprise &amp; guidance events</strong>
+<ul>
+<li>Tactic: Sẽ tìm các thời điểm công bố kết quả lợi nhuận các DN và trading quanh các thời điểm này.</li>
+
+<li>Cách đánh giá: đa phần là quality assessments (định tính thông quan guidance của BOD hoặc đại diện BOD), đánh giá định tính vào triển vọng từ KQKD của DN và đưa nó vào kỳ vọng định giá bằng định lượng (quantitative assessments). Tại sao là định tính trong khi rõ ràng là có số đưa vào models? Thực ra 1 cách chủ quan theo mình thì cái này phụ thuộc và cảm nhận của người làm định giá và sử dụng rất nhiều yếu tố chủ quan về kỳ vọng. Mặc dù có param chính là annual plan của DN, nhưng vẫn rất chủ quan!!!</li>
+
+<li>Kỳ vọng lợi nhuận: Đến từ thay đổi hệ thống về kỳ vọng trong intrinsic values.</li>
+</ul>
+</li>
+
+<li><strong>Corporate actions</strong>
+<ul>
+<li>Tactic: dựa vào 1 số sự kiện của DN như chia cổ tức (cổ phiếu hoặc tiền mặt), thông tin về phát hành thêm hoặc phát hành mới.</li>
+
+<li>Kỳ vọng lợi nhuận chính: arbitrage là chủ yếu (kinh doanh chênh lệch giá).</li>
+</ul>
+</li>
+
+<li><strong>Merge Arbitrage:</strong> cách này thì đã nói ở trên rồi.</li>
+
+<li><strong>Credit events:</strong>
+<ul>
+<li>Tactic: dựa vào thông tin thay đổi về mức độ tín nhiệm hoặc chất lượng nợ của công ty.</li>
+
+<li>Kỳ vọng lợi nhuận chính: kỳ vọng vào thay đổi hệ thống vào intrinsic value.</li>
+</ul>
+</li>
+
+<li><strong>Macro events</strong>
+<ul>
+<li>Tactic: dựa vào các thông tin thay đổi về các yếu tố vĩ mô (và rất khó quantify) để trading.</li>
+
+<li>Kỳ vọng lợi nhuận chính: thay đổi trong rủi ro hệ thống và trade.</li>
+</ul>
+</li>
+
+<li><strong>Insider actions:</strong>
+<ul>
+<li>Tactic: dựa vào các thông tin về giao dịch của người nội bộ và làm theo.</li>
+
+<li>Kỳ vọng lợi nhuận chính: arbitrage.</li>
+</ul>
+</li>
+</ol>
+
+<h2 id="tim-alpha">TÌM ALPHA</h2>
+
+<h3 id="alpha-research">Alpha Research</h3>
+
+<p>Thực ra có nhiều nghiên cứu đã thực hiện các phương pháp để đánh giá mức độ ảnh hưởng của những events này và kết quả thường đương nhiên là có (=]]). Nhưng để thực sự tìm alpha thì sao, và đúng là alpha factors thì strategies sẽ như thế nào với các rule cụ thể như thế nào? Tất nhiên là mình không tìm được 1 cái research nào về cái này ở VN trả lời đầy đủ câu hỏi này! (hoặc mình tìm chưa đủ hoặc người ta không public chẳng hạn).</p>
+
+<p>Lần này mình sẽ thử tìm alpha theo 1 số events cụ thể như sau:</p>
+
+<ul>
+<li>Coporate actions: các sự kiện về chia cổ tức, phát hành thêm, phát hành mới.</li>
+
+<li>Insider trading: các giao dịch mua và bán của người nội bộ.</li>
+</ul>
+
+<p>Quan sát các cổ phiếu trong rổ VNALLSHARES(thực ra thiếu 2 CP, do dữ liệu bị gì nên không tải được 2 cái này :))) từ 2013 đến 2024 (đoạn từ 2024 trở về sau mình sẽ dùng để test). Nếu chỉ nhìn riêng 2 nhóm sự kiện trên thì mình có khoảng 12,769 sự kiện. Cụ thể như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!M4m3!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fded44108-7e92-4719-b5fc-5bd1d6aea7b6_842x430.png"><img src="https://substackcdn.com/image/fetch/$s_!M4m3!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fded44108-7e92-4719-b5fc-5bd1d6aea7b6_842x430.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Trong đó:</p>
+
+<ul>
+<li>Nhóm 2: sự kiện nhận CP tặng hoặc thưởng</li>
+
+<li>Nhóm 4: sự kiện nhận cổ tức bằng tiền mặt (cash dividend)</li>
+
+<li>Nhóm 5: Niêm yết thêm</li>
+
+<li>Nhóm 6: người nội bộ mua</li>
+
+<li>Nhóm 7: người nội bộ bán</li>
+
+<li>Nhóm 8: Phát hành CP</li>
+</ul>
+
+<p>Trong các nhóm quan sát thì nhóm 6 và 7 chiếm tỷ trọng lớn nhất, trong khi các sự kiện thuộc nhóm 2 lại chỉ có 2 (=]]). Điều này là vì nhiều lý do, tuy nhiên khi đánh giá thì nhóm 2 mình sẽ hạn chế kết luận gì vì thiếu giá trị thống kê nhất.</p>
+
+<p>Quan sát về lợi nhuận khi cầm giữ CP khi có các event trên (tính từ thời điểm xảy ra) trong phạm vì từ 1 đến 20 ngày tiếp theo (theo các khoảng 1, 3, 5, 10, 20) thì mình có hình như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!15AH!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09141833-c089-4441-9190-7c71f4f0e180_1204x1909.png"><img src="https://substackcdn.com/image/fetch/$s_!15AH!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09141833-c089-4441-9190-7c71f4f0e180_1204x1909.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Lợi nhuận ở bảng trên là lợi nhuận cross-sectional khi có event xảy ra. Cụ thể hơn, nếu có nhiều events cùng 1 thời điểm, ví dụ 2 CP cùng chia cổ tức 1 ngày thì sẽ weighted danh mục lại theo equal weights.</p>
+
+<p>Khi nhìn vào lợi nhuận nếu trading 1 ngày, có thể thấy nhóm 4 (cash dividend) và nhóm 8 (phát hành CP) có lợi nhuận vượt trội, nhóm 5 (niêm yết thêm) có lợi nhuận khá tốt trong giai đoạn 2020 đổ về trước nhưng tệ đi hẳn từ 2021 đổ về sau và nhóm 6 (người nội bộ mua thêm) cũng có performance khá ổn. Tuy nhiên, ở thị trường VN, không có trading T1 nên các giá trị trên chỉ để quan sát trước thôi, tiếp tục nhìn qua các phạm vi khác có thể thấy:</p>
+
+<ul>
+<li>Nếu không xét nhóm 2, có thể thấy lợi nhuận trung bình của nhóm 4 và 8 cũng có mức độ cao nhất, tuy nhiên nhóm 4 thì giảm dần theo các khung thời gian khác nhau với cao nhất là 1 ngày nắm giữ. Nhóm 8 ổn định hơn khi tăng dần về 10 ngày nắm giữ (là cao nhất) và giảm dần sau đó.</li>
+
+<li>Histogram của các nhóm cũng cho thấy đa phần giá trị trung tâm tập trung quan biến động là 0 bps với đuôi cũng khá mập cho phân phối lợi nhuận.</li>
+</ul>
+
+<p><strong>—&gt; Vậy, dựa trên cái này có thể đánh giá chủ quan là chúng ta chỉ nên tập trung vào các sự kiện nhóm 4, nhóm 6 và nhóm 8.</strong></p>
+
+<p>Đi sâu vào cụ thể từng nhóm ngành (18 nhóm ngành), lại 1 lần nữa phân tích với Information Coefficient (mình có sử dụng trong bài đầu tiên về market breadth), mình có kết quả như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!W7ph!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffb657b7-c575-426f-9bfb-73d156e8cb49_1602x761.png"><img src="https://substackcdn.com/image/fetch/$s_!W7ph!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fffb657b7-c575-426f-9bfb-73d156e8cb49_1602x761.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Thì IC này mang tính chất giải thích về factor mình phân tích tới lợi nhuận của CP với bản chất là tương quan spearman. IC âm dương đều có ý nghĩa trading, chẳng hạn IC dương cao thì kỳ vọng giá tăng cao khi có factor hoặc IC âm lớn thì kỳ vọng bán hoặc out vị thế khi có factor xuất hiện. Vậy, alpha chỉ không có tồn tại hoặc alpha yếu chỉ khi IC gần 0 nhất.</p>
+
+<p>Nếu chỉ dựa trên tất cả các event này để trading cho tất cả các nhóm ngành quan sát (từ VNALLSHARES), có thể thấy chỉ có 1 số nhóm (8/18) có ảnh hưởng mạnh: <strong>OnG (dầu khí), Hospitality (dịch vụ nghỉ dưỡng), Healthcare (chăm sóc sức khỏe), Automobiles (công nghiệp ô tô), IT (công nghệ thông tin), Retail (bán lẻ), FnB và Industrial</strong>. Các nhóm ngành vốn được mọi người xem là “chủ đạo” hoặc “trọng yếu” trong VNINDEX như tài chính và BĐS thì có vẻ performance không tốt lắm (có thể là vì vốn hóa lớn, blue chips nhiều nên bị arbitrage nhiều hết rồi chăng?).</p>
+
+<p>Lấy 2 nhóm Banks và RE (bất động sản) ra xem thì mình có kết quả này:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!C8Av!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36abe117-ab98-446b-82b2-f7f970c9ea3a_2067x912.png"><img src="https://substackcdn.com/image/fetch/$s_!C8Av!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F36abe117-ab98-446b-82b2-f7f970c9ea3a_2067x912.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Nếu chỉ nhìn các event nhóm 4, 6 và 8 thì cả 2 nhóm đều cho kết quả khá tương đồng là ngày nắm giữ càng lớn (khi có event) thì lợi nhuận trung bình càng giảm, chỉ cao nhất vào ngày đầu tiên khi ra tin. Đối với event 8 (phát hành CP), thậm chí là nhóm Banks nó giảm toác luôn (sell on the fact có thể là đây =]]). Vậy, với 2 nhóm này chúng ta không nên đưa vào portfolio event-driven.</p>
+
+<p>Vậy, dựa trên các quan sát đó mình sẽ tạo 1 danh mục long only và chỉ tập trung trading và các nhóm ngành trên khi có events có nhiều yếu tố alpha như event nhóm 4, nhóm 8 và nhóm 6. <strong>Câu hỏi tiếp theo là khi nào Rebalance?</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!l7pc!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56ae1dbe-eb95-456b-b38c-3973932ff5ca_1183x346.png"><img src="https://substackcdn.com/image/fetch/$s_!l7pc!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F56ae1dbe-eb95-456b-b38c-3973932ff5ca_1183x346.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>1 lần nữa nhìn vào dữ liệu quá khứ nhưng chỉ filter lại các 8 nhóm ngành chúng ta quan tâm. Khung thời gian nắm giữ 10 ngày sẽ cho kết quả với alpha dương và beta thấp nhất, có thể thấy mức này có thể chấp nhận được và mình sẽ để nắm giữ tối đa là 10 ngày cho mã nào có tín hiệu giao dịch.</p>
+
+<p>Tóm tắt lại chúng ta có trading rules:</p>
+
+<ul>
+<li>Alpha signals: các CP có thông tin về cash dividend, phát hành CP và có giao dịch của người nội bộ mua.</li>
+
+<li>Bias sectors (8/18): OnG (dầu khí), Hospitality (dịch vụ nghỉ dưỡng), Healthcare (chăm sóc sức khỏe), Automobiles (công nghiệp ô tô), IT (công nghệ thông tin), Retail (bán lẻ), FnB và Industrial.</li>
+
+<li>Số ngày nắm giữ tối đa: 10 ngày</li>
+</ul>
+
+<h3 id="naive-backtest">Naive Backtest</h3>
+
+<p>Sau khi có trading rules, mình sẽ test lại với 1 cách ngây thơ cho portfolio của mình, và kết quả như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!SQLG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F610d6413-e7b4-44b6-8b60-de5d3e70ffe1_1272x1367.png"><img src="https://substackcdn.com/image/fetch/$s_!SQLG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F610d6413-e7b4-44b6-8b60-de5d3e70ffe1_1272x1367.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!iSYb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F35c06ac8-f971-479d-8ee5-a019266c4a77_1272x938.png"><img src="https://substackcdn.com/image/fetch/$s_!iSYb!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F35c06ac8-f971-479d-8ee5-a019266c4a77_1272x938.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy portfolio đương nhiên vượt trội so với benchmark (ở đây là VNINDEX) và rất ấn tượng, đi sâu vào performance metrics thì mình có bảng sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!0_3W!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3690500d-2579-4fa7-82dc-c1eb47b65e74_561x743.png"><img src="https://substackcdn.com/image/fetch/$s_!0_3W!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F3690500d-2579-4fa7-82dc-c1eb47b65e74_561x743.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy, strategy này khá lắc và các chỉ số không được vượt trội so với index lắm nhưng vẫn ở mức ổn định như Sharpe 0.8, Sortino: 1.37 và Calma: 0.96. Return thì vượt trội hoàn toàn với mức trung bình (compound rate) là 37% so với VNINDEX là 17%.</p>
+
+<p>Đi sâu vào phân bổ portfolio thì có thể thấy tần suất giao dịch cũng khá ổn định, hiếm khi có trạng thái chỉ bias 1 cổ phiếu duy nhất. Số ngày nắm giữ (rolling) là 4 ngày, ở mức vừa phải cho tactical portfolio.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!_eYc!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a1d444b-f844-4c47-9526-b8c5f976f045_1186x2882.png"><img src="https://substackcdn.com/image/fetch/$s_!_eYc!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0a1d444b-f844-4c47-9526-b8c5f976f045_1186x2882.png" alt="[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM" loading="lazy" decoding="async"></a></figure>
+
+<h2 id="ket-luan">KẾT LUẬN</h2>
+
+<ul>
+<li>Có alpha signals cho strategy về event-driven (loại cực kỳ bị động) cho việc kinh doanh chênh lệch từ 1 số thông tin khá phổ biến như: chia cổ phiếu bằng tiền mặt (cash dividend), người nội bộ mua và phát hành cổ phiếu. Kết quả khá tốt cho thời gian test từ đầu năm 01-01-2024 &#8211; nay.</li>
+
+<li>Bias sectors (08/18): OnG (dầu khí), Hospitality (dịch vụ nghỉ dưỡng), Healthcare (chăm sóc sức khỏe), Automobiles (công nghiệp ô tô), IT (công nghệ thông tin), Retail (bán lẻ), FnB và Industrial.</li>
+
+<li>Số ngày nắm giữ tối đa: 10 ngày</li>
+
+<li>Loại Portfolio: equal weights theo các tín hiệu hiện có.</li>
+</ul>
+
+<p>Bài viết đến đây cũng khá dài, hi vọng hữu ích và nhận được nhiều trao đổi từ mọi người. Trân trọng cảm ơn !</p>
+
+<h2 id="khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật &#8211; CMT Level 1</h2>
+
+<p>Khóa học được Green Chart thiết kế dành riêng cho các bạn thí sinh muốn học và ôn thi CMT cấp độ 1 tại Việt Nam. Nội dung chương trình học bao gồm 28 buổi học lý thuyết, luyện đề và thi thử. Học viên cũng được cung cấp miễn phí giáo trình, bộ câu hỏi và đề thi thử phục vụ cho quá trình ôn thi. Học lại miễn phí trọn đời khóa học.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><strong>Tại đây.</strong></a></p><div class="callout ground-cmt"><h3>Phân tích kỹ thuật – CMT Level 1</h3><p style="color:var(--muted)">Nền tảng của phân tích kỹ thuật. Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-technical-insights-event-driven-strategi" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-technical-insights-event-driven-strategi" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Phân tích kỹ thuật – CMT Level 1</b><p>Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../technical-insights-thong-ke-co-lua-ai/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỐNG KÊ CÓ LỪA AI?</h3><span class="meta tnum">03/05/2026 · 11 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</h3><span class="meta tnum">14/03/2026 · 16 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-loai-gi-phan-2/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)</h3><span class="meta tnum">14/03/2026 · 14 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../phan-tich-ky-thuat/">Xem chuyên mục Phân Tích Kỹ Thuật</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1" selected>Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

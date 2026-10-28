@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fed Funds Rate and Market Regimes Part 3: Overfitting - Green Chart</title>
+<meta name="description" content="Technical Insights part 3: labelling risk-on and risk-off regimes with K-means, choosing a model, and testing it for overfitting with IS vs OOS Sharpe.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/fed-funds-rate-market-regimes-part-3-forecasting/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Fed Funds Rate and Market Regimes Part 3: Overfitting</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../technical-insights-ffr-va-anh-huong-den-cac-regimes-phan-3/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../technical-analysis/">Technical Analysis</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market…</span></nav><div class="art-cats"><a class="tag green" href="../technical-analysis/">Technical Analysis</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2026-02-19">19 February 2026</time></span><span>Updated 2 July 2026</span><span>10 min read</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/02/a4.jpg" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-fed-funds-rate-market-regimes-part-3-for"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#objectives-of-this-post">Objectives of this post</a></li><li><a href="#iii-the-forecasting-model">III) THE FORECASTING MODEL</a></li><li><a href="#technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</a></li></ol></details><p class="lede"><em>Following on from Part 2, in this part I focus on forecasting regimes and analyse the problem of overfitting very carefully, as I understand it.</em></p>
+
+<h2 id="objectives-of-this-post">Objectives of this post</h2>
+
+<ul>
+<li>Get a basic understanding of the FFR (Done).</li>
+
+<li>Briefly understand how the FedWatch Tool calculates probabilities and build a similar monitoring tool (Done).</li>
+
+<li>Understand the relationships between the variables and factors (Done).</li>
+
+<li>From these relationships, find regimes based on how this variable affects markets such as the S&amp;P 500 and the VN-Index, to generate trade ideas (Part 3).</li>
+</ul>
+
+<h3 id="conclusion">Conclusion</h3>
+
+<ul>
+<li>Market risk states (regimes) can be identified, including risk-on (a stable state) and risk-off (a high-risk state).</li>
+
+<li>The model comes close to forecasting the regimes but is not yet effective (overfitting still cannot be ruled out).</li>
+
+<li>The backtest results also confirm a high degree of overfitting when trying to trade the strategy.</li>
+
+<li>The model still has potential for further mining, since the distribution of alpha looks fairly good relative to Beta. This also suggests we may be on the right track and can mine more data for better strategies.</li>
+</ul>
+
+<h3 id="notes">Notes</h3>
+
+<ul>
+<li>This post goes deep into assessing whether a financial model is overfitted, using quite a few unusual concepts (Combinatorial Purged K-Fold, regressing IS-Sharpe on OOS-Sharpe, and so on). I try to explain them briefly, but there will inevitably be gaps; I will explain these topics further in a dedicated post later.</li>
+
+<li>This post is purely my personal view and analysis, based on my limited knowledge, so it is somewhat subjective. I would very much welcome everyone's feedback!</li>
+
+<li>The writing style is close to everyday speech, not very academic, and sometimes mixes in English terms; I hope readers will bear with this.</li>
+
+<li>The data is accessed and calculated from the vnstocks library (http://vnstocks.com) and yfinance.</li>
+
+<li>Unlike some academic research, the goal here is to find influential factors to observe and forecast, so I keep speculation and conspiracy theories to a minimum – things like the VN-Index being moved by the SPX because of Trump, because of tariff policy, or "liquidity moves the market" (=]]), blah blah… Why?
+<ul>
+<li>Simply because I don't want to fall into certain biases in financial reasoning, specifically anchoring bias (anchoring on limited knowledge) and confirmation bias (seeking information that confirms my argument and, intentionally or not, leaving out information pointing the other way).</li>
+
+<li>The market is always changing; the information I have now explains only part of the movement, and often only from one angle. That means if we look at it differently, it may still be meaningful and can still be mined.</li>
+
+<li>The goal here is not research either: I am looking for alpha, i.e. trading strategies. So signal testing matters more!</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="iii-the-forecasting-model">III) THE FORECASTING MODEL</h2>
+
+<p>Having found the causal relationships between the variables and VN-Index returns, to build a reliable multi-factor forecasting model I need to clarify the following points:</p>
+
+<ul>
+<li>Regimes must be identified from the observed variables with an appropriate level of statistical confidence.</li>
+
+<li>A suitable model must be found with the lowest degree of overfitting.</li>
+</ul>
+
+<p>Both problems are actually very hard to solve, and there is no completely correct answer. But here is how I will approach them.</p>
+
+<h3 id="problem-1-identifying-regimes">Problem 1: Identifying regimes</h3>
+
+<p>This involves labelling data, for which I need a standard that defines the regimes. In fact, regimes can be identified from a macro perspective (identifying macro states: Expansion, Overheating, Stagflation and Deflationary) to determine the state of GDP growth and from that forecast the movements of assets in the economy, of which equities are one. In my view, forecasting this has some problems:</p>
+
+<ul>
+<li>Lack of data: macro data is quite patchy, and the quality of Vietnamese macro data only becomes reasonable from around 2000 (and some methods are still needed to fill gaps). The data is also quite strongly biased: for some variables reflecting expectations of the economic cycle, such as the PMI, the free data I could find only starts in 2013 (S&amp;P survey data) and is fairly weak, not representative of overall expectations.</li>
+
+<li>Long forecast horizon: since most of the data is quarterly, the forecasts will also be quarterly. If a trader only cares about the regime over one month, the forecast is quite noisy and impossible to gauge.</li>
+</ul>
+
+<p>So I need to classify regimes by a different characteristic, ideally based on the variables I have already observed. Subjectively, I use the K-means clustering algorithm, which simply groups together values with shared characteristics (I won't go into the formula; you can google it for details). This algorithm has some advantages:</p>
+
+<ul>
+<li>Automatic classification (unsupervised learning): the algorithm uses the characteristics I feed it to group the data automatically (into groups with shared characteristics).</li>
+
+<li>Fast to compute and easy to explain.</li>
+</ul>
+
+<p>However, it also has some problems:</p>
+
+<ul>
+<li>It is very susceptible to noise, and the more characteristics there are, the noisier it gets, so the characteristics (or features) need to be filtered to reduce the number observed.</li>
+
+<li>Choosing the number of clusters also depends on fairly subjective methods (elbow, silhouette…), so the number of clusters is fairly subjective and not very stable.</li>
+</ul>
+
+<p>So, to keep my algorithm stable, I need to filter the variables to reduce the dimensionality of the data while preserving their explanatory and classifying power, then fit them into the algorithm to get suitable regimes. So once again I select suitable variables from the observations in the previous post, with the following results:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!UuAb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0972e669-ebaf-4154-a93d-5751e42056f6_929x663.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!UuAb!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0972e669-ebaf-4154-a93d-5751e42056f6_929x663.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>I continue with Elastic Net for feature selection, but focus more on the transformations for the VN-Index. In the end, the dimensionality is reduced to 13 variables (versus 19 in Part 2). Using these variables to run K-means clustering, with the number of clusters chosen by silhouette, gives the following result:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!yxvU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff336e46f-9c52-46eb-baef-6c6eb022c2ce_993x636.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!yxvU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff336e46f-9c52-46eb-baef-6c6eb022c2ce_993x636.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>The regime results show two main states:</p>
+
+<ul>
+<li>Risk on: log_distance, Gold and VVIX have negative mean values (after normalisation with sklearn's StandardScaler) and all other assets are positive. I call this state "Risk on" because it shows greater potential stability in interest rates (based on log_distance), with gold prices falling and the volatility of volatility (VVIX) also falling. At this point I can flip the switch to accept risk (risk on).</li>
+
+<li>Risk off: the opposite state, where the mean values of the variables above are positive and those of all other assets are negative. This may imply an unstable environment for short-term trading, so I cannot flip the switch to accept risk (risk off).</li>
+</ul>
+
+<p>However, we still need to check whether this classification matches the actual movements of the VN-Index. Overlaying the regimes above on the VN-Index gives this chart:</p>
+
+<p><strong>Regimes and the VN-Index</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!2Gbg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96362eeb-c4b9-4e1f-8f21-6d785a677a73_1484x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!2Gbg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96362eeb-c4b9-4e1f-8f21-6d785a677a73_1484x584.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Regimes and volatility</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!lQGZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5dea18b-afcc-4087-a25a-6d9c76a3063b_1484x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!lQGZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5dea18b-afcc-4087-a25a-6d9c76a3063b_1484x584.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Green is risk-on and yellow is risk-off. You can see the clustering is fairly stable: mostly, during risk-on, volatility stays fairly low and the VN-Index trend is quite smooth and stable.</p>
+
+<p>So the regime labelling is acceptable for now; I will move on to finding a model to forecast these regimes.</p>
+
+<h3 id="problem-2-finding-a-model">Problem 2: Finding a model</h3>
+
+<p><strong>Model Pipeline:</strong></p>
+
+<p>As in previous posts, I will use these models, with brief explanations from ChatGPT (=]]):</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!O5Vj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ab6aa95-7085-4dd9-8543-91a81e2e0ba9_2681x1000.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!O5Vj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ab6aa95-7085-4dd9-8543-91a81e2e0ba9_2681x1000.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>By using Elastic Net to find features with high explanatory power and little multicollinearity, the data preparation above has largely eliminated the main limitations of these models. However, forecasting needs more than that. To improve accuracy, I will use a cross-validation method better suited to financial data, including:</p>
+
+<ul>
+<li>First, I use TimeseriesPurgeKFold: sklearn's built-in time series split plus purging. What is purging? It removes both ends of the overlapping segments (to avoid overfitting), as in this illustration:</li>
+
+<li>The pipeline for finding the optimal model in each loop is as follows:</li>
+
+<li>Basically, I think fitting the models through this pipeline limits data leakage during training, minimising overfitting. Then I loop through each model and get the following results in terms of prevalence edge: <em>(lr, nb, svc, knn and xgb stand for logistic regression, naive Bayes, support vector classifier, k-nearest neighbours and XGBoost respectively)</em></li>
+</ul>
+
+<p>So this time the beauty queen of classifiers is the SVC model, with the highest prevalence score and a predictive edge almost 10% above random (I explained prevalence in the post on fundamental factors affecting the VN-Index, Part 2).</p>
+
+<p>However, once again I need to make sure my model is not overfitted when used for forecasting. So how do we determine whether a model is overfitted?</p>
+
+<p><strong>Overfitting</strong></p>
+
+<p>Splitting the training and test sets and trying many times can unintentionally introduce a bias called selection bias. This is the bias that arises when I have tried the model too many times and end up choosing the result I like most, not the most effective one. In other words, the more I test, the more likely I am to find strategies that fit the best PnL curve – but the best PnL curve does not mean the most effective signal; it may simply be the best fit to past values (with no explanatory meaning). So how do we solve this?</p>
+
+<p>Lopez offers a method to address this, specifically:</p>
+
+<ul>
+<li>Use historical data to compute the Sharpe ratio in the past (or during the model training period) and fit the forecasting model, then compute the Sharpe ratio of the forecasting model. This gives a pair of Sharpe ratios: In-Sample (IS-Sharpe) for the training period and Out-of-Sample (OOS-Sharpe) for the forecast period.</li>
+
+<li>The data is randomly sampled with a method specific to time series called the "COMBINATORIAL PURGED CROSS-VALIDATION METHOD" (see chapter 12 of Lopez's Advances in Financial Machine Learning). This algorithm takes progressive random samples, so it avoids the overfitting problem of traditional K-Fold sampling, and it can also increase the number of samples.</li>
+
+<li>Then we regress the OOS and IS pairs. If the slope (or Beta) is negative, IS-Sharpe moves inversely with OOS-Sharpe, i.e. the higher a model's IS-Sharpe, the lower its OOS-Sharpe (overfitting). So, objectively, we are looking for a positive Beta for these pairs of IS and OOS Sharpe ratios.</li>
+</ul>
+
+<p>Convoluted as it is, I understand it simply as taking progressive random samples of a dataset made up of train and test sets, fitting the model on the training set and predicting on the test set. Then, if the train and test Sharpe ratios move together, there is no overfitting, and vice versa.</p>
+
+<p>OK! With the concept understood, using the combinatorial progressive random sampling above with 558 draws, I get the following distribution of OOS-Sharpe:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!Bxb0!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f31292e-3b5a-4a8f-b14f-e700d23b965e_825x432.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!Bxb0!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f31292e-3b5a-4a8f-b14f-e700d23b965e_825x432.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>The distribution is fairly evenly spread and nearly balanced, with mean ~ median and mean &gt; 0. In addition, the probability of a Sharpe ratio below 0 is under 20%. This is a fairly good sign for limiting overfitting; I will try to find a balanced OOS-Sharpe distribution with a positive mean and negative skew (values concentrated more on the right).</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!p6Hw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28718737-8d20-420a-ab8e-1be2ad6a3acc_579x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!p6Hw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28718737-8d20-420a-ab8e-1be2ad6a3acc_579x584.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!mDv1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb15e586-f5a1-405c-ad8a-3d7f52b1f57e_1149x736.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!mDv1!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb15e586-f5a1-405c-ad8a-3d7f52b1f57e_1149x736.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>The regression on IS Sharpe also shows a slope Beta of almost 0, and the regression line moves fairly randomly (its trajectory is hard to determine). However, the slope's p-value is quite high, showing that we cannot yet be confident it differs from 0. Based on this, overfitting has not been fully resolved, so the regime forecasts may still be somewhat similar to random.</p>
+
+<p><strong>Backtesting</strong></p>
+
+<p>The analysis above makes things somewhat clearer: our model still has lingering overfitting. Still, I will run a backtest to see the problem more clearly.</p>
+
+<p><strong>VNINDEX movement</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!nyAW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45d5ef34-12f4-4116-8ecd-ddbac5dc1ca5_1479x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!nyAW!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45d5ef34-12f4-4116-8ecd-ddbac5dc1ca5_1479x584.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Market volatility</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!i0jV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09da11f6-e9fa-47cd-9070-cbc277eb2a87_1479x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!i0jV!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09da11f6-e9fa-47cd-9070-cbc277eb2a87_1479x584.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Forecasting the test set from 1 January 2024 to date, the model still predicts high-risk states (yellow zones) quite well, when market volatility was rising sharply. Even more remarkably, the model even predicted the tariff episode (=]], very suspicious). However, running a strategy of buy and hold during risk-on and staying on the sidelines during risk-off, the results are not very good:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!OeiA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F989abe87-dc4f-4104-ad50-14b1af9c65fe_556x773.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!OeiA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F989abe87-dc4f-4104-ad50-14b1af9c65fe_556x773.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>The Sharpe, Sortino and Calmar ratios are all much lower than for the buy-and-hold strategy. Bootstrapping these metrics gives the following results:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!4fT8!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6288b0e2-88eb-4b4a-90d3-813d0b630c55_657x416.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!4fT8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6288b0e2-88eb-4b4a-90d3-813d0b630c55_657x416.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Alpha has a fairly wide distribution and is significantly larger than Beta, meaning the strategy may still have potential for further mining. The same goes for Sharpe and Sortino, although Sortino's distribution is also very wide.</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!knr6!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25e7b66c-683a-479d-bc49-68ff8c71c94a_1264x840.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!knr6!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25e7b66c-683a-479d-bc49-68ff8c71c94a_1264x840.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>And although the strategy looked like it dodged the tariff shock, it didn't (=]])!</p>
+
+<h3 id="conclusion-2">Conclusion</h3>
+
+<ul>
+<li>Market risk states can be identified, including risk-on (a stable state) and risk-off (a high-risk state).</li>
+
+<li>The model comes close to forecasting the regimes but is not yet effective (overfitting still cannot be ruled out).</li>
+
+<li>The backtest results also confirm a high degree of overfitting when trying to trade the strategy.</li>
+
+<li>The model still has potential for further mining, since the distribution of alpha looks fairly good relative to Beta. This also suggests we may be on the right track and can mine more data for better strategies.</li>
+</ul>
+
+<p>This post has become quite long; I hope this analysis is useful to you. <br><br>Thank you, and best regards!<br><br></p>
+<h2 id="technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</h2>
+
+<p>Green Chart designed this course specifically for candidates in Vietnam who want to study and prepare for the CMT Level I exam. The programme includes 28 sessions of theory, practice questions and mock exams. Students also receive the course textbook, question bank and mock exams free of charge for their exam preparation, and can retake the course for free for life.</p>
+
+<p>See more details about the course <a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><strong>here.</strong></a></p><div class="callout ground-cmt"><h3>Technical Analysis – CMT Level 1</h3><p style="color:var(--muted)">The foundations of technical analysis. Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-fed-funds-rate-market-regimes-part-3-for" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-fed-funds-rate-market-regimes-part-3-for" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Technical Analysis – CMT Level 1</b><p>Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../do-statistics-lie-backtesting-multiple-testing-bias/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Do Statistics Lie?</h3><span class="meta tnum">3 May 2026 · 9 min read</span></article></a><a class="u228-c u251 card" href="../event-driven-strategies-vietnam-stock-market/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Event-Driven Strategies in the Vietnamese Market</h3><span class="meta tnum">17 March 2026 · 11 min read</span></article></a><a class="u228-c u251 card" href="../vietnam-stock-market-efficiency-part-3-bayesian-var/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 3)</h3><span class="meta tnum">14 March 2026 · 12 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../technical-analysis/">See the category Technical Analysis</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1" selected>Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading">Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

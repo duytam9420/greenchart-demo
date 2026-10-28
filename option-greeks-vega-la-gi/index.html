@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Option Greeks: Vega - Green Chart</title>
+<meta name="description" content="Sau khi đã đi qua 3 bài viết về Delta, Gamma, Theta trong chủ đề Option Greeks, chúng ta sẽ cùng nhau tìm hiểu về cấu phần thứ 4, và cũng">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/option-greeks-vega-la-gi/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Option Greeks: Vega</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/option-greeks-vega-explained/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../chung-khoan-phai-sinh/">Chứng Khoán Phái Sinh</a><span aria-hidden="true">›</span><span>Option Greeks: Vega</span></nav><div class="art-cats"><a class="tag green" href="../chung-khoan-phai-sinh/">Chứng Khoán Phái Sinh</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">Option Greeks: Vega</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2022-09-18">18/09/2022</time></span><span>Cập nhật 02/07/2026</span><span>7 phút đọc</span></div></div></section><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-option-greeks-vega-la-gi"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#Tinh-toan-su-bien-djong">Tính toán sự biến động</a></li><li><a href="#DJo-bien-djong-va-Phan-phoi-chuan">Độ biến động và Phân phối chuẩn</a></li><li><a href="#Phan-phoi-chuan-va-loi-nhuan-co-phieu">Phân phối chuẩn và lợi nhuận cổ phiếu</a></li><li><a href="#Ung-dung-cua-djo-bien-djong">Ứng dụng của độ biến động</a></li><li><a href="#Phan-loai-djo-bien-djong">Phân loại độ biến động</a></li></ol></details><figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/vega-1-1024x576.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Option Greeks: VEGA</figcaption></figure>
+
+<p class="lede">Sau khi đã đi qua 3 bài viết về&nbsp;<a href="https://greenchart.vn/kien-thuc/option-greeks-de%E2%80%A6quyen-chon-la-gi/" target="_blank" rel="noopener">Delta</a>,&nbsp;<a href="https://greenchart.vn/kien-thuc/option-greeks-ga%E2%80%A6-uoc-tinh-rui-ro/" target="_blank" rel="noopener">Gamma</a>,&nbsp;<a href="../option-greeks-theta-la-gi/">Theta</a>&nbsp;trong chủ đề Option Greeks, chúng ta sẽ cùng nhau tìm hiểu về cấu phần thứ 4, và cũng là thú vị nhất của Option Greeks, đó là Vega. Vega là đại lượng đo lường thay đổi của phí quyền chọn liên quan đến sự thay đổi trong biến động của tài sản cơ sở.&nbsp;</p>
+
+<p>Vậy biến động tài sản cơ sở ở đây là gì? Đo lường biến động như thế nào? Chúng ta sẽ cùng tìm hiểu ngay sau đây.</p>
+
+<h2 id="Tinh-toan-su-bien-djong"><strong>Tính toán sự biến động</strong><a></a></h2>
+
+<p>Như các bạn đã biết, để đo lường độ biến động nói chung, người ta sẽ sử dụng đại lượng&nbsp;<strong>Độ lệch chuẩn</strong>. Các bước cần để tính toán độ lệch chuẩn như sau:</p>
+
+<ul>
+<li>Tính toán giá trị trung bình</li>
+
+<li>Tính độ lệch = giá trị thực tế &#8211; giá trị trung bình)</li>
+
+<li>Tính Phương sai = bình Phương của tổng các độ lệch)</li>
+
+<li>Tính độ lệch chuẩn = căn bậc 2 của Phương sai&nbsp;</li>
+</ul>
+
+<p>Sử dụng Excel để tính toán độ lệch chuẩn dựa trên dữ liệu là giá đóng cửa của tài sản.&nbsp;</p>
+
+<p>Bước 1: Tải dữ liệu là giá đóng cửa của tài sản cơ sở&nbsp;</p>
+
+<p>Bước 2: Tính toán lợi nhuận hàng ngày = Ln (Giá ngày hôm sau/Giá ngày hôm trước)</p>
+
+<p>Bước 3: Sử dụng hàm STDEV để tính độ lệch chuẩn hàng ngày của lợi nhuận</p>
+
+<p>Bước 4: Chuyển đổi mức độ biến động từ ngày sang mức độ biến động năm = (STDEV ngày) * (căn bậc 2 của thời gian)</p>
+
+<h2 id="DJo-bien-djong-va-Phan-phoi-chuan"><strong>Độ biến động và Phân phối chuẩn</strong><a></a></h2>
+
+<p>Phân phối chuẩn là một kiến thức chúng ta đã được học ở Đại học</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Vega-1-1.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Option Greeks: VEGA</figcaption></figure>
+
+<p id="caption-attachment-4864">Biểu đồ Minh họa phân phối chuẩn</p>
+
+<p>Nhắc lại về kiến thức về&nbsp;<strong>phân phối chuẩn</strong>&nbsp;và&nbsp;<strong>độ lệch chuẩn</strong>:</p>
+
+<ul>
+<li>Xác suất để quan sát được dữ liệu trong biên độ +/- 1 độ lệch chuẩn là 68%, 68% còn được gọi là độ tin cậy.</li>
+
+<li>Xác suất để quan sát được dữ liệu trong biên độ +/- 2 độ lệch chuẩn là 95%, 95% cò được gọi là độ tin cậy.</li>
+
+<li>Xác suất để quan sát được dữ liệu trong biên độ +/- 3 độ lệch chuẩn là 99.7%, 99.7% còn được gọi là độ tin cậy.</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Vega-2-1.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Option Greeks: VEGA</figcaption></figure>
+
+<p>Đồ thị thể hiện phân phối chuẩn theo kiến thức chúng tôi đề cập ở phía trên.&nbsp;</p>
+
+<h2 id="Phan-phoi-chuan-va-loi-nhuan-co-phieu"><strong>Phân phối chuẩn và lợi nhuận cổ phiếu</strong><a></a></h2>
+
+<p>Ở phần này chúng ta sẽ tìm hiểu mối quan hệ giữa lợi nhuận cổ phiếu và phân phối chuẩn.&nbsp;</p>
+
+<p>Đây là biểu đồ phân phối lợi nhuận hàng ngày của NIFTY. Bạn có thể thấy rằng nó tuân theo phân phối chuẩn.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Vega-3-1.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Biểu đồ phân phối lợi nhuận hàng ngày của NIFTY</figcaption></figure>
+
+<p>Giá trị lợi nhuận trung bình hàng ngày = 0,04%</p>
+
+<p>Độ lệch chuẩn hàng ngày (Độ biến động) = 1,046%</p>
+
+<p>Giá giao ngay NIFTY = 8337</p>
+
+<p>Vậy giá&nbsp;<a href="https://en.wikipedia.org/wiki/NIFTY_50" target="_blank" rel="noopener">NIFTY</a>&nbsp;giao dich trong vòng 30 ngày tới hay 1 năm tới sẽ nằm trong phạm vi nào? Chúng ta sẽ sử dụng độ lệch chuẩn 1 và 2 với mức tin cậy 68% và 95%.&nbsp;</p>
+
+<p><strong>Trường hợp 1</strong>: Biên độ giao dịch của NIFTY trong 01 năm tới</p>
+
+<p>Giá trị trung bình = 0,04%</p>
+
+<p>Độ lệch chuẩn = 1,046%</p>
+
+<p>Quy đổi đơn vị chuẩn theo năm, ta sẽ có:</p>
+
+<p>Giá trị trung bình năm = 0,04%*252 = 10,08%. (Lưu ý: quy ước 1 năm có 252 ngày giao dịch)</p>
+
+<p>Độ lệch chuẩn năm = 1,046%*Sqrt(252)=16,61%</p>
+
+<ul>
+<li>Với độ tin cậy 68% (1 độ lệch chuẩn), NIFTY trong vòng 1 năm tới sẽ giao dịch quanh ngưỡng&nbsp;</li>
+</ul>
+
+<p>= 10,08% (+/-)16,61%</p>
+
+<p>= -6,53% -&gt; 26,69%</p>
+
+<p>Từ đây ta tính được, trong vòng 1 năm tới giá sẽ giao dịch:</p>
+
+<ul>
+<li>Chặn trên = 8337 * e^(26,69%) = 10887</li>
+
+<li>Chặn dưới = 8337 * e^(-6,53%) = 7809</li>
+</ul>
+
+<p>Kết luận, Trong vòng 1 năm tới xác suất 68% giá NIFTY sẽ giao dịch trong ngưỡng từ 7809 đến 10887.</p>
+
+<ul>
+<li>Với độ tin cậy 95% (2 độ lệch chuẩn), NIFTY trong vòng 1 năm tới sẽ giao dịch quanh ngưỡng</li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 10,08 (+/-)2*16,61% = -23,14%-&gt;43,3%</p>
+
+<p>Từ đây ta tính được, trong vòng 1 năm tới giá sẽ giao dịch:</p>
+
+<ul>
+<li>Chặn trên = 8337 * e^(43,3%) = 12854</li>
+
+<li>Chặn dưới = 8337 * e^(-23,14%) = 6614</li>
+</ul>
+
+<p>Kết luận, trong vòng 1 năm tới xác suất 95% giá NIFTY sẽ giao dịch trong ngưỡng từ 6614 đến 12854.</p>
+
+<p><strong>Trường hợp 2</strong>: Biên độ giao dịch của NIFTY trong 30 ngày tới</p>
+
+<p>Tính toán tương tự như trường hợp 1:</p>
+
+<p>Giá trị trung bình quy 30 ngày = 0,04%*30 = 1,2%</p>
+
+<p>Độ lệch chuẩn quỹ 30 ngày = 1,046%*Sqrt(30) = 5,73%</p>
+
+<ul>
+<li>Với độ tin cậy 68% (1 độ lệch chuẩn), NIFTY trong vòng 30 ngày tới sẽ giao dịch quanh ngưỡng&nbsp;</li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;= 1,2% (+/-)5,75% = -4,53% -&gt; 6,93%</p>
+
+<p>Từ đây ta tính được, trong vòng 30 ngày tới giá sẽ giao dịch:</p>
+
+<ul>
+<li>Chặn trên = 8337 * e^(6,93%) = 8935</li>
+
+<li>Chặn dưới = 8337 * e^(-4,53%) = 7968</li>
+</ul>
+
+<p>Kết luận, trong vòng 30 ngày tới, xác suất 68% giá NIFTy sẽ giao dịch trong ngưỡng từ 7968 đến 8935</p>
+
+<ul>
+<li>Với độ tin cậy 95% (2 độ lệch chuẩn), NIFTY trong vòng 30 ngày tới sẽ giao dịch quanh ngưỡng&nbsp;</li>
+</ul>
+
+<p>&nbsp;&nbsp;&nbsp;&nbsp;= 1,2% (+/-)2*5,75% = -10,26% -&gt; 12,66%</p>
+
+<p>Từ đây ta tính được, trong vòng 30 ngày tới giá sẽ giao dịch:</p>
+
+<ul>
+<li>Chặn trên = 8337*e^(12,66%) = 9462</li>
+
+<li>Chặn dưới = 8337*e^(-10,26%) = 7524</li>
+</ul>
+
+<h2 id="Ung-dung-cua-djo-bien-djong"><strong>Ứng dụng của độ biến động</strong><a></a></h2>
+
+<p>Ở phần tiếp theo chúng ta sẽ nghiên cứu việc sử dụng Độ biến động để tính toán việc mua/ bán quyền chọn phù hợp cũng như đưa ra một điểm cắt lỗ chính xác. Sau khi đã dự tính được ngưỡng giá giao dịch trong 1 khoảng thời gian dự kiến, so sánh với giá thực hiện quyền chọn hiện tại, ta sẽ đưa ra được những quyết định đúng đắn hơn về việc có tham gia quyền chọn đó hay không.&nbsp;</p>
+
+<p>Một Phương pháp hiệu quả để xác định điểm cắt lỗ khi bạn tham gia 1 giao dịch đó là sử dụng độ biến động của cổ phiếu. Hãy cùng nghiên cứu ví dụ sau để hiểu hơn nhé.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/vega-51-1024x576.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Option Greeks: VEGA</figcaption></figure>
+
+<p id="caption-attachment-4869">Ứng dụng của biến động</p>
+
+<p>Bạn mua 1 cổ phiếu X giá 395, điểm cắt lỗ 385, giá mục tiêu là 417.&nbsp;</p>
+
+<p>Ở đây lỗ = 395-385 = 10 điểm</p>
+
+<p>Lãi mục tiêu = 417-395 = 32 điểm</p>
+
+<p>Tỷ lệ Lãi/Lỗ = 32/10 = 3,2&nbsp;</p>
+
+<p>Hãy đánh giá xem mức cắt lỗ 385 có phải là mức cắt lỗ hợp lý không?</p>
+
+<ul>
+<li>Bước 1: Tính mức độ biến độn hàng ngày của giá cổ phiếu X dựa trên data thị trường. Giả sử bạn tính được độ biến động hàng ngày bằng 1,8%.</li>
+
+<li>Dự kiến bạn nắm giữ vị thế trong 5 ngày, lúc này mức độ biến động 5 ngày sẽ = 1,8%*Sqrt(5) = 4,01%.</li>
+
+<li>Tính mức giá cắt lỗ dựa trên độ biến động 5 ngày = 395*(1 &#8211; 4,01%) = 379. Như vậy trong 5 ngày tới giá cổ phiếu X có thể giảm tới 379 điểm. Có nghĩa là bạn có thể sẽ chạm cắt lỗ, do đó bạn nên chọn điểm cắt lỗ thấp hơn 379, giả sử là 375, lúc này lỗ dự kiến nếu chạm cắt lỗ là 20 điểm.&nbsp;</li>
+</ul>
+
+<h2 id="Phan-loai-djo-bien-djong"><strong>Phân loại độ biến động</strong><a></a></h2>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Vega-4-1.jpg" alt="Option Greeks: Vega" loading="lazy" decoding="async"><figcaption>Option Greeks: VEGA</figcaption></figure>
+
+<p id="caption-attachment-4868">Phân loại độ biến động.</p>
+
+<ul>
+<li><strong>Historical Volatility – Biến động lịch sử:&nbsp;</strong>sử dụng giá đóng cửa của tài sản cơ sở để tính toán độ biến động trong quá khứ.&nbsp;</li>
+
+<li><strong>Forecasted Volatility – Dự báo biến động:&nbsp;</strong>dự báo sự biến động trong một khoảng thời gian xác định.</li>
+
+<li><strong>Implied Volatility – Biến động hàm ý:&nbsp;</strong>thể hiện sự kỳ vọng của người tham gia thị trường về sự biến động</li>
+
+<li><strong>Realized Volatility – Biến động thực tế:&nbsp;</strong>khi bạn muốn so sánh về Biến động hàm ý ngày hôm nay với Biến động hàm ý trong lịch sử.</li>
+</ul>
+
+<p><strong>Happy trading !</strong></p><div class="callout ground-deep"><h3>Giao dịch cổ phiếu – Stock Trading</h3><p style="color:var(--muted)">Stock Trading For A Living. Khai giảng 12/09/2026 · 5 buổi · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-option-greeks-vega-la-gi" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-option-greeks-vega-la-gi" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-deep"><span class="tag green">Kỹ năng giao dịch</span><b>Giao dịch cổ phiếu – Stock Trading</b><p>Khai giảng 12/09/2026 · 5 buổi · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../chung-quyen-co-dam-bao-la-gi/"><article class="u228-in colcard"><span class="meta">Chứng Khoán Phái Sinh</span><h3>Chứng quyền có đảm bảo (Covered Warrant) là gì? Hướng dẫn giao dịch chứng quyền tại thị trường Việt Nam</h3><span class="meta tnum">20/10/2022 · 16 phút đọc</span></article></a><a class="u228-c u251 card" href="../ban-khong-chung-khoan-la-gi/"><article class="u228-in colcard"><span class="meta">Chứng Khoán Phái Sinh</span><h3>Bán khống (Short Sell) là gì?</h3><span class="meta tnum">18/09/2022 · 8 phút đọc</span></article></a><a class="u228-c u251 card" href="../option-greeks-gamma-la-gi-gamma-trong-uoc-tinh-rui-ro/"><article class="u228-in colcard"><span class="meta">Chứng Khoán Phái Sinh</span><h3>Option Greeks: Gamma</h3><span class="meta tnum">15/09/2022 · 6 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../chung-khoan-phai-sinh/">Xem chuyên mục Chứng Khoán Phái Sinh</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1">Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading" selected>Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>[TECHNICAL INSIGHTS] - FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3) - Green Chart</title>
+<meta name="description" content="Tiếp nối phần 2, phần này mình sẽ tập trung vào forecast regimes và phân tích về vấn đề overfitting 1 cách thật kỹ theo cách mình hiểu.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/technical-insights-ffr-va-anh-huong-den-cac-regimes-phan-3/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>[TECHNICAL INSIGHTS]</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/fed-funds-rate-market-regimes-part-3-forecasting/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES…</span></nav><div class="art-cats"><a class="tag green" href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2026-02-19">19/02/2026</time></span><span>Cập nhật 02/07/2026</span><span>14 phút đọc</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/02/a4.jpg" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-technical-insights-ffr-va-anh-huong-den-"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#muc-tieu-bai-viet">Mục tiêu bài viết</a></li><li><a href="#iii-model-du-bao">III) MODEL DỰ BÁO</a></li><li><a href="#khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật – CMT Level 1</a></li></ol></details><p class="lede"><em>Tiếp nối phần 2, phần này mình sẽ tập trung vào forecast regimes và phân tích về vấn đề overfitting 1 cách thật kỹ theo cách mình hiểu.</em></p>
+
+<h2 id="muc-tieu-bai-viet">Mục tiêu bài viết</h2>
+
+<ul>
+<li>Tìm hiểu sơ bộ về FFR (Done).</li>
+
+<li>Hiểu ngắn gọn cách tính xác suất của FED WATCH TOOLS và tạo được tool quan sát tương tự (Done).</li>
+
+<li>Hiểu được các mối quan hệ của các biến và các yếu tố (Done).</li>
+
+<li>Từ các quan hệ này, tìm các regimes theo ảnh hưởng của biến này tới thị trường tới các đối tượng như SP500, VNINDEX để có trade ideas (phần 3).</li>
+</ul>
+
+<h3 id="ket-luan">Kết luận</h3>
+
+<ul>
+<li>Có thể xác định được các trạng thái (regimes) về rủi ro của thị trường, bao gồm risk-on (trạng thái ổn định) và risk-off (trạng thái rủi ro cao).</li>
+
+<li>Model đã tiệm cận về dự báo các regimes, tuy nhiên vẫn chưa hiệu quả (vẫn chưa thể bác bỏ được vấn đề overfitting).</li>
+
+<li>Kết quả backtest cũng đồng thuận với việc overfitting cao khi cố gắng dùng strategy để trade.</li>
+
+<li>Model vẫn còn tiềm năng để mining thêm khi vùng phân bổ của alpha cũng đang khá tốt so với Beta, điều này cũng cho thấy chúng ta có thể đi đúng hướng và có thể mining thêm data để có strategies tốt hơn.</li>
+</ul>
+
+<h3 id="ghi-chu">Ghi chú</h3>
+
+<ul>
+<li>Bài viết sẽ đi sâu vào việc đánh giá model bị overfitting cho tài chính, trong đó sử dụng khá nhiều khái niệm kỳ lạ như (Combinatorial Purged K Fold, Hồi quy IS-Sharpe và OOS-Sharpe,…). Mình cố gắng giải thích vắn tắt nhưng không tránh khỏi thiếu sót, mình sẽ giải thích thêm các nội dung này vào một bài cụ thể sau này.</li>
+
+<li>Bài viết thuần túy về nhận định và phân tích cá nhân của mình dựa trên kiến thực hạn hẹp mà mình có, nên sẽ hơi chủ quan. Rất mong nhận được sự góp ý từ mọi người!</li>
+
+<li>Ngôn ngữ viết bài giống văn nói thông thường, ít học thuật đôi lúc lõm bõm tiếng anh, hi vọng mọi người thông cảm cái này.</li>
+
+<li>Dữ liệu sử dụng là được truy cập và tính toán từ thư viện vnstocks (http://vnstocks.com), yfinance.</li>
+
+<li>Không như 1 số nghiên cứu khoa học, mục tiêu ở đây là tìm các yếu tố ảnh hưởng để quan sát và dự báo, nên mình hạn chế tối đa các thể loại suy luận hoặc thuyết âm mưu như VNINDEX bị tác động từ SPX vì Trump, vì chính sách thuế hoặc ‘liquidity move the market’ (=]]), blabla… Tại sao?
+<ul>
+<li>Đơn giản mình không muốn bị 1 số bias trong suy luận tài chính, cụ thể ở đây là anchoring bias (mỏ neo thông tin theo kiến thức hữu hạn), confirmation bias (cố gắng tìm thông tin để khẳng định lập luận của mình, vô tình hoặc cố ý bỏ sót các thông tin có ảnh hưởng ngược lại).</li>
+
+<li>Thị trường luôn thay đổi, thông tin hiện tại mình có chỉ để giải thích 1 phần biến động và nhiều khi chỉ giải thích đứng từ 1 khía cạnh quan sát. Có nghĩa là nếu quan sát theo cách khác, có thể nó vẫn tiếp tục có ý nghĩa và vẫn có thể mining được.</li>
+
+<li>Mục tiêu ở đây cũng không phải là nghiên cứu, ở đây mình đi tìm alpha, tức là đi tìm trading strategies. Do đó, quan trọng chuyện signal testing hơn!</li>
+</ul>
+</li>
+</ul>
+
+<h2 id="iii-model-du-bao">III) MODEL DỰ BÁO</h2>
+
+<p>Sau khi tìm ra mối quan hệ nhân quả giữa các biến và return của VNINDEX, để tạo được model forecast với nhiều yếu tố và đáng tin cậy mình cần làm rõ các điểm sau:</p>
+
+<ul>
+<li>Phải xác định được regimes từ các biến số đã quan sát với 1 mức độ tin cậy thống kê phù hợp.</li>
+
+<li>Phải xác định được model phù hợp với mức độ overfitting thấp nhất.</li>
+</ul>
+
+<p>2 vấn đề ở trên thực ra rất khó để giải và không có 1 đáp án chính xác hoàn toàn. Tuy nhiên theo mình, mình sẽ giải theo cách sau đây.</p>
+
+<h3 id="van-de-1-xac-dinh-regimes">Vấn đề 1: Xác định Regimes</h3>
+
+<p>Việc xác định này liên quan đến việc gắn nhãn dữ liệu, trong đó mình phải có 1 cái tiêu chuẩn cho regimes để xác định được nó. Thực ra, việc xác định này có thể đứng từ góc nhìn vĩ mô (xác định các trạng thái vĩ mô: Expansion, Overheating, Stagflation và Deflationary) để xác định các trạng thái của GDP growth để từ đó dự báo biến động của các tài sản trong nền kinh tế mà equity là 1 trong các tài sản đó. Theo mình, việc dự báo cái này có 1 số vấn đề:</p>
+
+<ul>
+<li>Thiếu dữ liệu: dữ liệu vĩ mô khá rời rạc, chất lượng data vĩ mô ở VN chỉ bắt đầu có kha khá nếu tính từ năm 2000 (và vẫn phải sử dụng 1 số phương pháp để lấp dữ liệu trống). Bên cạnh đó, dữ liệu cũng có bias khá mạnh, một số biến phản ánh tính kỳ vọng chu kỳ của nền kinh tế như PMI thì theo mình tìm kiếm thì hàng free chỉ bắt đầu từ năm 2013 (số liệu khảo sát của SP500) và cũng khá yếu, không mang tính đại diện kỳ vọng tổng thể.</li>
+
+<li>Thời gian dự báo dài: vì dữ liệu đa phần theo quý, giá trị forecast cũng sẽ theo quý. Nếu trader chỉ quan tâm regimes trong 1 tháng thì việc forecast khá noise và không thể đong đếm được.</li>
+</ul>
+
+<p>Vì vậy, mình cần phân loại regimes theo 1 tính chất khác và có thể dựa vào các biến mình đã quan sát. Một các chủ quan thì mình dùng thuật toán phân loại K-mean để phân loại , thuật toán này chỉ phân cụm lại các giá trị có chung đặc tính lại thôi (công thức mình không đi sâu vào, cái này mọi người có thể google để rõ hơn), thuật toán này có 1 số ưu điểm:</p>
+
+<ul>
+<li>Tự động phân loại (unsupervised-learning): thuật toán sẽ quan tâm đến các đặc tính mình đưa vào để tự động phân nhóm (phân chia các nhóm có cùng đặc tính).</li>
+
+<li>Tính toán nhanh và dễ giải thích.</li>
+</ul>
+
+<p>Tuy nhiên nó cũng có 1 số vấn đề:</p>
+
+<ul>
+<li>Rất dễ bị nhiễu, càng nhiều đặc tính thì càng dễ bị nhiễu, do đó cần phải lọc các đặc tính (hoặc đặc trưng) để giảm số đặc tính quan sát.</li>
+
+<li>Việc lựa chọn số nhóm phân loại cũng phụ thuộc vào 1 số phương pháp khá chủ quan (elbow, silhouette,..) , do đó số nhóm cũng sẽ khá chủ quan và ít ổn định.</li>
+</ul>
+
+<p>Vậy, để đảm bảo thuật toán của mình có thể ổn định, mình cần lọc lại các biến để giảm số chiều dữ liệu xuống nhưng vẫn đảm bảo tính giải thích và phân loại, sau đó fit vào trong thuật toán này để ra các regime phù hợp. Do vậy, mình sẽ 1 lần nữa chọn lại các biến phù hợp từ các quan sát ở bài trước, kết quả cụ thể như sau:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!UuAb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0972e669-ebaf-4154-a93d-5751e42056f6_929x663.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!UuAb!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0972e669-ebaf-4154-a93d-5751e42056f6_929x663.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Tiếp tục với Elastic Net để lựa chọn các features, tuy nhiên mình tập trung vào biến đổi cho VNINDEX nhiều hơn, kết quả cuối cùng cũng giảm số chiều quan sát xuống còn 13 biến (so với 19 biến ở phần 2). Sử dụng các biến này để chạy thuật toán phân loại K-mean với phương pháp lựa chọn là silhouette thì có kết quả như sau:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!yxvU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff336e46f-9c52-46eb-baef-6c6eb022c2ce_993x636.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!yxvU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Ff336e46f-9c52-46eb-baef-6c6eb022c2ce_993x636.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Kết quả của regimes cho thấy 2 trạng thái chính:</p>
+
+<ul>
+<li>Risk on: trạng thái log_distance, Gold và VVIX có giá trị trung bình (sau chuẩn hóa bằng Std Scaler trong sklearn) âm và các tài sản khác đều dương. Mình gọi trạng thái này là “Risk on” vì nó cho thấy tiềm năng ổn định cao hơn trong trạng thái lãi suất (dựa vào log_distance, giá vàng giảm và biến động của biến động (VVIX) cũng giảm). Lúc này thì mình có thể bật công tắc chấp nhận rủi ro (risk on).</li>
+
+<li>Risk off: trạng thái ngược lại, khi giá trị trung bình của các biến ở trên lại dương và giá trị trung bình các tài sản còn lại đều âm. Điều này có thể là hàm ý cho 1 môi trường không ổn định để trade trong ngắn hạn, và do đó không thể bật công tắc chấp nhận rủi ro (risk off).</li>
+</ul>
+
+<p>Tuy nhiên thì vẫn cần quan sát lại xem liệu việc phân loại như thế này đã có đúng với hiện trạng biến động của VNINDEX, vậy kết hợp các regimes phân loại ở trên vào biến động của VNINDEX ta có hình này:</p>
+
+<p><strong>Regimes và VNINDEX</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!2Gbg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96362eeb-c4b9-4e1f-8f21-6d785a677a73_1484x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!2Gbg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96362eeb-c4b9-4e1f-8f21-6d785a677a73_1484x584.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Regimes và Volatility</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!lQGZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5dea18b-afcc-4087-a25a-6d9c76a3063b_1484x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!lQGZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe5dea18b-afcc-4087-a25a-6d9c76a3063b_1484x584.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Với màu xanh là risk-on và màu vàng là risk-off. Có thể thấy, thuật toán phân loại khá ổn định khi phần lớn khi risk-on, volatility duy trì ở mức khá thấp, trend của VNINDEX cũng khá mượt và ổn định.</p>
+
+<p>Vậy là phần gắn nhãn cho các regimes tạm ổn, mình sẽ move qua phần tìm model forecast các regimes này.</p>
+
+<h3 id="van-de-2-tim-model">Vấn đề 2: Tìm model</h3>
+
+<p><strong>Model Pipeline:</strong></p>
+
+<p>Tương tự như các bài trước, mình cũng sẽ sử dụng các model này với giải thích tóm tắt từ ChatGPT (=]]):</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!O5Vj!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ab6aa95-7085-4dd9-8543-91a81e2e0ba9_2681x1000.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!O5Vj!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1ab6aa95-7085-4dd9-8543-91a81e2e0ba9_2681x1000.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Bằng cách sử dụng Elastic Net để tìm ra các features có tính giải thích cao và ít bị đa cộng tuyến, có thể thấy việc chuẩn bị dữ liệu mình đã làm ở trên đã gần như loại bỏ các vấn đề chính của các hạn chế trong các model này. Tuy nhiên, kết quả forecast cần nhiều hơn vậy, để tăng độ chính xác, mình sẽ sử dụng 1 phương cross validation phù hợp cho dữ liệu tài chính hơn bao gồm:</p>
+
+<ul>
+<li>Đầu tiên là sẽ sử dụng TimeseriesPurgeKFold, cái này mình sẽ sử dụng Timeseries split có sẵn của sklearn nhưng có thêm yếu tố thanh trừng (purge). Thanh trừng là gì, là loại bỏ 2 đầu mút của đoạn giao thoa (để tránh bị overfitting), cụ thể giống hình minh họa này:</li>
+
+<li>Pipeline để tìm model tối ưu qua từng lần loop cụ thể như sau:</li>
+
+<li>Cơ bản thì theo mình cách fit các model theo pipeline này sẽ hạn chế việc bị leakage data khi train các model để hạn chế tối đa việc overfitting. Sau đó thì loop cho từng model và mình ra kết quả với lợi thế prevalence như sau:<em>(với lr, nb, svc, knn, xgb lần lượt là viết tắt của các model logistic regression, naive bayes, super vector classifỉer, k-nearest neighbors, xgboost)</em></li>
+</ul>
+
+<p>Vậy hoa hậu phân loại lần này là model SVC với điểm số prevalence cao nhất với lợi thế tiên đoán cao hơn gần 10% so với giá trị ngẫu nhiên (prevalence là gì thì mình có đề cập trong bài các yếu tố cơ bản ảnh hưởng đến VNINDEX phần 2).</p>
+
+<p>Tuy nhiên, 1 lần nữa mình cần chắc chắn rằng model của mình không bị overfitting khi sử dụng để forecast. Vậy làm sao để xác định model có bị overfitting hay không?</p>
+
+<p><strong>Overfitting</strong></p>
+
+<p>Việc chia nhỏ tệp train, test và thử nhiều lần sẽ vô tình làm mình bị 1 cái bias gọi là selection bias. Cái này là bias khi mình đã thử mô hình quá nhiều lần và cuối cùng mình sẽ chọn ra được kết quả đúng ý mình nhất chứ không phải là hiệu quả nhất. Có nghĩa là mình test càng nhiều thì mình càng có khả năng tìm ra được các chiến lược nó fit đúng cái đường PnL tốt nhất, nhưng đường PnL tốt nhất không đồng nghĩa với tín hiệu hiệu quả nhất mà có thể là vì nó khớp nhất với các giá trị trong quá khứ (không có ý nghĩa giải thích). Vậy làm sao để giải quyết vấn đề này?</p>
+
+<p>Bác Lopez có đưa ra phương pháp giải quyết cái này, cụ thể:</p>
+
+<ul>
+<li>Sử dụng dữ liệu quá khứ và thực hiện tìm Sharpe ratio trong quá khứ (hoặc trong giai đoạn training model) và fit model dự báo, sau đó tìm Sharpe ratio của model dự báo. Như vậy, ta sẽ có 1 cặp Sharpe ratio: In Sample (IS-Sharpe) cho giai đoạn training và Out-of-sample (OOS-Sharpe) cho giai đoạn dự báo.</li>
+
+<li>Dữ liệu sẽ được chọn mẫu ngẫu nhiên với 1 phương pháp đặc thù cho time series gọi là “COMBINATORIAL PURGED CROSS-VALIDATION METHOD” (chi tiết chương 12 sách Advance in Machine Learning của Lopez). Thuật toán này sẽ lấy mẫu ngẫu nhiên tịnh tiến, do đó sẽ không bị vấn đề overfitting khi chọn mẫu dạng KFold truyền thống, ngoài ra cũng có thể tăng số lần chọn mẫu.</li>
+
+<li>Sau đó chạy hồi quy cặp dữ liệu OOS và IS này, nếu hệ số góc (slope hoặc Beta) âm, có nghĩa là giá trị IS-Sharpe nghịch biến với OOS-Sharpe hay model có IS-Sharpe càng cao thì OOS-Sharpe càng thấp (overfitting). Do đó, một cách khách quan, chúng ta sẽ đi tìm Beta dương của cặp dữ liệu IS và OOS Sharpe này.</li>
+</ul>
+
+<p>Lằng nhằng là vậy, nói chung mình hiểu đơn giản là chọn mẫu ngẫu nhiên tịnh tiến cho 1 tệp data set gồm train và test, sau đó fitting dữ liệu cho tệp train để huấn luyện model và predict cho tệp test. Sau đó, nếu giá trị Sharpe train và test đồng biến có nghĩa là không bị overfitting và ngược lại.</p>
+
+<p>Ok! Sau khi hiểu khái niệm, bằng cách chọn mẫu ngẫu nhiên tịnh tiến theo Combinatorial ở trên với 558 lần chọn. Mình có được phân phối của OOS-Sharpe cụ thể như sau:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!Bxb0!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f31292e-3b5a-4a8f-b14f-e700d23b965e_825x432.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!Bxb0!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F5f31292e-3b5a-4a8f-b14f-e700d23b965e_825x432.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy, phân phối này khá phân bổ khá đều và gần như cân bằng với mean ~ median và mean &gt; 0. Bên cạnh đó, xác suất của Sharpe ratio nhỏ hơn 0 cũng dưới 20%. Đây là tín hiệu khá tốt khi muốn hạn chế overfitting, mình sẽ cố gắng tìm 1 phân phối OOS-Sharpe cân bằng với trung bình dương và có negative skew (giá trị sẽ tập trung vào vùng bên phải nhiều hơn).</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!p6Hw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28718737-8d20-420a-ab8e-1be2ad6a3acc_579x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!p6Hw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28718737-8d20-420a-ab8e-1be2ad6a3acc_579x584.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!mDv1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb15e586-f5a1-405c-ad8a-3d7f52b1f57e_1149x736.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!mDv1!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fdb15e586-f5a1-405c-ad8a-3d7f52b1f57e_1149x736.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Kết quả hồi quy với IS Sharpe cũng cho thấy hệ số góc Beta gần như bằng 0 và đường hồi quy biến động khá ngẫu nhiên (khó xác định quỹ đạo). Tuy nhiên, p-value của slope khá cao, cũng cho thấy giá trị này hiện chưa đủ độ tin tưởng để có thể xác định rằng nó khác 0. Dựa trên kết quả này, có thể thấy vấn đề overfitting chưa được giải quyết triệt để lắm, và do đó kết quả dự báo regimes vẫn có thể phần nào khá tương đồng với giá trị ngẫu nhiên.</p>
+
+<p><strong>Backtesting</strong></p>
+
+<p>Các phân tích trên đã làm cho rõ ràng hơn phần nào, model ở đây chúng ta vẫn còn vấn đề overfitting tồn đọng, tuy nhiên thì mình vẫn thử backtest lại để nhìn rõ hơn cái vấn đề này.</p>
+
+<p><strong>VNINDEX movement</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!nyAW!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45d5ef34-12f4-4116-8ecd-ddbac5dc1ca5_1479x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!nyAW!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F45d5ef34-12f4-4116-8ecd-ddbac5dc1ca5_1479x584.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Market volatility</strong></p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!i0jV!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09da11f6-e9fa-47cd-9070-cbc277eb2a87_1479x584.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!i0jV!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F09da11f6-e9fa-47cd-9070-cbc277eb2a87_1479x584.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Khi forecast dữ liệu từ 01-01-2024 đến nay trên tệp test, có thể thấy model vẫn tiên đoán khá tốt các trạng thái rủi ro cao (vùng màu vàng) khi volatility của thị trường đang đặc biệt tăng vào các giai đoạn đó. Đặc biệt hơn, model còn tiên đoán được cả đoạn thuế (=]], nghi ngờ quá). Tuy nhiên, khi chạy với strategy là buy and hold khi risk-on và quan sát khi risk-off, kết quả không tốt lắm với:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!OeiA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F989abe87-dc4f-4104-ad50-14b1af9c65fe_556x773.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!OeiA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F989abe87-dc4f-4104-ad50-14b1af9c65fe_556x773.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể, thấy các chỉ số Sharpe, Sortino và Calmar đều thấp hơn so với chiến lược Buy and Hold rất nhiều. Boostrapping lại các thông số này ta có kết quả như sau:</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!4fT8!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6288b0e2-88eb-4b4a-90d3-813d0b630c55_657x416.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!4fT8!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6288b0e2-88eb-4b4a-90d3-813d0b630c55_657x416.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Alpha có mức độ phân bổ khá rộng và to hơn Beta đáng kể, có nghĩa là strategy này cũng có thể vẫn còn tiềm năng mining thêm. Tương tự với Sharpe và Sortino, tuy nhiên thì Sortino vùng phân bổ cũng rất rộng.</p>
+
+<figure><a href="https://substackcdn.com/image/fetch/$s_!knr6!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25e7b66c-683a-479d-bc49-68ff8c71c94a_1264x840.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!knr6!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F25e7b66c-683a-479d-bc49-68ff8c71c94a_1264x840.png" alt="[TECHNICAL INSIGHTS] – FFR VÀ ẢNH HƯỞNG ĐẾN CÁC REGIMES (PHẦN 3)" loading="lazy" decoding="async"></a></figure>
+
+<p>Và strategy mặc dù tưởng né được cú thuế nhưng vẫn không (=]])!</p>
+
+<h3 id="ket-luan-2">Kết luận</h3>
+
+<ul>
+<li>Có thể xác định được các trạng thái về rủi ro của thị trường, bao gồm risk-on (trạng thái ổn định) và risk-off (trạng thái rủi ro cao).</li>
+
+<li>Model đã tiệm cận về dự báo các regimes, tuy nhiên vẫn chưa hiệu quả (vẫn chưa thể bác bỏ được vấn đề overfitting).</li>
+
+<li>Kết quả backtest cũng đồng thuận với việc overfitting cao khi cố gắng dùng strategy để trade.</li>
+
+<li>Model vẫn còn tiềm năng để mining thêm khi vùng phân bổ của alpha cũng đang khá tốt so với Beta, điều này cũng cho thấy chúng ta có thể đi đúng hướng và có thể mining thêm data để có strategies tốt hơn.</li>
+</ul>
+
+<p>Bài viết đến đây cũng khá dài rồi, hi vọng những phân tích này sẽ hữu ích cho các bạn. <br /><br />Trân trọng cảm ơn!<br /><br /></p>
+<h2 id="khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật &#8211; CMT Level 1</h2>
+
+<p>Khóa học được Green Chart thiết kế dành riêng cho các bạn thí sinh muốn học và ôn thi CMT cấp độ 1 tại Việt Nam. Nội dung chương trình học bao gồm 28 buổi học lý thuyết, luyện đề và thi thử. Học viên cũng được cung cấp miễn phí giáo trình, bộ câu hỏi và đề thi thử phục vụ cho quá trình ôn thi. Học lại miễn phí trọn đời khóa học.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><strong>Tại đây.</strong></a></p><div class="callout ground-cmt"><h3>Phân tích kỹ thuật – CMT Level 1</h3><p style="color:var(--muted)">Nền tảng của phân tích kỹ thuật. Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-technical-insights-ffr-va-anh-huong-den-" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-technical-insights-ffr-va-anh-huong-den-" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Phân tích kỹ thuật – CMT Level 1</b><p>Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../technical-insights-thong-ke-co-lua-ai/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỐNG KÊ CÓ LỪA AI?</h3><span class="meta tnum">03/05/2026 · 11 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-event-driven-strategies-tai-thi-truong-viet-nam/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM</h3><span class="meta tnum">17/03/2026 · 14 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</h3><span class="meta tnum">14/03/2026 · 16 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../phan-tich-ky-thuat/">Xem chuyên mục Phân Tích Kỹ Thuật</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1" selected>Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

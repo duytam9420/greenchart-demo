@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Trading the VN-Index with P/E and P/B Z-Scores (Part 1) - Green Chart</title>
+<meta name="description" content="Technical Insights part 1: P/E and P/B z-score signals for trend following and dip buying on the VN-Index, signal testing and a backtest.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/fundamental-factors-vn-index-part-1-pe-pb-zscore/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Trading the VN-Index with P/E and P/B Z-Scores (Part 1)</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../technical-insights-anh-huong-cua-cac-yeu-to-co-ban-toi-vnindex-phan-1/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../technical-analysis/">Technical Analysis</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on…</span></nav><div class="art-cats"><a class="tag green" href="../technical-analysis/">Technical Analysis</a><a class="tag" href="../technical-analysis-cmt/">Technical Analysis – CMT</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2025-10-29">29 October 2025</time></span><span>Updated 2 July 2026</span><span>9 min read</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2025/11/Tech-Insight-2-1024x683.png" alt="TECHNICAL INSIGHTS - ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-fundamental-factors-vn-index-part-1-pe-p"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#i-observing-the-fundamental-factors">I) OBSERVING THE FUNDAMENTAL FACTORS</a></li><li><a href="#ii-experiment">II) EXPERIMENT</a></li><li><a href="#technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</a></li></ol></details><p class="lede"><em>In this post I focus on analysing the fundamental factors that affect the VN-Index, without limiting the type of model used to evaluate them. Besides models, I will also test how effective labelling is for finding strategies.</em></p>
+
+<p><strong>Objectives of this post:</strong></p>
+
+<ul>
+<li>Use fundamental information (P/E, P/B, …) to assess its impact on the VN-Index and to forecast it.</li>
+
+<li>Find a suitable trading strategy based on this data.</li>
+</ul>
+
+<p><strong>Conclusion:</strong></p>
+
+<p>The eyeballing method in Part 1 for trading on fundamentals can work, but there are still many doubts about its alpha!</p>
+
+<p>Specific trading rules:</p>
+
+<ul>
+<li>Holding period of 5–10 days, ideally 10 days.</li>
+
+<li>A z-score threshold of 3.0 for both P/E and P/B; the signal fires on either one (whichever flips the switch triggers an entry).</li>
+
+<li>The strategy is trend following for z-scores between 0.0 and 3.0, and mean reversion for z-scores below -3.0.</li>
+
+<li>The remaining rules are as in the previous post.</li>
+</ul>
+
+<p><strong>Notes:</strong></p>
+
+<ul>
+<li>This post is purely my personal view and analysis, based on my limited knowledge, so it is somewhat subjective. I would very much welcome everyone's feedback!</li>
+
+<li>The writing style is close to everyday speech, not very academic, and sometimes mixes in English terms; I hope readers will bear with this.</li>
+
+<li>The data is accessed and calculated from the vnstocks library (http://vnstocks.com).</li>
+
+<li>I set aside time-series cross-validation and walk-forward testing for now, so results may differ if these methods are used (though in my experience not by much).</li>
+
+<li>The data covers the VN-Index from 2017 to date.</li>
+</ul>
+
+<p><strong>Terminology:</strong></p>
+
+<ul>
+<li>Sharpe Ratio: measures return per unit of risk. Return is the average return (which can be adjusted to a more specific level, e.g. by subtracting the risk-free rate), and risk is the standard deviation of returns. In my view, a Sharpe ratio of 0.6 or above is only just acceptable.</li>
+
+<li>Sortino Ratio: similar to the Sharpe ratio, but risk here measures only downside moves, i.e. the standard deviation of negative returns. So this ratio focuses on return per unit of downside risk. In my view, a Sortino ratio should be 0.8 or above to be considered decent.</li>
+
+<li>Calmar Ratio: this is the recovery ratio from a drawdown; it can be thought of as a measure of how returns recover, so it should usually be 100% or more to be considered safe.</li>
+</ul>
+
+<h2 id="i-observing-the-fundamental-factors">I) OBSERVING THE FUNDAMENTAL FACTORS</h2>
+
+<p>P/E and P/B are fundamental factors that get a lot of attention in trading and analysis. There is already plenty of research on P/E and P/B, the most famous probably being the Fama-French five-factor model (for details, see (Fama &amp; French, 2015). <em>A five-factor asset pricing model</em>), one of whose factors is the inverse of P/B. Here, however, I will focus on finding strategies that can be traded with these metrics.</p>
+
+<p>As in the previous post, I scan the impact of strategies using the IC and use the outliers from the previous post. First, for P/E, I get this result:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!gXg9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59b71256-bfcb-4b9c-b2ff-41dfffffa6ee_609x584.png"><img src="https://substackcdn.com/image/fetch/$s_!gXg9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59b71256-bfcb-4b9c-b2ff-41dfffffa6ee_609x584.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>The return here is the 5-day forward return, fw_ret_5 (with a statistically significant p-value), which also means a 5-day holding period works best. The chart above also shows an inverse relationship between P/E and returns: the higher the P/E, the lower returns tend to be (=]]). There is also a "fanning tail", which is common in statistics; the textbooks call it heteroskedasticity when the return series is non-stationary (such a headache). The issue is actually very simple: because my return estimate is the forward 5-day return, it is influenced by the preceding days, so the tail gradually fans out. Here I am only looking at the relationship between the indicator and returns to mine strategies, not building a return-forecasting model, so I don't need to fix this statistical "defect" – besides, I'm lazy. So a 5-day holding period looks fine.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ro-2!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8da6f401-3427-46ac-8a43-ace6d30cb068_609x584.png"><img src="https://substackcdn.com/image/fetch/$s_!ro-2!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8da6f401-3427-46ac-8a43-ace6d30cb068_609x584.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>For P/B, the 10-day forward return, fw_ret_10, is more statistically significant, meaning the holding period is twice that of P/E. Both charts show an inverse correlation, and both indicators are heavily concentrated on the left (positive skew) and fan out to the right. More notably, P/B seems to have two zones in its distribution, with two high-density peaks (peak 1 at P/B ~ 2.5x and peak 2 at P/B ~ 2.8x). It looks to me as if there is a regime switch in the market's valuation range. In that case the market can keep moving or stay anchored at normal levels even though P/B is already relatively high —&gt; a mean-reversion strategy may not work well here.</p>
+
+<p>At this point I have drawn a few observations:</p>
+
+<ul>
+<li>Issue 1: The holding period would be 5–10 days if both factors are used. So what is reasonable?</li>
+
+<li>Issue 2: How should the indicators be read?
+<ul>
+<li>There seems to be some relationship between these two indicators and returns, possibly inverse: the higher the indicator, the more likely price is to fall (mean reversion?);</li>
+
+<li>However, there may also be periods of high valuation in which the market keeps behaving normally and mean reversion may not work in those zones (trend following, perhaps?).</li>
+</ul>
+</li>
+</ul>
+
+<p>OK, so here are some ways to address the issues above:</p>
+
+<ol>
+<li>Eyeball the charts to filter signals (=]]), combined with traditional technical analysis.</li>
+
+<li>Use some machine learning model (ML :))) to evaluate and filter signals.</li>
+</ol>
+
+<p>I'll do both to see which is better (=]]). In Part 1 I experiment with option 1 first.</p>
+
+<h2 id="ii-experiment">II) EXPERIMENT</h2>
+
+<h3 id="observation-and-experimentation">Observation and experimentation</h3>
+
+<h4>Evaluation flow</h4>
+
+<p>OK, here I observed what seems to be an inverse relationship. I will subjectively treat it as a "dual-nature" signal (both mean reversion and trend following), and I will test to find sensible trading thresholds for these indicators following the technical analysis flow. This is the flow, as I understand it, that the CMT Association applies for technical analysts. The flow is simple:</p>
+
+<p>Observation —&gt; Signal testing (finding the strategy with the highest predictive power) —&gt; Backtesting (re-checking the trading simulation on new data to compare the strategy's performance in the experiment and in practice).</p>
+
+<p>Note that signal testing means searching for the signal with the best trading potential; it is completely different from backtesting, which only evaluates the results of a signal on a historical dataset.</p>
+
+<p>Because the data is thinner than last time (2017 to date), the train/test split is set at 01-01-2024 (1 January 2024) for a fuller assessment.</p>
+
+<h4>Preliminary transformation</h4>
+
+<p>From the preliminary observations above, both P/B and P/E seem to have both trend-following and mean-reversion characteristics, but I have not yet found a way to identify signals of this kind. For a quick shortcut, I will rescale the values by their volatility – in other words, calculate z-scores for these two metrics. The z-score is calculated simply as follows:</p>
+
+<p>Where:</p>
+
+<ul>
+<li>PE_mean: the rolling average P/E, roughly a 60-day P/E moving average.</li>
+
+<li>PE_Std: the rolling 60-day standard deviation of P/E – like PE_mean, but calculating the standard deviation instead of the average.</li>
+</ul>
+
+<p>Likewise, I use the same formula for P/B:</p>
+
+<p>After the z-score transformation, the distributions of P/E and P/B look like this:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!u6J7!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F479dd9d7-8883-42b6-86b0-5b0bd0dcf116_1389x690.png"><img src="https://substackcdn.com/image/fetch/$s_!u6J7!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F479dd9d7-8883-42b6-86b0-5b0bd0dcf116_1389x690.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>You can see the values are now concentrated in one area much more (still with quite a few peaks =]]). This reduces false mean-reversion signals: I can choose the zones with few outliers in the two tails of the distribution to define mean-reversion signals —&gt; Mean reversion signal completed!</p>
+
+<p>For the trend-following signal, in theory trend following believes that past momentum (price inertia) persists and will continue into the present. One of the most classic ways to define a trend-following signal is price above the moving average, i.e. price minus the average &gt; 0. Wait a moment – price minus the average greater than 0 means (PE – PE_mean) &gt; 0 or (PB – PB_mean) &gt; 0. Since PB_std and PE_std are clearly positive, momentum also means the z-scores of P/E and P/B are positive (heh, so convenient, no extra calculation needed). So to identify trend following, I only need to check z-score &gt; 0 —&gt; Trend following signal completed!</p>
+
+<p>Trading execution: since Vietnam only allows long-only trading in the underlying, I cannot short the extreme highs, so my signals consist of:</p>
+
+<ul>
+<li>Dip-Buying: buy at the bottom when there is an extreme signal in a downtrend.</li>
+
+<li>Trend-Following: buy in the safe zone above 0 and below the extreme zone on the upside.</li>
+</ul>
+
+<h4>Signal Testing</h4>
+
+<p>Now I will test these signals to see which set works best. There are a few issues:</p>
+
+<ul>
+<li>The values here are rolling, and above I have tentatively assumed 60 days (i.e. one quarter of observations). But that window may not be effective, so I need to test which works best. I will test windows from 20 to 100 days (1–5 months)</li>
+
+<li>To filter the extreme points for mean reversion, I need to know what threshold is reasonable. From the z_score distribution above, its absolute values range from about 0.0 to 4.0; by eye, I set the test range at 1.5–3.0</li>
+</ul>
+
+<p>OK, now let's test and see the results:</p>
+
+<p>5-day holding period:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ZjKw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c60799f-399c-4c5b-afc8-655fa51672d1_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!ZjKw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c60799f-399c-4c5b-afc8-655fa51672d1_1141x635.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!O8M1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb24e1fc2-4cfe-45fa-abb3-52eb7245eae2_1151x624.png"><img src="https://substackcdn.com/image/fetch/$s_!O8M1!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb24e1fc2-4cfe-45fa-abb3-52eb7245eae2_1151x624.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!gLbf!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85470ee2-27b7-4b6e-99d2-ab1f74d95450_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!gLbf!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85470ee2-27b7-4b6e-99d2-ab1f74d95450_1141x635.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>(<em>where: Approve means a signal is required from both P/E and P/B before trading; Any means a signal from either indicator is enough to trade</em>)</p>
+
+<p>Only the Sharpe ratio is decent; Sortino and Calmar are low.</p>
+
+<p>Now let's try a 10-day holding period:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!-QRA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6df123e-182a-4223-975d-2464e1274dde_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!-QRA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6df123e-182a-4223-975d-2464e1274dde_1141x635.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Hk2y!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe041017b-db69-411f-97ab-c7afb7015653_1151x635.png"><img src="https://substackcdn.com/image/fetch/$s_!Hk2y!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe041017b-db69-411f-97ab-c7afb7015653_1151x635.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!v0yE!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0c9e071-f2ef-4231-9aab-2c959604f760_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!v0yE!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0c9e071-f2ef-4231-9aab-2c959604f760_1141x635.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Testing the strategies on data up to 01-01-2020 (1 January 2020) shows that:</p>
+
+<ul>
+<li>A 10-day holding period is much better: Sharpe and Calmar are significantly higher, while Sortino improves only slightly.</li>
+
+<li>A 20-day observation window gives better Sharpe, Sortino and Calmar values.</li>
+
+<li>The suitable threshold is 3.0 for both, which notably improves Sortino for both holding periods.</li>
+
+<li>The strategy combining both indicators gives the highest Sortino, with Sharpe in the top five, using the rule that a signal from either one triggers an entry.</li>
+</ul>
+
+<p>Based on this, I choose the strategy that watches both indicators, with thresholds of 3.0 for the z-scores of P/E and P/B.</p>
+
+<h3 id="backtesting">Backtesting</h3>
+
+<p>The backtest results for this strategy are as follows:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!oy3H!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c7f7ec1-27a2-4cac-81f3-0cda9619addb_833x1075.png"><img src="https://substackcdn.com/image/fetch/$s_!oy3H!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c7f7ec1-27a2-4cac-81f3-0cda9619addb_833x1075.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>The strategy performs relatively steadily, with good Sharpe, Sortino and Calmar ratios. Alpha is somewhat erratic.</p>
+
+<p>Let's plot it and see:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!z0Uw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa300ea1-9d5a-4185-9aad-367a11a45584_1247x4967.png"><img src="https://substackcdn.com/image/fetch/$s_!z0Uw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa300ea1-9d5a-4185-9aad-367a11a45584_1247x4967.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>It basically beats BnH (buy and hold), but we still need to watch how volatile the alpha is.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!mufq!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2f17293-eee1-4bde-972d-63fab31d4bfc_551x744.png"><img src="https://substackcdn.com/image/fetch/$s_!mufq!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2f17293-eee1-4bde-972d-63fab31d4bfc_551x744.png" alt="[TECHNICAL INSIGHTS] – The Impact of Fundamental Factors on the VN-Index (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Assessment:</strong></p>
+
+<p>This basic strategy can basically work, but there are still many doubts about its alpha metrics!</p>
+
+<p>This post is already very long; I hope it is useful to everyone. In the next part I will write about using an ML model to assess the impact and find trades for these two indicators.</p>
+
+<p>Thank you all for reading!</p>
+
+<p><em>Nguyen Le Khanh</em></p>
+
+<h2 id="technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</h2>
+
+<p>Green Chart designed this course specifically for candidates in Vietnam who want to study and prepare for the CMT Level I exam. The programme includes 25 sessions of theory, practice questions and mock exams. Students also receive the course textbook, question bank and mock exams free of charge for their exam preparation, and can retake the course for free for life.</p>
+
+<p>See more details about the course <a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><strong>here.</strong></a><br></p><div class="callout ground-cmt"><h3>Technical Analysis – CMT Level 1</h3><p style="color:var(--muted)">The foundations of technical analysis. Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-fundamental-factors-vn-index-part-1-pe-p" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-fundamental-factors-vn-index-part-1-pe-p" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Technical Analysis – CMT Level 1</b><p>Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../do-statistics-lie-backtesting-multiple-testing-bias/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Do Statistics Lie?</h3><span class="meta tnum">3 May 2026 · 9 min read</span></article></a><a class="u228-c u251 card" href="../event-driven-strategies-vietnam-stock-market/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Event-Driven Strategies in the Vietnamese Market</h3><span class="meta tnum">17 March 2026 · 11 min read</span></article></a><a class="u228-c u251 card" href="../vietnam-stock-market-efficiency-part-3-bayesian-var/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 3)</h3><span class="meta tnum">14 March 2026 · 12 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../technical-analysis/">See the category Technical Analysis</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1" selected>Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading">Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

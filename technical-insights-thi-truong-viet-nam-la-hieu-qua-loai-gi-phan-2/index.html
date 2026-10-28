@@ -1,0 +1,247 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>[TECHNICAL INSIGHTS] - THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2) - Green Chart</title>
+<meta name="description" content="Phần này mình sẽ đi sâu vào phân tích data và xây dựng framework để có thể đánh giá tổng quan hơn về mức độ hiệu quả của thị trường.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/technical-insights-thi-truong-viet-nam-la-hieu-qua-loai-gi-phan-2/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>[TECHNICAL INSIGHTS]</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/vietnam-stock-market-efficiency-part-2-fundamentals/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG…</span></nav><div class="art-cats"><a class="tag green" href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a class="tag" href="../phan-tich-ky-thuat-cmt/">Phân Tích Kỹ Thuật - CMT</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2026-03-14">14/03/2026</time></span><span>Cập nhật 11/08/2026</span><span>14 phút đọc</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/05/Ava.png" alt="TECHNICAL INSIGHTS" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-technical-insights-thi-truong-viet-nam-l"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#mo-dau">Mở đầu</a></li><li><a href="#danh-gia-so-bo-ve-data-de-tim-ra-phuong-phap-luan">Đánh giá sơ bộ về data để tìm ra phương pháp luận</a></li><li><a href="#fundamental-framework">Fundamental Framework</a></li><li><a href="#tan-man-ve-phuong-phap-uoc-luong">Tản mạn về phương pháp ước lượng</a></li><li><a href="#khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật – CMT Level 1</a></li></ol></details><p class="lede"><em>Phần này mình sẽ đi sâu vào phân tích data và xây dựng framework để có thể đánh giá tổng quan hơn về mức độ hiệu quả của thị trường.</em></p>
+
+<p><strong>Kết luận</strong></p>
+
+<ul>
+<li>Khi quan sát rộng trên phạm vi của 2 nhóm ngành tài chính và bất động sản, dường như có tồn tại khả năng giải thích bằng các yếu tố cơ bản khi forecast returns.</li>
+
+<li>Volatility clustering của các yếu tố cơ bản dường như có thể ảnh hưởng đáng kể đến giá CP của 2 nhóm ngành trên.</li>
+</ul>
+
+<h2 id="mo-dau">Mở đầu</h2>
+
+<p>Phần trước mình đã pick ra vài cổ phiếu để có cái nhìn sơ bộ diễn biến về tương quan về giá và các chỉ tiêu cơ bản trong BCTC, phần này mình sẽ nhìn tổng quan hơn khi nhìn toàn bộ BCTC của 1615 mã CP của toàn thị trường từ 2017 &#8211; nay.</p>
+
+<p><strong>Ghi chú:</strong></p>
+
+<ul>
+<li>Dữ liệu được sử dụng là trong phạm vi của 1615 mã CP trên thị trường từ 2017 &#8211; nay, có giai đoạn không đầy đủ vẫn được dùng và dùng trên tất cả CP hiện có tại thời điểm đó. Dữ liệu được mình tạm crawling từ nhiều nguồn và tổng hợp lại, 1 trong những nguồn đó có vnstock (https://vnstocks.com/) cũng khá ok.</li>
+
+<li>Phân loại nhóm ngành đang dùng theo chuẩn GICS, các index ngành được tính bằng danh mục cân bằng (equal weights).</li>
+</ul>
+
+<h2 id="danh-gia-so-bo-ve-data-de-tim-ra-phuong-phap-luan">Đánh giá sơ bộ về data để tìm ra phương pháp luận</h2>
+
+<h3 id="quan-sat-bien-dong-cac-chi-tieu-co-ban-nhin-chung">Quan sát biến động các chỉ tiêu cơ bản nhìn chung</h3>
+
+<p><em>Hình: Tăng trưởng về giá trị sổ sách (BV) của các nhóm ngành (phân loại theo GICS)</em></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!iHqA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28db9244-773e-4921-b3b0-ad0222b18697_857x704.png"><img src="https://substackcdn.com/image/fetch/$s_!iHqA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F28db9244-773e-4921-b3b0-ad0222b18697_857x704.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy là book growth của các nhóm ngành có sự biến động khá khác biệt, trong đó nhóm ngành tài chính có trung bình cao hơn đáng kể so với các nhóm còn lại và vùng giá trị cũng biến động tương đối ổn định. Nếu lấy lợi nhuận trung bình chia cho biến động (hoặc độ lệch chuẩn) của từng cổ phiếu trong các nhóm ngành này để xem mức độ ổn định về tăng trưởng BV (hay nói cách khác là z-scoring hoặc normalizing) thì kết quả là như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!cTny!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F650082ab-b5de-4179-a688-7dca05ed834a_844x704.png"><img src="https://substackcdn.com/image/fetch/$s_!cTny!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F650082ab-b5de-4179-a688-7dca05ed834a_844x704.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy phần lớn biến động của các nhóm như tài chính, năng lượng có outliers xuất hiện tích cực khá nhiều, trong khi đó các nhóm ngành tiêu dùng không thiết yếu và chăm sóc sức khỏe có trung bình cao hơn và ít biến động hơn.</p>
+
+<p>Tuy nhiên khi nhìn vào tăng trưởng lợi nhuận sau thuế TTM thì kết quả hơi khác:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ukBF!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f3825ca-dbf3-4560-bdce-2fc7e992dd1b_844x704.png"><img src="https://substackcdn.com/image/fetch/$s_!ukBF!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F4f3825ca-dbf3-4560-bdce-2fc7e992dd1b_844x704.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!lUTJ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b247472-9bde-4b8f-909a-758dd6aab297_857x704.png"><img src="https://substackcdn.com/image/fetch/$s_!lUTJ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7b247472-9bde-4b8f-909a-758dd6aab297_857x704.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy nếu quy đồng lại tất cả theo z-score, nhóm ngành thực sự có NPAT báo cáo tài chính tốt so với 1 đơn vị rủi ro (là độ lệch chuẩn) là các nhóm: tài chính, IT, viễn thông và năng lượng.</p>
+
+<h3 id="phan-tich-cu-the-vao-mot-so-nhom-nganh">Phân tích cụ thể vào một số nhóm ngành</h3>
+
+<p><strong>Ngành tài chính</strong></p>
+
+<p>Nếu lấy 1 nhóm ngành tài chính (theo mình nhóm ngành này tương đối nhạy với biến động của VNINDEX) ra phân tích các chỉ tiêu về tăng trưởng BV, NPAT và NPLs:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!NuLb!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96653847-67ac-4612-a7f8-f9abde1ae1d9_1489x1489.png"><img src="https://substackcdn.com/image/fetch/$s_!NuLb!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F96653847-67ac-4612-a7f8-f9abde1ae1d9_1489x1489.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>BV growth qua thời gian biến động tăng mạnh vào giai đoạn 2021, đặc biệt là vào tháng 07/2021. Tuy nhiên, bắt đầu từ đầu năm 2022 bắt đầu ghi nhận sự giảm dần về BV growth và giảm đỉnh điểm vào tháng 10/2022 (quantile 25% đã giảm mạnh).</p>
+
+<p>Trong khi đó, NPL năm 2021 cũng ghi nhận mức độ NPL thu hẹp đáng kể trong giai đoạn 2021 (hầu như các bank đều duy trì 1 tỷ lệ NPL lành mạnh dưới 2%). Năm 2022, thì có tăng dần và đạt đỉnh điểm ghi nhận được vào 2023, lúc cuối 2022 thì thị trường cũng crash 1 phần do lo ngại NPL của ngân hàng đối với nhóm này.</p>
+
+<p>Cũng khá buồn cười là các năm 2022, 2023 cũng ghi nhận NPAT có biến động khá lớn, thậm chí 1 số bank thì có NPAT dương mạnh (=]], rất thú vị, để làm gì nhỉ?).</p>
+
+<p>Có thể thấy nếu như nhìn vào BV growth, %NPLs hoặc NPAT growth mà có thể đánh giá được sức khỏe của nhóm ngân hàng trong DÀI HẠN dường như là không thể trong giai đoạn 2017 &#8211; nay ! Tại sao mình nói như thế này:</p>
+
+<ul>
+<li>Với sự tăng trưởng của BV và co hẹp của NPL tại thời điểm như giai đoạn 2021 mang tính chất THỜI ĐIỂM, tức là bảng cân đối của bank đang được ghi nhận 1 sức khỏe tốt tại thời điểm đó so với các quan sát trước đó, sau đó thì nó được ghi nhận là xấu đi dần (mình sẽ chỉ dùng thông tin trên chart để nói chứ ko nói từ những cái mình biết hoặc mình nghĩ là mình biết để khách quan hơn khi phân tích theo data). Tại sao, gọi là có sức khỏe tốt:
+<ul>
+<li>NPLs duy trì mức co cụm thấp.</li>
+
+<li>BV tăng trưởng mạnh.</li>
+
+<li>Lợi nhuận biến động ổn định.</li>
+</ul>
+</li>
+
+<li>Vậy, để forecast 1 sector như bank thì có có thể nhìn từ bảng cân đối của bank trong quá khứ để biết được sức khỏe của nó trong tương lại hay không?
+<ul>
+<li>Nếu dựa trên chỉ các chỉ số trong báo cáo tài chính, hoặc khá hơn là các nghiên cứu từ các case study thì theo mình nghĩ là có. Tuy nhiên, độ chính xác của nó cần phải làm rõ theo thời gian.</li>
+
+<li>Còn nếu dựa vào các yếu tố như hình, có thể thấy là khá yếu, tuy nhiên có thể nhìn thấy 1 số đặc điểm để đánh giá trạng thái rủi ro chung, chẳng hạn trong 1 môi trường ổn định của bank thì:
+<ul>
+<li>BV growth về quanh mức normal.</li>
+
+<li>%NPLs về mức normal.</li>
+
+<li>NPAT growth volatility nhỏ hoặc ổn định.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+<p>Việc đánh giá chất lượng trong dài hạn khó, nhưng trong NGẮN HẠN thì có thể là ok, tại sao:</p>
+
+<ul>
+<li>Có thể xác định được sức khỏe của bank tại thời điểm đó nếu xác định được vùng normal.</li>
+
+<li>Và 1 cái rất thú vị đó là dường như BV growth, % NPL có tồn tại <strong>momentum hoặc clustering</strong>:
+<ul>
+<li>Một cách thiếu thống kê (bằng quan sát), có thể thấy là trạng thái của cả 3 cái yếu tố này đều duy trì trong cùng 1 vùng hoặc có tính kéo theo.</li>
+
+<li>Và điều khá thú vị là giá có vẻ vận động chậm biến động của các yếu tố cơ bản trên!</li>
+</ul>
+</li>
+</ul>
+
+<p><strong>Ngành bất động sản</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!6faz!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fceb9bc40-25d2-4bce-b9d8-84adf523731b_1489x1489.png"><img src="https://substackcdn.com/image/fetch/$s_!6faz!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fceb9bc40-25d2-4bce-b9d8-84adf523731b_1489x1489.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></a></figure>
+
+<p>Đối với ngành thì số liệu có thay đổi chút ít, cụ thể mình không sử dụng %NPLs mà thay vào đó là 1 thang đo khác là ROIC (TTM). Có thể thấy tương tự giống như nhóm ngành tài chính, các chỉ số cơ bản này cũng cho thấy:</p>
+
+<ul>
+<li>Biến động BV tăng dường như hàm ý sự tăng của CP.</li>
+
+<li>Biến động của NPAT có hàm ý cho biến động trong giá CP khi phần quantile ở dưới nhiều hơn.</li>
+
+<li>ROIC khá ổn định và xu hướng có hàm ý cho biến động tăng hoặc giảm giá CP.</li>
+</ul>
+
+<p>Rất thú vị, dường như những biến FA này có tính chất driver không chỉ trong kỳ hiện tại cho các nhóm ngành này mà có hàm ý cho 1 quý sắp tới.</p>
+
+<p>Vậy mình rút ra được gì từ 2 mẫu quan sát này:</p>
+
+<ul>
+<li>Dường như giá có thể được giải thích trước bởi các yếu tố cơ bản nếu đứng từ góc nhìn của 2 ngành này.</li>
+
+<li>Volatility clustering cho các yếu tố cơ bản là 1 trong nhưng điều kiện quan trọng để đánh giá kỳ vọng về giá trong kỳ sắp tới.</li>
+</ul>
+
+<p>Rất thú vị! Nhưng để đánh giá toàn vẹn hơn thì mình phải làm 2 yếu tố sau để nghiên cứu trở nên chặt chẽ hơn:</p>
+
+<ol>
+<li>Framework định giá theo FA phải có cơ sở chặt chẽ hơn!</li>
+
+<li>Dữ liệu hiện đang theo quý, và sẽ không cân bằng giữa các CP (do có công ty IPO sau 2017), vậy phải có 1 phương pháp ước lượng phù hợp để có thể định giá hoặc forecast được chính xác!</li>
+</ol>
+
+<h2 id="fundamental-framework">Fundamental Framework</h2>
+
+<p>Để giải quyết ý 01, mình sẽ tham khảo 1 số nguồn chính thống và nguồn đó là của Credit Suisses (CS). Mặc dù nó bị crash vào năm 2023 và buộc UBS phải mua lại (=]] poor CS), tuy nhiên trong giới IB (investment bank) thì nó vẫn là 1 huyền thoại từng xuất hiện. CS có 1 số nghiên cứu rất hay và 1 cái bộ system đánh giá về chất lượng doanh nghiệp rất nổi tiếng như: HOLT (Holistic Framework for Valuation), giờ đây nó chuyển về tên miền của UBS (thật đau lòng).</p>
+
+<p>Framework này có gì hay ho:</p>
+
+<ul>
+<li>Nó chuẩn hóa tất cả các chuẩn mực kết toán (chẳng hạn VAS, IFRS, GAAP,…) về cùng 1 phương thức xác giá trị kinh tế. Nó chuẩn hóa làm sao? Thông qua CFROI là 1 thước đo chung cơ bản (ngoài ra còn có các yếu tố khác theo scorecard của họ), xác định giá trị doanh nghiệp EV sau khi đã hiệu chỉnh đi các yếu tố đặc thù như lạm phát, risk premia và chiết khấu lại theo CFROI. Cái này gọi là warranted value với công thức cụ thể:</li>
+</ul>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-7-1024x218.png" alt="[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 2)" loading="lazy" decoding="async"></figure>
+
+<ul>
+<li>Trong đó:
+<ul>
+<li>Gần giống như EV / EBITDA, tuy nhiên nó tổng quát hơn so với EBITDA khi: có điều chỉnh lại EV theo 1 phần discount về lạm phát cho tài sản ròng; có CFROI.</li>
+
+<li>CFROI: được tính bằng OCF/Capital-Employed (OCF là dòng tiền hoạt động, Capital-Employed = Equity + Long-term Debt + Financial Leases). Tại sao lại tốt hơn EBITDA? EBITDA chỉ đứng ở khía cạnh thu nhập bằng tiền thật sự, không phải là thước đo tương đối giữa thu nhập thật sự so với nguồn lực đầu tư (thông qua Capital-Employed). Do đó, CFROI về mặt cơ bản đã phản ánh cả 2 khía cạnh tương đối này khi đem tất cả lên cân tốt hơn nhiều so với EBITDA.</li>
+
+<li>Tại sao cái này gọi là Economic P/E? Biến đổi công thức 1 chút như sau:Có thể thấy CFROI * Inflation-adjust Net Assets = Adjusted-Earnings</li>
+</ul>
+</li>
+
+<li>Nó sử dụng CFROI là công cụ để đánh giá sức khỏe của doanh nghiệp thông qua:
+<ul>
+<li>Momentum factor: Nếu 1 doanh nghiệp khỏe, nó phải có momentum cho cả CFROI, price momentum và liquidity.</li>
+
+<li>Valuation factor: xác định bằng Economic P/E, gap giữa Economic P/E và P/E thực tế, Value-to-Cost Ratio và dividend yields.</li>
+
+<li>Quality factor: CFROI lịch sử và mức độ CFROI so với trung bình đang tốt hay xấu hơn.</li>
+</ul>
+</li>
+</ul>
+
+<p>Framework khá hay, phải công nhận rằng sự chi tiết của CS khi họ khảo sát và đánh giá hơn 6000 doanh nghiệp từ 1950 đến nay, support bởi rất nhiều data của các bên thứ 3, 4,… (=]]). Tuy nhiên, khi thực sự đi vào định giá, phương pháp định giá rất quan trọng và thực sự hiểu được thị trường định giá gì nó quan trọng còn hơn thế nữa. Vậy mình tận dụng được gì từ framework trên:</p>
+
+<ul>
+<li>Phân tích theo các factors: momentum, valuation và quality. Cách tiếp cận từ CS rất hay khi họ phân loại rõ ràng các yếu tố định các factors kia, thay vì mất công thì mình có thể chế cháo customize lại theo hiểu biết của mình được.</li>
+
+<li>Tại sao không sử dụng framework của họ để tính?
+<ul>
+<li>Thực sự khi đi vào model excel, nó có 1 rào cản cực kỳ lớn đó là giả định! Các giả định của các tickers sẽ không giống nhau, hiểu được tính chất của 1 doanh nghiệp quan trọng hơn rất nhiều. Chẳng hạn, nếu nhìn nhóm BĐS sẽ bị bias bằng định giá bằng PB, RNAV nhiều hơn so với nhóm sản xuất.</li>
+
+<li>CFROI sẽ phù hợp khi mức độ quan sát lớn, lúc đó noise sẽ được cân bằng bằng các công ty có dòng tiền tốt. Bên cạnh đó, các thị trường có tuổi đời lớn, số lượng doanh nghiệp mature và có dữ liệu lịch sử đủ dài để có thể sử dụng được CFROI.</li>
+
+<li>Bộ dữ liệu của CS đang sử dụng phần lớn của USA và EU, khác với Việt Nam. US có tiêu chuẩn phân loại rõ ràng về lợi nhuận các doanh nghiệp khi niêm yết, 1 số tiêu chuẩn khá khác biệt giữa NASDAQ và NYSE, NASDAQ có tính chất nhẹ nhàng về lợi nhuận và dòng tiền hơn so với NYSE. Nếu so với Việt Nam, chắc chắn tiêu chuẩn niêm yết kiểm soát còn yếu hơn, phân loại doanh nghiệp theo năng lực tài chính sẽ không thể rõ ràng bằng USA hoặc EU.</li>
+</ul>
+</li>
+</ul>
+
+<p>Do đó, theo mình Framework có thể tạm điều chỉnh lại như sau để có thể tự động được, do đó mình sẽ sử dụng EBITDA (TTM) /Capital-Employed growth, BV growth và NPLs (cho ngành tài chính) để đo lường các yếu tố momentum, valuation và quality.</p>
+
+<p>Giờ mình cần nghĩ thêm về ước lượng!</p>
+
+<h2 id="tan-man-ve-phuong-phap-uoc-luong">Tản mạn về phương pháp ước lượng</h2>
+
+<p>Để có thể chế cháo 1 cái gì mình cần có 1 công cụ tự động để xác định cách thức thị trường đang định giá nó như thế nào, để định giá 1 cách tương đối! Nhắc lại, là 1 cách định giá tương đối! Có rất nhiều phương pháp với những giả định đẹp như DCF, FCFF, … với 1 giả định rằng nếu tồn tại đến vô cực tại 1 mốc thời gian có thể CF ổn định thì mình sẽ có tổng cấp số nhân cuối kỳ để tính ra được Intrinsic Value (ridiculous =]]) và sau đó sẽ xuất hiện các nhà đầu tư giá trị lên phán đại loại như giá của ông ABC được định giá khi IPO đúng như chúng tôi định giá (abc…) mà không cần đọc trước hay xem phao (=]]). Với 1 đống giả định như vậy, chắc chắn không có chuyện định giá chính xác mà chỉ có hợp lý. Vậy để gọi là hợp lý chỉ là fair nếu như đứng nhìn từ 1 góc nhìn về việc pricing đúng và hiểu là thị trường đang định giá bằng cái gì.</p>
+
+<p>Thực tế, khi định giá bằng excel (cho dù có chạy Monte-Carlo bằng Crytal ball), tất cả đều chỉ là giả định và có thêm thắt 1 chút biến động ngẫu nhiên (nếu có thêm Monte-Carlo), biến động ngẫu nhiên này chỉ tập trung 1 cách chủ quan về một loại phân phối duy nhất (mà thường mặc định là Normal hoặc Triangle =]]). Vấn đề là khi các biến ngẫu nhiên đều không chung phân phối với nhau thì sao? Hay cụ thể là các câu hỏi sau:</p>
+
+<ul>
+<li>Nếu có nhiều nhóm ngành thì đâu phải phân phối lợi nhuận giống nhau (tham khảo phần 1), vậy thì ước lượng các nhóm ngành như thế nào là phù hợp?</li>
+
+<li>Có nhóm ngành có rất nhiều CP trong đó, chẳng hạn như nhóm ngành công nghiệp có tới 459 mã CP trong khi IT chỉ có 17 mã. Vậy làm sao đủ mức độ ý nghĩa thống kê để giải thích so sánh với nhau, hay làm sao để dự phóng?</li>
+
+<li>Trường dữ liệu bất cân xứng, từ 2017 đến nay có vài DN đã niêm yết và nếu lấy dữ liệu cân bằng bằng các loại các giá trị thiếu thì bỏ sót rất nhiều, vậy làm sao giải quyết được? Trường hợp có thể sử dụng được bằng 1 số PP thống kê, trường dữ liệu của chỉ từ 2017 đến nay, làm sao có thể dùng nó để forecast chính xác được vì model ML thường đòi hỏi dữ liệu ít nhất vài trăm rows!</li>
+
+<li>Thực tế, các nhóm ngành có đặc tính giống nhau sẽ có nhiều điểm kỳ vọng giống nhau, kéo excel thì hay gọi là peer ratios, vậy làm sao để kết quả chúng ta có thể tham chiếu theo cách này?</li>
+
+<li>Trên thực tế, khi forecast, giá trị trung bình các kỳ trước sẽ có thể được tham chiếu và làm cơ sở để forecast và đặc biệt phổ biến trong forecast annual plan (=]]). Vậy kết quả dự phóng sẽ có yếu tố “anchoring bias”, vậy làm sao để thể hiện cái này?</li>
+</ul>
+
+<p>Nếu mình anti cách kéo excel đơn thuần ở trên thì mình cần 1 phương án robust hơn, vừa và giải quyết hết các câu hỏi trên, vừa đủ mạnh để hội cư dân kéo excel không vào debate, và mình sẽ sử dụng 1 model đa cấp (=]]), đùa thôi gọi là Hierachical Bayesian để ước lượng!</p>
+
+<p>Tuy nhiên thì bài cũng khá dài rồi, mình sẽ để phần ước lượng này qua phần sau. Hi vọng bài sẽ được đón nhận và có ích cho mọi người, trân trọng và cảm ơn!</p>
+
+<p><a href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/">[TECHNICAL INSIGHTS] &#8211; THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</a></p>
+
+<h2 id="khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật &#8211; CMT Level 1</h2>
+
+<p>Khóa học được Green Chart thiết kế dành riêng cho các bạn thí sinh muốn học và ôn thi CMT cấp độ 1 tại Việt Nam. Nội dung chương trình học bao gồm 28 buổi học lý thuyết, luyện đề và thi thử. Học viên cũng được cung cấp miễn phí giáo trình, bộ câu hỏi và đề thi thử phục vụ cho quá trình ôn thi. Học lại miễn phí trọn đời khóa học.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><strong>Tại đây.</strong></a></p><div class="callout ground-cmt"><h3>Phân tích kỹ thuật – CMT Level 1</h3><p style="color:var(--muted)">Nền tảng của phân tích kỹ thuật. Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-technical-insights-thi-truong-viet-nam-l" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-technical-insights-thi-truong-viet-nam-l" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Phân tích kỹ thuật – CMT Level 1</b><p>Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../technical-insights-thong-ke-co-lua-ai/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỐNG KÊ CÓ LỪA AI?</h3><span class="meta tnum">03/05/2026 · 11 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-event-driven-strategies-tai-thi-truong-viet-nam/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM</h3><span class="meta tnum">17/03/2026 · 14 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</h3><span class="meta tnum">14/03/2026 · 16 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../phan-tich-ky-thuat/">Xem chuyên mục Phân Tích Kỹ Thuật</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1" selected>Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>[TECHNICAL INSIGHTS] - ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1) - Green Chart</title>
+<meta name="description" content="Bài này mình sẽ tập trung phân tích các yếu tố cơ bản đến VNINDEX nhưng không giới hạn loại model sử dụng để đánh giá. Bên cạnh models, mình cũng sẽ test hiệu…">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/technical-insights-anh-huong-cua-cac-yeu-to-co-ban-toi-vnindex-phan-1/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>[TECHNICAL INSIGHTS]</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/fundamental-factors-vn-index-part-1-pe-pb-zscore/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI…</span></nav><div class="art-cats"><a class="tag green" href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a class="tag" href="../phan-tich-ky-thuat-cmt/">Phân Tích Kỹ Thuật - CMT</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2025-10-29">29/10/2025</time></span><span>Cập nhật 02/07/2026</span><span>11 phút đọc</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2025/11/Tech-Insight-2-1024x683.png" alt="TECHNICAL INSIGHTS - ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-technical-insights-anh-huong-cua-cac-yeu"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#i-quan-sat-cac-yeu-to-co-ban">I) QUAN SÁT CÁC YẾU TỐ CƠ BẢN</a></li><li><a href="#ii-thi-nghiem">II) THÍ NGHIỆM</a></li><li><a href="#khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật – CMT Level 1</a></li></ol></details><p class="lede"><em>Bài này mình sẽ tập trung phân tích các yếu tố cơ bản đến VNINDEX nhưng không giới hạn loại model sử dụng để đánh giá. Bên cạnh models, mình cũng sẽ test hiệu quả của việc labeling để tìm strategies.</em></p>
+
+<p><strong>Mục tiêu bài viết:</strong></p>
+
+<ul>
+<li>Sử dụng các thông tin cơ bản (P/E, P/B, …) để đánh giá ảnh hưởng tới VNINDEX và dự báo.</li>
+
+<li>Tìm chiến lược trading phù hợp dựa trên các dữ liệu này.</li>
+</ul>
+
+<p><strong>Kết luận:</strong></p>
+
+<p>Phương pháp quan sát bằng mắt trong phần 1 để trade cơ bản có thể work được nhưng còn nhiều nghi ngờ với alpha!</p>
+
+<p>Trading rules cụ thể:</p>
+
+<ul>
+<li>Thời gian hold lệnh 5 &#8211; 10 ngày, tốt nhất là 10 ngày.</li>
+
+<li>Z-score cho PE và PB đều là 3.0, signal sẽ là kết hợp của 1 trong 2 (cái nào bật công tắc là vào lệnh).</li>
+
+<li>Strategy là trend following cho z-scores từ 0.0 &#8211; 3.0, mean-reversion cho z-scores dưới -3.0.</li>
+
+<li>Các rules còn lại như bài trước.</li>
+</ul>
+
+<p><strong>Ghi chú:</strong></p>
+
+<ul>
+<li>Bài viết thuần túy về nhận định và phân tích cá nhân của mình dựa trên kiến thực hạn hẹp mà mình có, nên sẽ hơi chủ quan. Rất mong nhận được sự góp ý từ mọi người!</li>
+
+<li>Ngôn ngữ viết bài giống văn nói thông thường, ít học thuật đôi lúc lõm bõm tiếng anh, hi vọng mọi người thông cảm cái này.</li>
+
+<li>Dữ liệu sử dụng là được truy cập và tính toán từ thư viện vnstocks (http://vnstocks.com).</li>
+
+<li>Tạm bỏ qua các phương pháp TimeseriesCV hoặc Walkforward testing, do đó các kết quả có thể sẽ có sự khác biệt nếu sử các phương pháp này (tuy nhiên theo kinh nghiệm của mình thì sẽ không nhiều đâu).</li>
+
+<li>Phạm vi dữ liệu từ 2017 &#8211; nay cho VNINDEX.</li>
+</ul>
+
+<p><strong>Các thuật ngữ:</strong></p>
+
+<ul>
+<li>Sharpe Ratio: đo lường tỷ lệ lợi nhuận cho 1 đơn vị rủi ro, lợi nhuận là trung bình lợi nhuận (có thể điều chỉnh để về mức lợi nhuận cụ thể hơn, chẳng hạn trừ đi lãi suất phi rủi ro), rủi ro là độ lệch chuẩn của biến động. Theo mình Sharpe ratio thường từ 0.6 trở lên mới có thể coi là tàm tạm.</li>
+
+<li>Sortino Ratio: tương tự như Sharpe ratio nhưng rủi ro ở đây chỉ đo lường các biến động giảm, nghĩa là đo lường độ lệch chuẩn của giá trị biến độ giảm. Như vậy tỷ lệ này sẽ tập trung vào lợi nhuận cho 1 đơn vị rủi ro biến động giảm. Theo mình Sortino Ratio phải từ 0.8 trở lên mới được gọi là ổn.</li>
+
+<li>Calmar Ratio: cái này là tỷ lệ phục hồi từ 1 cú sụt, có thể coi là 1 chỉ số về sự hồi phục lợi nhuận, nên thường phải từ 100% trở lên mới gọi là an toàn.</li>
+</ul>
+
+<h2 id="i-quan-sat-cac-yeu-to-co-ban">I) QUAN SÁT CÁC YẾU TỐ CƠ BẢN</h2>
+
+<p>PE và PB là các yếu tố cơ bản được quan tâm khá nhiều trong trading và phân tích. Mình thấy cũng có rất nhiều nghiên cứu về đánh giá PE và PB rồi, nổi tiếng nhất có thể là mô hình Fama-French 5 nhân tố (chi tiết có thể tham khảo ở đây: (Fama &amp; French, 2015). <em>A five-factor asset pricing model</em>) với 1 nhân tố là nghịch đảo của P/B. Tuy nhiên, ở đây mình sẽ tập trung vào tìm các strategies để có thể trade được với các chỉ số này.</p>
+
+<p>Tương tự như bài trước, mình sẽ scan về ảnh hưởng của strategies bằng IC và sử dụng các outliers cũng từ bài trước, trước tiên cho PE và ra kết quả này:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!gXg9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59b71256-bfcb-4b9c-b2ff-41dfffffa6ee_609x584.png"><img src="https://substackcdn.com/image/fetch/$s_!gXg9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F59b71256-bfcb-4b9c-b2ff-41dfffffa6ee_609x584.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Trong đó return ở đây là fw_ret_5 ngày (có p-value có ý nghĩa thống kê), cũng đồng nghĩa là mình có thể hold được lệnh tốt nhất trong 5 ngày. Chart trên cũng cho thấy mối quan hệ nghịch biến trong PE và return, PE càng to thì return có xu hướng càng bé (=]]). Ngoài ra có 1 hiện tượng “toe đuôi” khá phổ biến trong thống kê, cái này thì thường là vấn đề sách vở hay nói là phương sai thay đổi khi chuỗi returns không có tình dừng (nhức đầu quá). Vấn đề này thực ra rất đơn giản, đó là do returns của mình ước lượng là fw_ret_5 ngày tới, và nó sẽ bị chuỗi các ngày trước ảnh hưởng đến, đuôi sẽ toe dần ra. Ở đây mình chỉ quan sát mối quan hệ giữa chỉ báo và return để mining strategies, không cần tạo mô hình dự báo return, do đó không cần xử lý “khuyết tật” thống kê, hơn nữa là mình lười. Vậy nên kết quả hold lệnh trong 5 ngày như vậy có vẻ ổn rồi.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ro-2!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8da6f401-3427-46ac-8a43-ace6d30cb068_609x584.png"><img src="https://substackcdn.com/image/fetch/$s_!ro-2!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8da6f401-3427-46ac-8a43-ace6d30cb068_609x584.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Với PB thì fw_ret_10 ngày sẽ có ý nghĩa thống kê hơn, tức là thời gian hold lên sẽ gấp đôi so với PE. Cả 2 charts đều cho thấy tương quan nghịch biến và 2 chỉ báo đều hội tụ cao ở vùng giá trị bên trái (positive skew) và toe dần về bên phải. Đặc biệt hơn, ở PB có vẻ như tồn tại cả 2 vùng phân phối giá trị khi có 2 đỉnh có điểm có mật độ phân bổ cao (đỉnh 1 tại PB ~ 2.5x và đỉnh 2 tại PB ~ 2.8x). Mình thấy có vẻ như có tồn tại 1 vấn đề về thay đổi trạng thái (regime switch) cho khoảng định giá của thị trường. Lúc này thì thị trường vẫn có thể biến động hoặc neo ở mức bình thường mặc dù PB đã tương đối cao —&gt; Mean reversion strategy có thể không hoạt động tốt ở đây.</p>
+
+<p>Lúc này thì mình đã rút ra 1 số vấn đề quan sát được:</p>
+
+<ul>
+<li>Vấn đề 1: Thời gian hold lệnh sẽ từ 5 &#8211; 10 ngày nếu sử dụng cả 2 yếu tố này. Vậy bao nhiêu là hợp lý?</li>
+
+<li>Vấn đề 2: Đọc chỉ báo như nào?
+<ul>
+<li>Có vẻ như có tồn tại mối quan hệ nào đó giữa 2 chỉ báo này và lợi nhuận, có thể là nghịch biến tương ứng chỉ báo càng tăng thì khả năng giá giảm càng cao (mean reversion?);</li>
+
+<li>Tuy nhiên cũng có thể tồn tại 1 số khoảng thời gian định giá cao nhưng thị trường vẫn tiếp tục hoạt động ổn định và mean reversion có thể không work được trong nhưng vùng này (có thể trend following?).</li>
+</ul>
+</li>
+</ul>
+
+<p>Ok, đến đây thì mình sẽ có 1 số giải pháp để giải quyết các vấn đề trên:</p>
+
+<ol>
+<li>Sử dụng mắt để quan sát và lọc tín hiệu (=]]) kết hợp với PTKT truyền thống.</li>
+
+<li>Sử dụng 1 model Machine Learning (hay là ML :))) nào đó để đánh giá và lọc tín hiệu.</li>
+</ol>
+
+<p>Mình sẽ làm cả 2 để xem cái nào tốt hơn (=]]). Trong phần 1 mình sẽ thí nghiệm trước với mục 1.</p>
+
+<h2 id="ii-thi-nghiem">II) THÍ NGHIỆM</h2>
+
+<h3 id="quan-sat-va-thuc-nghiem">Quan sát và thực nghiệm</h3>
+
+<h4>Flow đánh giá</h4>
+
+<p>Ok ở đây mình quan sát được mối quan hệ nghịch biến có vẻ tồn tại, mình sẽ chủ quan nhận định đây là tín hiệu theo trường phái lưỡng tính (cả mean reversion và trend following) và mình sẽ test để tìm threshold trade hợp lý cho các chỉ báo này theo flow của PTKT. Đây là flow mình đang hiểu theo CMTA đang áp dụng cho các nhà phân tích kỹ thuật. Nói thêm về flow này thì sẽ đơn giản:</p>
+
+<p>Quan sát —&gt; Signal testing (tìm strategy với khả năng tiên đoán cao nhất) —&gt; Backtesting (kiểm tra lại kết quả trading simulation theo dữ liệu mới để xem hiệu quả giữa strategies trong thí nghiệm và thực tế).</p>
+
+<p>Cần lưu ý là signal testing sẽ là đi tìm signal có khả năng trade tốt nhất, nó hoàn toàn khác với backtesting, cái chỉ là đánh giá kết quả theo signal theo 1 trường dữ liệu quá khứ.</p>
+
+<p>Do dữ liệu yếu hơn so với lần trước (từ 2017 &#8211; nay), tệp train test sẽ được chia từ 01-01-2024 để có đánh giá đầy đủ hơn.</p>
+
+<h4>Biến đổi sơ bộ</h4>
+
+<p>Bằng quan sát sơ bộ ở trên, cả PB và PE có vẻ PB và PE có cả 2 tính chất trend following và mean reversion, nhưng mình chưa tìm được cách nhận diện tín hiệu theo dạng này. Để nhận diện nhanh, mình sẽ làm tắt bằng 1 cách đó là scaling lại giá trị theo đơn vị biến động hoặc còn gọi là tính z-score của 2 chỉ số này. Z-score này được tính đơn giản như sau:</p>
+
+<p>Trong đó:</p>
+
+<ul>
+<li>PE_mean: là Giá trị PE trung bình trượt, nôm na là PE Moving average 60 ngày.</li>
+
+<li>PE_Std: là giá trị độ lệch chuẩn động của PE trong 60 ngày, cũng tương tự như PE mean nhưng không tính trung bình mà tính độ lệch chuẩn.</li>
+</ul>
+
+<p>Tương tự mình cũng sẽ có cho PB công thức đó:</p>
+
+<p>Sau khi biến đổi về z-score, thì phân phối sau biến đổi của PE và PB đã có dạng như phân phối này:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!u6J7!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F479dd9d7-8883-42b6-86b0-5b0bd0dcf116_1389x690.png"><img src="https://substackcdn.com/image/fetch/$s_!u6J7!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F479dd9d7-8883-42b6-86b0-5b0bd0dcf116_1389x690.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Có thể thấy vùng hội tụ đã tập trung về 1 khu vực nhiều hơn (vẫn nhiều đỉnh phết =]]). Do đó, sẽ giảm hiện tượng bị sai trong mean reversion signal, mình có thể chọn những vùng ít giá trị ngoại lai ở 2 đuôi của phân phối để xác định tín hiệu cho mean reversion được —&gt; Mean reversion signal completed!</p>
+
+<p>Đối với trend following signal, 1 cách lý thuyết, trend following sẽ tin tưởng rằng momentum (quán tính giá) trong quá khứ sẽ còn và sẽ tiếp tục kéo dài đến hiện tại. Một trong những cách cổ điển nhất để xác định trend following signal là giá trên đường MA, tức là giá trừ trung bình &gt; 0. Khoan đã, giá trừ trung bình lớn hơn 0 là có phải là (PE &#8211; PE_mean) &gt; 0 hay (PB &#8211; PB_mean) &gt; 0. Vì rõ ràng, PB_std và PE_std dương nên nếu có quán tính thì cũng đồng nghĩa với z-score của PE và PB dương (keke quá khỏe, đỡ phải tính thêm). Vậy để xác định có trend following thì mình chỉ cần xem z-score &gt; 0 là xong —&gt; Trend following signal completed!</p>
+
+<p>Trading execution: vì VN chỉ có Long Only cho cơ sở, vậy nên các điểm extremes của giá tăng mình không thể short được, vậy signal của mình sẽ bao gồm điểm:</p>
+
+<ul>
+<li>Dip-Buying: mua từ đáy nếu có extreme signal từ trend giảm.</li>
+
+<li>Trend-Following: mua từ vùng an toàn trên 0 và dưới vùng extreme của giá tăng.</li>
+</ul>
+
+<h4>Signal Testing</h4>
+
+<p>Bây giờ mình sẽ test các signal này để xem bộ nào hiệu quả nhất, bây giờ có 1 số vấn đề như này:</p>
+
+<ul>
+<li>Vì giá trị ở đây là giá trị động, ở trên mình đang tạm giả định là 60 ngày (tức là 1 quý quan sát). Tuy nhiên, chưa chắc giá trị này có hiệu quả, vậy là phải test xem bao nhiêu là ngon. Mình sẽ test trong khoảng từ: 20 &#8211; 100 (01 &#8211; 05 tháng)</li>
+
+<li>Để filter các điểm extreme cho mean reversion, mình cần biết là threshold bao nhiêu là hợp lý, quan sát từ vùng phân bổ của z_score ở trên, mình có thể thấy giá trị tuyệt đối của nó từ khoảng 0.0 &#8211; 4.0, bằng mắt thì mình xác định khoảng giá trị test dự kiến từ: 1.5 &#8211; 3.0</li>
+</ul>
+
+<p>Ok, giờ test thử xem kết quả như nào:</p>
+
+<p>Hold lệnh 5 ngày:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ZjKw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c60799f-399c-4c5b-afc8-655fa51672d1_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!ZjKw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c60799f-399c-4c5b-afc8-655fa51672d1_1141x635.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!O8M1!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb24e1fc2-4cfe-45fa-abb3-52eb7245eae2_1151x624.png"><img src="https://substackcdn.com/image/fetch/$s_!O8M1!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fb24e1fc2-4cfe-45fa-abb3-52eb7245eae2_1151x624.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!gLbf!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85470ee2-27b7-4b6e-99d2-ab1f74d95450_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!gLbf!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F85470ee2-27b7-4b6e-99d2-ab1f74d95450_1141x635.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>(<em>trong đó: Approve có nghĩa là phải có tín hiệu từ cả PE và PB mới trade được, Any có nghĩa là 1 trong 2 chỉ báo có tín hiệu là có thể trade được</em>)</p>
+
+<p>Kết quả chỉ có Sharpe ổn, Sortino, và Calmar thấp.</p>
+
+<p>Bây giờ sẽ thử với hold lệnh 10 ngày:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!-QRA!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6df123e-182a-4223-975d-2464e1274dde_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!-QRA!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc6df123e-182a-4223-975d-2464e1274dde_1141x635.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Hk2y!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe041017b-db69-411f-97ab-c7afb7015653_1151x635.png"><img src="https://substackcdn.com/image/fetch/$s_!Hk2y!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe041017b-db69-411f-97ab-c7afb7015653_1151x635.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!v0yE!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0c9e071-f2ef-4231-9aab-2c959604f760_1141x635.png"><img src="https://substackcdn.com/image/fetch/$s_!v0yE!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fd0c9e071-f2ef-4231-9aab-2c959604f760_1141x635.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Kết quả test strategies với dữ liệu từ ngày 01-01-2020 trở về trước cho thấy:</p>
+
+<ul>
+<li>Hold lệnh 10 ngày tốt hơn rất nhiều, Sharpe và Calmar cao hơn đáng kể, Sortino cải thiện yếu.</li>
+
+<li>Vùng quan sát 20 ngày sẽ có giá trị sharpe, sortino và calmar tốt hơn.</li>
+
+<li>Threshold phù hợp sẽ là 3.0 cho cả 2, đặc biệt sẽ cải thiện tốt hơn cho Sortino cho cả 2 khung thời gian hold lệnh.</li>
+
+<li>Strategy sử kết hợp cả 2 chỉ báo sẽ có kết quả sortino cao nhất, sharpe nằm trong top 5 cái cao nhất, phương thức 1 trong 2 tín hiệu là vào lệnh.</li>
+</ul>
+
+<p>Dựa vào đó, mình sẽ chọn strategy quan sát chỉ cả 2 chỉ báo trên với threshold tìm được là lần lượt là 3.0 cho z-score của PE và PB.</p>
+
+<h3 id="backtesting">Backtesting</h3>
+
+<p>Kết quả cho backtesting strategy ở trên cụ thể như sau:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!oy3H!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c7f7ec1-27a2-4cac-81f3-0cda9619addb_833x1075.png"><img src="https://substackcdn.com/image/fetch/$s_!oy3H!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1c7f7ec1-27a2-4cac-81f3-0cda9619addb_833x1075.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Strategy perform tương đối ổn định, với Sharpe, Sortino và Calmar tốt. Alpha hơi phập phù.</p>
+
+<p>Vẽ lên xem như nào nào:</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!z0Uw!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa300ea1-9d5a-4185-9aad-367a11a45584_1247x4967.png"><img src="https://substackcdn.com/image/fetch/$s_!z0Uw!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Faa300ea1-9d5a-4185-9aad-367a11a45584_1247x4967.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>Cơ bản là có beat được BnH, tuy nhiên thì vẫn cần quan tâm mức độ biến động của alpha.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!mufq!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2f17293-eee1-4bde-972d-63fab31d4bfc_551x744.png"><img src="https://substackcdn.com/image/fetch/$s_!mufq!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe2f17293-eee1-4bde-972d-63fab31d4bfc_551x744.png" alt="[TECHNICAL INSIGHTS] – ẢNH HƯỞNG CỦA CÁC YẾU TỐ CƠ BẢN TỚI VNINDEX (PHẦN 1)" loading="lazy" decoding="async"></a></figure>
+
+<p><strong>Đánh giá:</strong></p>
+
+<p>Strategy cơ bản này cơ bản có thể work, tuy nhiên các thông số của alpha vẫn còn nhiều nghi ngờ !</p>
+
+<p>Bài đến đây đã rất dài, hi vọng sẽ có ích cho mọi người, phần sau mình sẽ viết tiếp về dùng model ML để đánh giá tác động và tìm các trade cho 2 chỉ báo này.</p>
+
+<p>Trân trọng cảm ơn mọi người đã đọc!</p>
+
+<p><em>Nguyễn Lê Khánh</em></p>
+
+<h2 id="khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật &#8211; CMT Level 1</h2>
+
+<p>Khóa học được Green Chart thiết kế dành riêng cho các bạn thí sinh muốn học và ôn thi CMT cấp độ 1 tại Việt Nam. Nội dung chương trình học bao gồm 25 buổi học lý thuyết, luyện đề và thi thử. Học viên cũng được cung cấp miễn phí giáo trình, bộ câu hỏi và đề thi thử phục vụ cho quá trình ôn thi. Học lại miễn phí trọn đời khóa học.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><strong>Tại đây.</strong></a><br></p><div class="callout ground-cmt"><h3>Phân tích kỹ thuật – CMT Level 1</h3><p style="color:var(--muted)">Nền tảng của phân tích kỹ thuật. Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-technical-insights-anh-huong-cua-cac-yeu" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-technical-insights-anh-huong-cua-cac-yeu" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Phân tích kỹ thuật – CMT Level 1</b><p>Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../technical-insights-thong-ke-co-lua-ai/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỐNG KÊ CÓ LỪA AI?</h3><span class="meta tnum">03/05/2026 · 11 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-event-driven-strategies-tai-thi-truong-viet-nam/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM</h3><span class="meta tnum">17/03/2026 · 14 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</h3><span class="meta tnum">14/03/2026 · 16 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../phan-tich-ky-thuat/">Xem chuyên mục Phân Tích Kỹ Thuật</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1" selected>Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

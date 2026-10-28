@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Is the Vietnamese Stock Market Efficient? EMH (Part 1) - Green Chart</title>
+<meta name="description" content="Technical Insights part 1: the Efficient Market Hypothesis, testing weak-form efficiency with ARIMA, and how ACB, SSI, HPG and NLG prices track fundamentals.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/vietnam-stock-market-efficiency-part-1-emh/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Is the Vietnamese Stock Market Efficient? EMH (Part 1)</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../technical-insights-thi-truong-viet-nam-la-hieu-qua-loai-gi-phan-1/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../technical-analysis/">Technical Analysis</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the…</span></nav><div class="art-cats"><a class="tag green" href="../technical-analysis/">Technical Analysis</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2026-03-03">3 March 2026</time></span><span>Updated 2 July 2026</span><span>10 min read</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/05/Ava.png" alt="TECHNICAL INSIGHTS" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-vietnam-stock-market-efficiency-part-1-e"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#conclusion">Conclusion</a></li><li><a href="#introduction">Introduction</a></li><li><a href="#the-efficient-market-hypothesis-emh">THE EFFICIENT MARKET HYPOTHESIS (EMH)</a></li><li><a href="#applying-the-emh-in-vietnam">APPLYING THE EMH IN VIETNAM</a></li><li><a href="#conclusion-2">Conclusion</a></li><li><a href="#technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</a></li></ol></details><p class="lede"><em>This post uses preliminary observations to assess the efficiency of the Vietnamese market before digging deeper into alpha mining. The approach is based on fundamental (FA) factors rather than OHLCV prices alone.</em></p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>It appears that there is a correlation in which stock price movements can be explained by measures of profit or asset growth, specifically:</p>
+
+<p>The stocks above were chosen as preliminary observations from different, distinctive sectors:</p>
+
+<ul>
+<li>ACB represents the banks, which are usually run through the familiar Excel model and valued on P/B or P/E. The correlation results show that profit-based methods are getting more attention from the market.</li>
+
+<li>SSI shows a fairly strong bias towards profit; in practice, SSI is also commonly valued using P/E or FCFE.</li>
+
+<li>HPG is similar, showing a higher correlation bias towards NPAT and profit measures; in practice, HPG is usually valued with FCFE or a sum-of-the-parts approach (based on its pipeline of plants).</li>
+
+<li>NLG, on the other hand, shows a higher correlation bias towards P/S, EV/EBITDA and ROIC. This is quite interesting because, when valuing real estate companies, methods such as RNAV or sum-of-the-parts are usually preferred (RNAV valuation of projects). ROIC measures the return on total invested capital (quite similar to calculating yield-on-cost in real estate).</li>
+</ul>
+
+<p>So, as a quick shortcut, I can snapshot the valuation methods and bundle them into a pipeline that measures correlation coefficients (Spearman correlation) to identify the methods (or suitable metrics) that correlate most strongly with a stock. In the next part, I will gather these factors across all sectors to measure the distribution of these correlations and use that to assess how efficient the market is.</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>I have been quite busy lately, so I have written less and have been tinkering with testing some new ideas. Now I will try to write notes as I test, to remember what is new and to systematise it.</p>
+
+<p>From my student days to my working life, I have been very interested in how efficient the Vietnamese market is, mainly because it has several distinctive features, such as:</p>
+
+<ul>
+<li>How concentrated the market is in a few highly differentiated, large-cap sectors (financials and real estate).</li>
+
+<li>The settlement cycle (T+2.5 settlement) and long-only trading.</li>
+
+<li>The market's fairly small capitalisation coverage.</li>
+</ul>
+
+<p>This raises many questions, such as:</p>
+
+<ul>
+<li>What form of market efficiency does Vietnam have? How do we measure it?</li>
+
+<li>Is the market's efficiency stable over time?</li>
+
+<li>If the market is strong-form efficient, is there really no way to earn profits from it?</li>
+</ul>
+
+<p>In my view, Eugene Fama's efficient market theory is a very elegant theory: it lays out a pivotal model of principles about prices and valuation and, from that, measures degrees of market efficiency. However, it is opposed by almost all investors (=]]), including Warren Buffett… Another scholar representing the behavioural finance school, Shiller, also rose up and published several papers against it, using behavioural finance as the pivot of his analysis.</p>
+
+<p>Fama and Shiller are like the novel The Smiling, Proud Wanderer: two schools of martial arts within the same sect (=]]). If we think of finance as the Mount Hua sect, Fama represents the Qi faction with its Purple Mist Divine Skill (akin to corporate finance) – highly principled and anchored like the supreme discipline of corporate finance for valuation, showing deep inner strength. On the other side, Shiller represents the Sword faction with the Nine Swords of Dugu (akin to behavioural finance) – a branch that is very hard to learn, but broad in scope, concerned with people's financial behaviour in order to respond to market scenarios.</p>
+
+<p>This post will try to approach the question by first observing price movements against fundamental information to make a preliminary assessment of market efficiency, before moving on to testing and searching for alpha.</p>
+
+<h2 id="the-efficient-market-hypothesis-emh">THE EFFICIENT MARKET HYPOTHESIS (EMH)</h2>
+
+<p>OK! Let me first review the efficient market. According to the CMT curriculum (Level I), an efficient market can be understood as follows: <strong>an efficient market is one in which all information is already reflected in prices, so it is very hard for investors to beat the market.</strong></p>
+
+<p>This means that if the market is <strong>always efficient</strong> and rational investors trade a large enough number of times, their average return will converge to a range equal to the market's average. Their profits or losses can be regarded as noise in the market. This can be observed simply as follows:</p>
+
+<p><em>Figure: Daily returns of gold prices from 2020 to date</em></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!h4kE!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcda595b6-f17c-4243-a1ca-b288920d3de4_1387x790.png"><img src="https://substackcdn.com/image/fetch/$s_!h4kE!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fcda595b6-f17c-4243-a1ca-b288920d3de4_1387x790.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>You can see that gold price returns oscillate around a mean of almost 0. Although there are periods of very large or quite small moves (known as volatility clustering), overall they oscillate around 0.</p>
+
+<p>Fama explained this at length in his paper, but as I understand it, it is factors such as:</p>
+
+<ul>
+<li>Investors' rational behaviour,</li>
+
+<li>Investors' heterogeneous expectations (differences in risk appetite, holding periods and so on),</li>
+
+<li>The degree of information symmetry,</li>
+</ul>
+
+<p>that pull price movements back to a long-term average (or one large enough to be stable). Mathematically, this can be called the law of large numbers, as values gradually converge on the average.</p>
+
+<p>Some scholars did not rely entirely on this model. Jensen (the man behind the so-called Jensen's alpha) dug deeper, especially into information asymmetry, and divided the market into three main forms:</p>
+
+<ul>
+<li>Weak-form efficiency: all past information is reflected in current prices —&gt; here, price information can hardly be mined, i.e. technical analysis can hardly be mined.</li>
+
+<li>Semi-strong-form efficiency: all past information and public information (including financial statements, press releases and so on) —&gt; here, fundamental information can hardly be mined.</li>
+
+<li>Strong-form efficiency: all past information, current public information and even insider information is reflected in prices —&gt; here, information asymmetry hardly exists and almost nobody can beat the market.</li>
+</ul>
+
+<p>To assess this, the CMT curriculum provides a framework, specifically:</p>
+
+<ul>
+<li>Weak-form EMH:
+<ul>
+<li>Use public information sources for the assessment.</li>
+
+<li>Use strategies based on OHLCV to see how they perform against the market; if they can outperform, it shows the market has not yet reached weak-form efficiency.</li>
+</ul>
+</li>
+
+<li>Semi-strong-form EMH:
+<ul>
+<li>Data dependency: data plays a more decisive role in the assessment,</li>
+
+<li>Use public information in tests to assess how much of it is reflected in prices.</li>
+
+<li>Use FA-based strategies for the assessment.</li>
+</ul>
+</li>
+
+<li>Strong-form EMH:
+<ul>
+<li>Data dependency,</li>
+
+<li>Test every strategy, and you only need to show above-average returns!</li>
+</ul>
+</li>
+</ul>
+
+<p>What do I take away from this framework? Nothing at all (=]]). In practice, the CMT curriculum relies on proof by existing outliers such as Warren Buffett, AQR and so on, to show that the market still has anomalies investors can exploit.</p>
+
+<p>OK! Enough preamble; now let me look at Vietnam.</p>
+
+<h2 id="applying-the-emh-in-vietnam">APPLYING THE EMH IN VIETNAM</h2>
+
+<h3 id="approaching-it-from-ohlcv-prices">APPROACHING IT FROM OHLCV PRICES</h3>
+
+<p>With the CMT approach, it is very hard to pin down what exactly this framework asks me to do! Proving something scientifically requires me to reject rather than confirm. That means if I only test weak-form efficiency, I have to use whatever TA strategies I can to test it, with the goal of rejecting the null hypothesis H0 that returns are only equal to or lower than random returns!</p>
+
+<p>It sounds complicated, but I can tackle it with the ARIMA model. This is a classic but very widely known model – so widely known that people have started to look down on it (=]]). In my view, it is a foundational model that gave rise to many meaningful forecasting methods later on, and it has many applications however much people disparage it!</p>
+
+<p><em>The ARIMA(p,d,q) formula:</em></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-5-1024x192.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></figure>
+
+<p>Where:</p>
+
+<ul>
+<li>y is the asset price</li>
+
+<li>e is white noise, a random variable that is independent across different times t.</li>
+</ul>
+
+<p>ARIMA is a model with three main components:</p>
+
+<ul>
+<li>Autoregressive: this component explains the serial correlation of prices. If serial correlation exists, prices on previous days explain the price on the next day. By estimating the phi coefficients (the regression coefficient – the slope of today's price on previous days' prices), ARIMA determines how much previous days matter. Measuring AR reveals the <strong>momentum or mean reversion </strong>of prices through the phi coefficients!</li>
+
+<li>Moving Average: this is not a moving-average line; it is an average of white noise weighted by a theta coefficient. Why include it? Because the noise e at different times can still affect current or expected prices, and it is interpreted as the effect of short-term shocks on prices.</li>
+
+<li>Integration: this is simply the stationarity of the time series, used to choose the most suitable degree of differencing so that the values are best normalised.</li>
+</ul>
+
+<p>This model and its variants (such as SARIMAX) mostly use only past price information to predict future prices. If I call my prediction model arima and the actual price after prediction y, I get an equation like this:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2025/11/image-6.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></figure>
+
+<p>Where:</p>
+
+<ul>
+<li>y is the actual price; note that this is the price in the test period, not the period used to train the arima model.</li>
+
+<li>arima is the model that predicts price from past information,</li>
+
+<li>e is the residual between the predicted price and the actual price.</li>
+</ul>
+
+<p>If past prices predict well, then e is random – what the theory calls white noise. White noise is simply a random variable.</p>
+
+<p>If the equation is written this way and e is white noise, then price y is said to follow a random walk.</p>
+
+<p>So simply by testing whether e is white noise, I can determine whether the market is weak-form efficient!</p>
+
+<p>In fact, quite a few papers have used ARIMA to test market efficiency. Some models even add GARCH for greater generality (GARCH is a very powerful model for forecasting asset volatility), or use machine learning for the assessment.</p>
+
+<p>If I kept going down this route, it would be nothing new! I will leave this part here for when I have time, or for anyone who wants to pick it up. I will take a different approach (because I like it) which I think is more necessary.</p>
+
+<h3 id="approaching-it-from-fundamental-factors">APPROACHING IT FROM FUNDAMENTAL FACTORS</h3>
+
+<p>I think this approach is more hardcore – not because the statistical model is more hardcore, but because the data is! It also depends on the user's knowledge of corporate finance and valuation. Finance is vast, and my knowledge is fairly modest: I have plenty of hands-on experience, but I still need to work on the academic side. Still, I will try to draw first on the approaches of sources I consider the most authoritative and rigorous!</p>
+
+<p>First, looking at charts of ACB, SSI, HPG and NLG (representing banks, brokerages, steel and real estate) and how their stock prices moved against measures such as book value (BV) or NPAT, I have the following observations:</p>
+
+<p><strong>ACB: quarterly TTM figures for NPAT</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ofjT!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1cb3b67c-a758-45b1-bb7b-54cf763674d4_1039x470.png"><img src="https://substackcdn.com/image/fetch/$s_!ofjT!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F1cb3b67c-a758-45b1-bb7b-54cf763674d4_1039x470.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Xc4O!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7b6f1b0-5de9-4db8-a2bc-ee091fd7c679_1026x470.png"><img src="https://substackcdn.com/image/fetch/$s_!Xc4O!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fc7b6f1b0-5de9-4db8-a2bc-ee091fd7c679_1026x470.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>ACB seems to correlate quite closely with BV growth, while its profits move somewhat differently although in the same general direction.</p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!b5Z4!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c44937b-c0cf-4ee0-b0b8-2c8e7ddfa293_901x805.png"><img src="https://substackcdn.com/image/fetch/$s_!b5Z4!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6c44937b-c0cf-4ee0-b0b8-2c8e7ddfa293_901x805.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>More specifically, using Spearman correlation, changes in book value, NPAT, ROE (inversely) and NPL clearly have good explanatory correlation with the stock's return in the same accounting period (same-quarter return).</p>
+
+<p><strong>SSI:</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!wZK2!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbac0d1c9-5e03-4009-a3fe-abf0a79dd246_1047x473.png"><img src="https://substackcdn.com/image/fetch/$s_!wZK2!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbac0d1c9-5e03-4009-a3fe-abf0a79dd246_1047x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!ehBZ!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa955edac-5884-4b4d-ac1e-2c63456fdf7d_1068x473.png"><img src="https://substackcdn.com/image/fetch/$s_!ehBZ!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa955edac-5884-4b4d-ac1e-2c63456fdf7d_1068x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>For SSI, NPAT clearly tracks the price expectations within the period very well, and significantly better than the factors above.</p>
+
+<p><strong>HPG:</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!nOgF!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F295d11ed-d394-46b4-8791-0ad200c85126_1034x473.png"><img src="https://substackcdn.com/image/fetch/$s_!nOgF!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F295d11ed-d394-46b4-8791-0ad200c85126_1034x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!pgm0!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd68283-0434-44a2-9ec5-b0e1ab727167_1034x473.png"><img src="https://substackcdn.com/image/fetch/$s_!pgm0!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fabd68283-0434-44a2-9ec5-b0e1ab727167_1034x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!WreI!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F137c4891-fa44-4fb3-863d-f437b8bb0382_901x805.png"><img src="https://substackcdn.com/image/fetch/$s_!WreI!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F137c4891-fa44-4fb3-863d-f437b8bb0382_901x805.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>HPG is similar to SSI, correlating quite well with changes in profit measures such as NPAT (or P/E, EV/EBITDA) compared with all the other factors.</p>
+
+<p><strong>NLG:</strong></p>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!6FD_!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbaa09c6f-3e76-460d-b384-e0d23d7ddb62_1060x473.png"><img src="https://substackcdn.com/image/fetch/$s_!6FD_!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fbaa09c6f-3e76-460d-b384-e0d23d7ddb62_1060x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!Znu9!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e226841-51fc-458b-8ee4-75a06fc20a97_1060x473.png"><img src="https://substackcdn.com/image/fetch/$s_!Znu9!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F7e226841-51fc-458b-8ee4-75a06fc20a97_1060x473.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<figure><a class="image-link image2 is-viewable-img" href="https://substackcdn.com/image/fetch/$s_!WblK!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F351c5725-7d33-4852-b382-bb47dfc9c29b_901x805.png"><img src="https://substackcdn.com/image/fetch/$s_!WblK!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F351c5725-7d33-4852-b382-bb47dfc9c29b_901x805.png" alt="[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 1)" loading="lazy" decoding="async"></a></figure>
+
+<p>NLG is a rather special case: higher correlations with P/S, EV/EBITDA and ROIC (inversely) dominate, suggesting that price seems to be pricing in these factors more.</p>
+
+<h2 id="conclusion-2">Conclusion</h2>
+
+<p>The stocks above were chosen as preliminary observations from different, distinctive sectors:</p>
+
+<ul>
+<li>ACB represents the banks, which are usually run through the familiar Excel model and valued on P/B or P/E. The correlation results show that profit-based methods are getting more attention from the market.</li>
+
+<li>SSI shows a fairly strong bias towards profit; in practice, SSI is also commonly valued using P/E or FCFE.</li>
+
+<li>HPG is similar, showing a higher correlation bias towards NPAT and profit measures; in practice, HPG is usually valued with FCFE or a sum-of-the-parts approach (based on its pipeline of plants).</li>
+
+<li>NLG, on the other hand, shows a higher correlation bias towards P/S, EV/EBITDA and ROIC. This is quite interesting because, when valuing real estate companies, methods such as RNAV or sum-of-the-parts are usually preferred (RNAV valuation of projects). ROIC measures the return on total invested capital (quite similar to calculating yield-on-cost in real estate).</li>
+</ul>
+
+<p>So, as a quick shortcut, I can snapshot the valuation methods and bundle them into a pipeline that measures correlation coefficients (Spearman correlation) to identify the methods (or suitable metrics) that correlate most strongly with a stock. In the next part, I will gather these factors across all sectors to measure the distribution of these correlations and use that to assess how efficient the market is.</p>
+
+<p>This post is already long; I hope it is useful to everyone. Thank you!</p>
+
+<h2 id="technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</h2>
+
+<p>Green Chart designed this course specifically for candidates in Vietnam who want to study and prepare for the CMT Level I exam. The programme includes 28 sessions of theory, practice questions and mock exams. Students also receive the course textbook, question bank and mock exams free of charge for their exam preparation, and can retake the course for free for life.</p>
+
+<p>See more details about the course <a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><strong>here.</strong></a></p><div class="callout ground-cmt"><h3>Technical Analysis – CMT Level 1</h3><p style="color:var(--muted)">The foundations of technical analysis. Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-vietnam-stock-market-efficiency-part-1-e" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-vietnam-stock-market-efficiency-part-1-e" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Technical Analysis – CMT Level 1</b><p>Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../do-statistics-lie-backtesting-multiple-testing-bias/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Do Statistics Lie?</h3><span class="meta tnum">3 May 2026 · 9 min read</span></article></a><a class="u228-c u251 card" href="../event-driven-strategies-vietnam-stock-market/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Event-Driven Strategies in the Vietnamese Market</h3><span class="meta tnum">17 March 2026 · 11 min read</span></article></a><a class="u228-c u251 card" href="../vietnam-stock-market-efficiency-part-3-bayesian-var/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 3)</h3><span class="meta tnum">14 March 2026 · 12 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../technical-analysis/">See the category Technical Analysis</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1" selected>Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading">Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

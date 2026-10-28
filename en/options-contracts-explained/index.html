@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>What Are Options? Calls, Puts and Option Payoffs - Green Chart</title>
+<meta name="description" content="Learn what options contracts are, how calls and puts work, strike price, exercise styles, settlement, and how to calculate profit on long and short options.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/options-contracts-explained/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>What Are Options? Calls, Puts and Option Payoffs</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../hop-dong-quyen-chon/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../derivatives/">Derivatives</a><span aria-hidden="true">›</span><span>Options Contracts Explained: The Basics</span></nav><div class="art-cats"><a class="tag green" href="../derivatives/">Derivatives</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">Options Contracts Explained: The Basics</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2022-09-15">15 September 2022</time></span><span>Updated 3 July 2026</span><span>12 min read</span></div></div></section><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-options-contracts-explained"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#Hop-djong-quyen-chon-la-gi">What is an options contract?</a></li><li><a href="#Cac-thong-tin-co-ban-cua-quyen-chon">What are the key terms of an option?</a></li><li><a href="#Cach-giao-dich-quyen-chon">How are options traded?</a></li><li><a href="#Cach-tinh-lai-lo-khi-giao-dich-quyen-chon">How to calculate profit and loss on options</a></li><li><a href="#Muc-djich-cua-giao-dich-quyen-chon">Why trade options?</a></li></ol></details><figure><img src="https://greenchart.vn/wp-content/uploads/2022/09/hop-dong-quyen-chon-la-gi-1024x576.jpg" alt="Options contracts basics" loading="lazy" decoding="async"><figcaption>Options contracts: the basics</figcaption></figure>
+
+<p id="caption-attachment-3739">What is an options contract?</p>
+
+<h2 id="Hop-djong-quyen-chon-la-gi">What is an options contract?<a></a></h2>
+
+<p class="lede u281"><mark>Options</mark>&nbsp;are a&nbsp;<mark><a href="../vn30-index-futures-guide/">derivative financial instrument</a></mark>&nbsp;that gives the holder the right (but not the obligation) to buy or sell an underlying asset at a predetermined price.</p>
+
+<p>The underlying asset of an option can be almost anything: a stock, a bond, an exchange rate,&nbsp;<a href="https://www.facebook.com/AIMSFutures.VN" target="_blank" rel="noopener">a commodity</a>, and so on.</p>
+
+<p>In Vietnam, the first and only options product traded so far is the covered warrant, which we introduced in another article. The global options market, by contrast, is enormous and highly diverse, and it trades at very high frequency.</p>
+
+<p><strong><a href="https://greenchart.vn/chung-khoan-phai-sinh/chung-quyen-la-gi/" target="_blank" rel="noopener">&gt;&gt;&gt; A complete guide to covered warrants (CW)</a></strong></p>
+
+<h2 id="Cac-thong-tin-co-ban-cua-quyen-chon">What are the key terms of an option?</h2>
+
+<p><strong>Option type</strong>: There are two main types of options on the market: call options, which give the holder the right to buy the underlying asset, and put options, which give the holder the right to sell the underlying asset.</p>
+
+<p><strong>Strike price</strong>&nbsp;(also called the exercise price): the price at which the underlying asset changes hands when the option is exercised. The strike price is fixed at the time the option is issued.</p>
+
+<p><strong>Term</strong>: the period from issuance to expiration. Options can only be traded on the market during this period. Immediately after expiration, no option can be traded any longer, and holders may exercise their rights (or not exercise them, in which case the options contract simply lapses).</p>
+
+<h2 id="Cach-giao-dich-quyen-chon">How are options traded?</h2>
+
+<p>Like other financial assets, options are traded on organized exchanges, so they also have a market value (called the premium). When options are first issued, the issuer (the writer) sells (writes) them to a number of traders in the primary market; after that, they trade freely in the secondary market with all market participants.</p>
+
+<p>In other words, option holders have a long position, while the issuer has a short position. Today, in many markets, retail investors can also short options (this is also called writing, and the trader doing it is also called a writer).</p>
+
+<h3 id="Thuc-hien-quyen">Exercising an option<a></a></h3>
+
+<p>Option holders (those with a long position) can choose whether or not to exercise. Options fall into two categories based on exercise style, which is specified at issuance:</p>
+
+<ul>
+<li>European style (European options): the option can only be exercised on the expiration date.</li>
+
+<li>American style (American options): the holder can exercise the option at any time while it is still valid.</li>
+</ul>
+
+<p>If the trader chooses not to exercise, the option expires worthless, and the holder loses nothing beyond the amount originally paid to buy it.</p>
+
+<p>If the trader exercises, one of the following two settlement methods applies:</p>
+
+<ul>
+<li><strong>Physical settlement</strong>: For a call option, the holder buys the underlying asset from the option writer at exactly the strike price. For a put option, the holder sells the underlying asset to the writer at the strike price.</li>
+
+<li><strong>Cash settlement</strong>: The holder receives (or loses) the difference between the settlement price and the strike price from the writer, depending on whether the option is a call or a put. Specifically:</li>
+
+<li>For a call option: the holder receives a payment equal to (Settlement price – Strike price). This difference assumes the trader buys the underlying asset at the strike price and immediately sells it at the settlement price.</li>
+
+<li>For a put option: the holder receives a payment equal to (Strike price – Settlement price). This difference assumes the trader sells the underlying asset at the strike price and immediately buys it back at the settlement price.</li>
+</ul>
+
+<p>The settlement price is determined from the price of the underlying asset according to the issuer's rules; it might be the most recent session's price, the average price of the last five sessions, and so on.</p>
+
+<p>Naturally, to get the best result, a holder only exercises when doing so is profitable and does not exercise otherwise.</p>
+
+<p>Traders who are short options play the same role as the issuers: they collect the premium when they sell the option, but they must pay the option holders if those holders exercise.</p>
+
+<h3 id="Vi-du-ve-quyen-chon-tren-thi-truong">Examples of options in the market<a></a></h3>
+
+<p>1. A trader buys 100 call options on stock A at $3 per option. The strike price is $50. The trader holds them to expiration, when stock A is trading at $60. The trader can:</p>
+
+<ul>
+<li>Not exercise: the trader only loses the amount originally paid for the options, i.e. $3 × 100 = $300.</li>
+
+<li>Exercise with physical settlement: the trader buys 100 shares of A at $50 per share, cheaper than the $60 per share at which it is trading on the market.</li>
+
+<li>Exercise with cash settlement: the trader receives ($60 – $50) × 100 = $1,000. The trader's profit on the trade is then $1,000 – $300 = $700.</li>
+</ul>
+
+<p>So the trader will exercise, because doing so is profitable. How the option is settled depends on the rules and on the trader's own strategy.</p>
+
+<p>2. A trader buys one European-style put option on an underlying of 100 euros, with the strike set at an EUR/USD exchange rate of 1.20 and cash settlement. The option premium is $5 per option. The trader holds it to expiration, when EUR/USD is at 1.18. The trader then collects ($1.20 – $1.18) × 100 = $2 at settlement. The trader therefore loses $3 on this trade, having paid $5 for the option.</p>
+
+<p>3. A trader buys 50 call options on an underlying of 100 barrels of WTI crude oil, at $10 per option. The strike price is $60 per barrel. The trader holds them to expiration, when WTI crude is at $55 per barrel. The trader will not exercise, because the settlement price is below the strike price and exercising would lose money. The loss on this trade therefore equals the amount the trader originally spent on the options, i.e. $10 × 50 = $500.</p>
+
+<h2 id="Cach-tinh-lai-lo-khi-giao-dich-quyen-chon">How to calculate profit and loss on options<a></a></h2>
+
+<p>In the article on covered warrants, you learned that on exercise the payment equals the difference between the settlement price and the strike price, or zero. In addition, traders can only buy covered warrants from the outset (one-way trading), and only call warrants exist, so the investor's position is always a Long Call.</p>
+
+<p>Positions in options on global markets are more varied, because you can trade in both directions and there are both calls and puts. The four basic positions of an options trader are therefore Long Call, Long Put, Short Call and Short Put.</p>
+
+<h3 id="Vi-the-Long">Long positions<a></a></h3>
+
+<p>As explained in part 1, to own an option you need to buy it on the market at its premium. You can then exercise the option when it is profitable to do so. Otherwise, you are free not to exercise. The maximum loss on a long option is therefore the premium; in other words, the risk of an option is limited.</p>
+
+<p>Compared with the underlying asset, an option usually costs far less. This makes it much easier to speculate on the trend of the underlying: instead of spending a large sum to buy the asset, you spend a small amount and still benefit from changes in its price. In other words, options provide leverage.</p>
+
+<p>For example, you buy a call option on stock X for $5 with a strike price of $60. If the settlement price is $80, you make $15 on $5 of capital, a return of 300%. If you had bought the underlying instead, you would make $20 on $60 of capital, a return of 33.3%.</p>
+
+<p>So you can see the two defining characteristics of options: leverage and limited risk. This sets options apart from futures contracts or CFDs; those two derivatives also use leverage, but they magnify both profit and risk. Options let you magnify profit while your risk always remains limited.</p>
+
+<h4 id="Long-Call">Long Call<a></a></h4>
+
+<p>A trader goes Long Call when they think the price of the underlying asset will rise. If X is the strike price and S<sub>T</sub> is the option's settlement price at time T, a long call position has the following cases:</p>
+
+<ul>
+<li>If S<sub>T</sub>&nbsp;&gt; X: the trader gains the difference S<sub>T</sub>&nbsp;– X by exercising. The option is in the money (ITM).</li>
+
+<li>If S<sub>T</sub>&nbsp;= X: the trader gains nothing whether or not they exercise. The option is at the money (ATM).</li>
+
+<li>If S<sub>T</sub>&nbsp;&lt; X: the trader will not exercise, because exercising would add to the loss. The option is out of the money (OTM).</li>
+</ul>
+
+<p>When you hold an option, the amount you receive from it at expiration (the payoff) is called its exercise value, and it depends on the case:</p>
+
+<ul>
+<li>For an ITM option: Value = S<sub>T</sub>&nbsp;– X</li>
+
+<li>For an OTM or ATM option: Value = 0 (because you do not exercise).</li>
+</ul>
+
+<p>The payoff of a Long Call position is therefore Max(0, S<sub>T</sub>&nbsp;– X). If the price of the option when you bought it was c<sub>0</sub>, the profit of the position is:</p>
+
+<p><strong>Profit = Max(0, S<sub>T</sub>&nbsp;– X) – c<sub>0</sub></strong></p>
+
+<p>As the formula shows, the value and profit of a Long Call position depend on the price of the underlying asset, as illustrated below.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Hop-dong-quyen-chon-Option-la-gi-1.jpg" alt="Options Contracts Explained: The Basics" loading="lazy" decoding="async"><figcaption>Options contracts basics</figcaption></figure>
+
+<p id="caption-attachment-3740">The value and profit of a Long Call position depend on the price of the underlying asset</p>
+
+<p>So, for a Long Call to be profitable, the price of the underlying at settlement must be at least X + c<sub>0</sub>. This is also the weakness of options compared with trading the asset itself or futures. To earn high returns, an options investor should therefore go Long Call only when expecting a strong rise in the underlying, so as to make full use of the option's leverage.</p>
+
+<p>If the price of the underlying falls, the maximum loss on a Long Call is c<sub>0</sub>, no matter how far the asset's price drops.</p>
+
+<h4 id="Long-Put">Long Put<a></a></h4>
+
+<p>A trader goes Long Put when they think the price of the underlying asset will fall. A long put position has the following cases:</p>
+
+<ul>
+<li>If S<sub>T</sub>&nbsp;&lt; X: the trader gains the difference X – S<sub>T</sub>&nbsp;by exercising. The option is ITM.</li>
+
+<li>If S<sub>T</sub>&nbsp;= X: the trader gains nothing whether or not they exercise. The option is ATM.</li>
+
+<li>If S<sub>T</sub>&nbsp;&gt; X: the trader will not exercise, because exercising would add to the loss. The option is OTM.</li>
+</ul>
+
+<p>The exercise value of a Long Put position is therefore Max(0, X – S<sub>T</sub>). If the price of the option when you bought it was p<sub>0</sub>, the profit of the position is:</p>
+
+<p><strong>Profit = Max(0, X – S<sub>T</sub>) – p<sub>0</sub></strong></p>
+
+<p>The value and profit of a Long Put position also depend on the price of the underlying asset, as illustrated below.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Hop-dong-quyen-chon-Option-la-gi-2.jpg" alt="Options Contracts Explained: The Basics" loading="lazy" decoding="async"><figcaption>Options contracts basics</figcaption></figure>
+
+<p id="caption-attachment-3741">The value and profit of a Long Put position also depend on the price of the underlying asset</p>
+
+<p>As with a Long Call, the price of the underlying at settlement must be below X – p<sub>0</sub>&nbsp;for a Long Put to be profitable. The maximum risk of this position is p<sub>0</sub>.</p>
+
+<h3 id="Vi-the-Short">Short positions<a></a></h3>
+
+<p>In complete contrast to long options, traders who short options do not enjoy these advantages.</p>
+
+<p>You do not have the right to exercise, as the long side does. Instead, settlement depends entirely on the traders who are long the options: if they exercise, you must pay them the difference, or trade the underlying asset with them at the strike price.</p>
+
+<p>Limited profit and unlimited risk: when you short an option you only receive the premium, while you must pay option holders an amount equal to the option's value whenever it is ITM. That value can be very large. If the option is OTM, the long side will certainly not exercise, so your profit is capped. Even if you trade the option to capture price changes, an option's price cannot fall below zero, so the maximum profit on a short option is still capped at the premium.</p>
+
+<p>So why do traders still short options? Let us analyse each position in detail.</p>
+
+<h4 id="Short-Call">Short Call<a></a></h4>
+
+<p>A Short Call position is the exact opposite of a Long Call: the short side receives the premium from Long Call traders and pays out the value when they exercise. The payoff and profit of this position therefore have the opposite sign to those of a Long Call:</p>
+
+<p><strong>Value = –Max(0, S<sub>T</sub>&nbsp;– X)</strong></p>
+
+<p><strong>Profit = c<sub>0</sub>&nbsp;– Max(0, S<sub>T</sub>&nbsp;– X)</strong></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Hop-dong-quyen-chon-Option-la-gi-3.jpg" alt="Options Contracts Explained: The Basics" loading="lazy" decoding="async"><figcaption>Options contracts basics</figcaption></figure>
+
+<p id="caption-attachment-3742">A Short Call position is the exact opposite of a Long Call: the short side receives the premium from Long Call traders and pays out the value when they exercise, so its payoff and profit have the opposite sign to those of a Long Call</p>
+
+<p>Traders therefore go Short Call when they believe the price of the underlying will fall. However, the profit is capped at c<sub>0</sub>, while the trader can lose a very large amount.</p>
+
+<p>Even so, compared with a Long Put, a Short Call can be powerful in a low-volatility market, because it earns more than a Long Put or shorting the underlying. If X – S<sub>T</sub>&nbsp;is small relative to c<sub>0</sub>, a Short Call delivers a fixed profit of c<sub>0</sub>, while shorting the underlying delivers X – S<sub>T</sub>, so the Short Call comes out ahead.</p>
+
+<h4 id="Short-Put">Short Put<a></a></h4>
+
+<p>A Short Put position is the exact opposite of a Long Put: the short side receives the premium from Long Put traders and pays out the value when they exercise. The payoff and profit of this position therefore have the opposite sign to those of a Long Put:</p>
+
+<p><strong>Value = –Max(0, X – S<sub>T</sub>)</strong></p>
+
+<p><strong>Profit = p<sub>0</sub>&nbsp;– Max(0, X – S<sub>T</sub>)</strong></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/12/Hop-dong-quyen-chon-Option-la-gi-4.jpg" alt="Options Contracts Explained: The Basics" loading="lazy" decoding="async"><figcaption>Options contracts basics</figcaption></figure>
+
+<p id="caption-attachment-3743">A Short Put position is the exact opposite of a Long Put: the short side receives the premium from Long Put traders and pays out the value when they exercise, so its payoff and profit have the opposite sign to those of a Long Put</p>
+
+<p>Investors go Short Put when they believe the price of the underlying will rise and, like the Short Call described above, a Short Put is attractive when the market is not very volatile.</p>
+
+<h2 id="Muc-djich-cua-giao-dich-quyen-chon">Why trade options?<a></a></h2>
+
+<p>Like many other derivatives, options were created for hedging. For example, if you fear a stock will fall in the future, you can go Long Put on it. In a highly volatile market, hedging with options is even more effective than with futures or forwards: if the price rises sharply, the stock gains and makes you money, while the put option simply does not need to be exercised and your loss on it is capped. With a short futures position, by contrast, the loss grows as the stock price rises, and you gain little overall.</p>
+
+<p>Options trading also serves traders' speculative needs, depending on their objectives. You would go Long Call or Short Put if you expect the asset's price to rise, and Long Put or Short Call if you expect it to fall. Depending on your goals and risk appetite, you might consider trading options instead of the underlying asset:</p>
+
+<ul>
+<li>When you expect the underlying to make a strong move up or down while the option is still valid.</li>
+
+<li>When you want to cap your maximum loss at the option premium.</li>
+
+<li>When you have a small amount of capital but want the higher potential return that leverage offers.</li>
+</ul>
+
+<p><strong>Happy trading!</strong></p><div class="callout ground-deep"><h3>Stock Trading</h3><p style="color:var(--muted)">Stock Trading For A Living. Starts 12 September 2026 · 5 sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/stock-trading/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-options-contracts-explained" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-options-contracts-explained" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-deep"><span class="tag green">Trading skills</span><b>Stock Trading</b><p>Starts 12 September 2026 · 5 sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/stock-trading/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../covered-warrants-vietnam-guide/"><article class="u228-in colcard"><span class="meta">Derivatives</span><h3>What Is a Covered Warrant (CW)? A Guide to Trading Covered Warrants in Vietnam</h3><span class="meta tnum">20 October 2022 · 12 min read</span></article></a><a class="u228-c u251 card" href="../option-greeks-vega-explained/"><article class="u228-in colcard"><span class="meta">Derivatives</span><h3>Option Greeks: Vega</h3><span class="meta tnum">18 September 2022 · 5 min read</span></article></a><a class="u228-c u251 card" href="../what-is-short-selling/"><article class="u228-in colcard"><span class="meta">Derivatives</span><h3>What Is Short Selling?</h3><span class="meta tnum">18 September 2022 · 6 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../derivatives/">See the category Derivatives</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1">Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading" selected>Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

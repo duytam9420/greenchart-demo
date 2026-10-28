@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en" data-root="../../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fed Funds Rate, FedWatch and the VN-Index (Part 1) - Green Chart</title>
+<meta name="description" content="Technical Insights part 1: the Fed funds rate, how CME FedWatch computes probabilities, and Granger causality between the FFR, oil, the S&amp;P 500 and VN-Index.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/en/fed-funds-rate-market-regimes-part-1-fedwatch/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Fed Funds Rate, FedWatch and the VN-Index (Part 1)</span></div>
+<a class="skip" href="#main">Skip to content</a>
+<div class="demo-bar" role="region" aria-label="Demo controls"><div class="wrap"><span><strong>greenchart.vn demo · motion edition, every page</strong> · Apple-style layout principles + motion from lucianlabs.dev, colours from the Green Chart identity. Content, figures and images come from the live site&#x27;s data (REST 15 Oct 2026, English translations Oct 2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Design notes</label><label class="switch"><input type="checkbox" id="motion" checked> Motion</label></div></div><nav class="pages" aria-label="Demo quick links"><span class="cur">Template: <b>Article</b> · EN</span><a href="../homepage/">Home</a><a href="../cmt-1-2-3-course/">Courses</a><a href="../knowledge/">Knowledge</a><a href="../../so-do-trang/" class=idx>Site map</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../homepage/" aria-label="Green Chart, home" data-title="Green Chart"><img src="../../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../cmt-1-2-3-course/" data-mega="0">Courses</a></li><li><a class="u373-a u373-1" href="../knowledge/" data-mega="1" aria-current="page">Knowledge</a></li><li><a class="u373-a u373-2" href="../lecturer/">Lecturer</a></li><li><a class="u373-a u373-2" href="../about-greenchart/">About Green Chart</a></li><li><a class="u373-a u373-2" href="../qa/">Q&amp;A</a></li><li><a class="u373-a u373-5" href="../contact/">Contact</a></li></ul><span class="lang" translate="no"><a href="../../technical-insights-ffr-va-anh-huong-den-cac-regimes-phan-1/" lang="vi" hreflang="vi" data-title="Tiếng Việt">VI</a><i>|</i><a href="./" lang="en" hreflang="en" aria-current="true" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Book a consultation"><span class="l">Book a consultation</span><span class="s" aria-hidden="true">Consult</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Open menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 sessions + 2 Applied CMT sessions · VND 8,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 sessions · VND 10,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 sessions · VND 12,000,000</span></div></a><a class="u354-it" href="../cmt-english-module/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Supplementary module</b><span>Reading skills for CMT materials &amp; exam questions · 10 sessions · VND 2,500,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/risk-management-trading-psychology/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Risk Management &amp; Trading Psychology</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 sessions · VND 6,000,000</span></div></a><a class="u354-it" href="../cmt-1-2-3-course/" tabindex="-1"><i class="u354-ic g">→</i><div><b>All courses</b><span>The CMT path and trading skills</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../knowledge/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Knowledge</b><span>187 free articles · 12 categories</span></div></a><a class="u354-it" href="../stock-market-knowledge/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Stock market knowledge</b><span>Stocks, fundamental analysis, trading, portfolios, derivatives</span></div></a></div><div class="u354-cats"><div><b>Stock market knowledge</b><a href="../stock-basics/" tabindex="-1">Stock Basics</a><a href="../fundamental-analysis/" tabindex="-1">Fundamental Analysis</a><a href="../trading-guide/" tabindex="-1">Accounts &amp; Trading Guide</a><a href="../portfolio-management/" tabindex="-1">Portfolio Management</a><a href="../derivatives/" tabindex="-1">Derivatives</a><a href="../market-glossary/" tabindex="-1">Market Glossary</a></div><div><b>CMT technical analysis</b><a href="../technical-analysis/" tabindex="-1">Technical Analysis</a><a href="../technical-analysis-cmt/" tabindex="-1">Technical Analysis – CMT</a><a href="../about-the-cmt-designation/" tabindex="-1">About the CMT Designation</a></div><div><b>Other topics</b><a href="../personal-finance/" tabindex="-1">Personal Finance</a><a href="../trading-psychology/" tabindex="-1">Trading Experience &amp; Psychology</a><a href="../investing-books/" tabindex="-1">Investing Books (PDF)</a></div></div><div class="u354-row"><a class="u354-it" href="../resources/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Resources</b><span>Investing books (PDF) and CMT resources</span></div></a><a class="u354-it" href="../video-lecture/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video lectures</b><span>Video library and CMT video lectures</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Mobile menu" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Back" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../qa/">Q&amp;A</a><a href="#dang-ky">Book a consultation</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../homepage/">Home</a><span aria-hidden="true">›</span><a href="../technical-analysis/">Technical Analysis</a><span aria-hidden="true">›</span><span>[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market…</span></nav><div class="art-cats"><a class="tag green" href="../technical-analysis/">Technical Analysis</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2025-11-11">11 November 2025</time></span><span>Updated 2 July 2026</span><span>10 min read</span></div></div></section><div class="paper" style="padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))"><div class="art-cover"><img src="https://greenchart.vn/wp-content/uploads/2026/02/a4.jpg" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" width="1024" height="576" loading="eager" fetchpriority="high" decoding="async"></div></div><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-fed-funds-rate-market-regimes-part-1-fed"><details class="mtoc"><summary>In this article <span aria-hidden="true">▾</span></summary><ol><li><a href="#fed-fund-rates">FED FUND RATES</a></li><li><a href="#how-the-fedwatch-tool-is-calculated">HOW THE FEDWATCH TOOL IS CALCULATED</a></li><li><a href="#regimes">REGIMES</a></li><li><a href="#conclusions-of-part-1">Conclusions of Part 1:</a></li><li><a href="#technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</a></li></ol></details><p class="lede"><em>In this post I will try to analyse how the FedWatch Tool calculates probabilities for FFR targets and how they affect market expectations; I will also use other variables for a fuller assessment.</em></p>
+<p><!-- /wp:post-content --><!-- wp:paragraph --></p>
+<p><strong>Objectives of this post:</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Get a basic understanding of the FFR.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Briefly understand how the FedWatch Tool calculates probabilities and build a similar monitoring tool.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Understand the relationships between the variables and factors.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>From these relationships, find regimes based on how this variable affects markets such as the S&amp;P 500 and the VN-Index, to generate trade ideas.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p><strong>Conclusions of Part 1:</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Thanks for reading! Subscribe for free to receive new posts and support my work.</p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Changes in the FFR (distance) directly affect oil (OIL) returns, and this is a causal relationship that also runs "the other way round" (=]]). In other words, a move in one affects the other and vice versa (both watch each other to move).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Likewise, the VN-Index has a causal relationship with oil prices, and vice versa.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Moves in the SPX affect the VN-Index and affect gold prices (GOLD). So if you trade gold, watch the SPX; likewise, if you trade the VN-Index, watch the SPX too. I also cannot hold both at the same time, because these two have an "extramarital" relationship with the SPX (=]]).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The SPX's Beta to the VN-Index is positive more than 80% of the time, and its R2 also covers the largest area among the exogenous factors. Combined with the results above, it is one of the most important explanatory factors with a big influence on VN-Index returns.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p><strong>Notes:</strong></p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>This post is purely my personal view and analysis, based on my limited knowledge, so it is somewhat subjective. I would very much welcome everyone's feedback!</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The writing style is close to everyday speech, not very academic, and sometimes mixes in English terms; I hope readers will bear with this.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The data is accessed and calculated from the vnstocks library (http://vnstocks.com) and yfinance.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The data for all variables covers 2014 to date.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:heading {"level":3} --></p>
+<h2 id="fed-fund-rates">FED FUND RATES</h2>
+<p><!-- /wp:heading --><!-- wp:paragraph --></p>
+<p>In theory, the Fed Funds Rate (FFR) is like the benchmark interest rate from which the rates or yields of other assets are determined. So what is the FFR? Why the FFR? How many kinds of FFR are there?</p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The FFR (EFFR) is the overnight rate between depository institutions (banks, financial institutions) within the Federal Reserve system, calculated as a volume-weighted median (details at this link: https://www.newyorkfed.org/markets/reference-rates/effr?). The FFR therefore reflects the most basic level of interest in the asset that is money (specifically the USD). To help investors, hedge funds and financial institutions hedge moves in line with their expectations, CME created derivatives (futures, options) on the FFR (or so that everyone can bet together, with CME as the bookmaker =]]).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Moves in the FFR are overseen by one party at the top, the Fed, which conducts monetary policy to meet its mandate of price stability and maximum employment (the "dual mandate"), and thereby helps keep long-term interest rates moderate. To steer rates, the Fed sets a "target range" and announces its stance at the FOMC, which meets eight times a year; four of these meetings (at the end of each quarter: March, June, September, December) publish projections with the dot plot. To keep rates within the "target range", the Fed (mainly) sets administered rates and actively manages the supply of reserves. For more details, see this link: https://www.newyorkfed.org/markets/domestic-market-operations/monetary-policy-implementation?</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>So the FFR essentially carries two elements – the market element and the Fed's intervention – which together reveal expectations about the value of the USD.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p>So to understand the USD from a monetary-policy perspective, I would have to read the FOMC minutes to grasp the Fed's direction, then follow the FFR from spot to derivatives, and also watch other macro factors for a complete assessment. That is quite a lot to follow, and honestly I think it is very hard to get from those observations to a real view of what the Fed is doing. CME (the bookmaker) offers a tool giving the probabilities of expected rate changes, the CME FedWatch Tool, so that everyone can follow along – or, as I like to call it, a betting score (=]], it's a bookmaker, so it must have odds). What I like about it is that it shows market sentiment, and in a way it is quite similar to the VIX (in my view, both are calculated from derivatives and reflect implied expectations). Assuming that the expected probabilities of rate changes can affect market states, I will dig into how it is calculated and test whether it can be used to predict or classify regimes.</p>
+<p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --></p>
+<h2 id="how-the-fedwatch-tool-is-calculated">HOW THE FEDWATCH TOOL IS CALCULATED</h2>
+<p><!-- /wp:heading --><!-- wp:paragraph --></p>
+<p>The FedWatch Tool includes a probability calculator for the target FFR, which looks like this:</p>
+<p><!-- /wp:paragraph --><!-- wp:image {"linkDestination":"custom"} --></p>
+<figure><a href="https://substackcdn.com/image/fetch/$s_!RSSg!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa878698f-dcf6-449f-8222-b96a5d6a3c68_2557x1029.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!RSSg!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa878698f-dcf6-449f-8222-b96a5d6a3c68_2557x1029.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" loading="lazy" decoding="async"></a></figure>
+<p><!-- /wp:image --><!-- wp:paragraph --></p>
+<p>It shows the theoretical probability of a change in the FFR target. How does CME arrive at this probability?</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>CME describes the basis of its calculations at this link: https://www.cmegroup.com/tools-information/quikstrike/cme-fedwatch-tool-user-guide.html</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>But let me summarise it as I understand it:</p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>CME sells futures contracts (called ZQ) on the FFR with a single 30-day tenor (30-day Fed funds futures), listed monthly.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>From the prices for meeting months and non-meeting months, the following can be calculated:</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li> </li>
+<li></li>
+<li>Where EFFR is the rate implied by the ZQ futures price, calculated as follows:<!-- wp:list -->
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li></li>
+<li>If there is no meeting that month, then EFFR(AVG month T) = EFFR(End of month T-1) = EFFR(Start of month T+1)</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>If there is a meeting that month, then EFFR(AVG) equals the day-weighted average. Assuming the FOMC falls on day a, with (a+b) the number of days in the FOMC month (e.g. for a 30-day month, a+b = 30), EFFR(AVG) is weighted as follows:</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Because there is no meeting in the month after the FOMC, EFFR(Start) = EFFR(End) = EFFR(Avg) for month T+1. So, in the frame of reference of the meeting month, we have EFFR(Avg) for the meeting month and EFFR(Avg) for the non-meeting month. We can then calculate EFFR(Start) for the meeting month as follows:</li>
+<li></li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>So how is the probability calculated once we have the ratio delta/0.25 (0.25, or 25 bps):<!-- wp:list -->
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>If the absolute value of this ratio is &lt; 1 —&gt; use the probability formula above.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>If the absolute value of this ratio is &gt; 1, roughly speaking the expectation has moved beyond the 0–0.25 range into a larger range:<!-- wp:list -->
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>For example, if the value is 1.2, it moves into the 0.5–0.75 range, and we set P[Hike] = 0.2, i.e. 20% for a 75 bps hike, and P[No Hike] = 1 – 0.2 = 0.8, i.e. 80% for a 50 bps hike</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>If the value is 2.2, the threshold is 0.25 * (1 + 2) = 0.75, the new range is 0.75–1.00, and P[Hike] = 20% for a 100 bps hike and P[No Hike] = 80% for a 75 bps hike.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --></p>
+</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p>Very convoluted, but in the end the key ratio is still delta/0.25. I only need to calculate this to see how representative it is at a given time. However, there is a big problem: I do not have historical futures data (CME charges for it, and yfinance does not have complete data). The current yfinance data only has the latest futures price, meaning I have the market's expectations but no prices to compare against to calculate this probability.</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>OK! I'll play it the poor man's way and use what I've got (=]]). Instead of the expensive paid prices, I will calculate a so-called distance between the FFR the market expects and the current FFR, to see how far rate expectations differ. In the end it looks like this:</p>
+<p><!-- /wp:paragraph --><!-- wp:image {"linkDestination":"custom"} --></p>
+<figure><a href="https://substackcdn.com/image/fetch/$s_!NV6X!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8b29bbf7-68a4-4fe6-bee7-7760fab85c95_1051x547.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!NV6X!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8b29bbf7-68a4-4fe6-bee7-7760fab85c95_1051x547.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" loading="lazy" decoding="async"></a></figure>
+<p><!-- /wp:image --><!-- wp:paragraph --></p>
+<p><em>(Where: Market FFR is the FFR futures price, Current FFR is the current FFR)</em></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>You can see that changes in this distance capture changes in FFR expectations quite well: the thicker the cloud between the futures price and the current price (sounds a lot like the godly Ichimoku of "Japan Antivirus" =]]) – i.e. the bigger the move – the larger the distance. Peaks in the distance also show early turning points in the FFR (interestingly, right now the market FFR seems to be trying to form a downward cloud but hasn't managed it yet, heh). Based on this data, I will try to see whether so-called regimes exist in the market when the FFR the market expects changes.</p>
+<p><!-- /wp:paragraph --><!-- wp:heading {"level":3} --></p>
+<h2 id="regimes">REGIMES</h2>
+<p><!-- /wp:heading --><!-- wp:heading {"level":4} --></p>
+<h3 id="a-relationships-between-the-factors">a) Relationships between the factors</h3>
+<p><!-- /wp:heading --><!-- wp:paragraph --></p>
+<p>I see that most people care a lot about how the economic calendar affects the Vietnamese market, especially the FOMC and other macro events in the US, EU and elsewhere. However, I have some doubts about the theory versus the reality of how changes in these events affect markets (both the home country and Vietnam). Do they really have a significant effect? If so, how should we understand it? Does that understanding hold for Vietnam?…</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>There are many questions about this! If we put all these factors into a basic regression model, I would subjectively treat them as exogenous variables, since they may have an exogenous effect on what I am observing. OK! Let's see whether they really affect Vietnam:</p>
+<p><!-- /wp:paragraph --><!-- wp:image {"linkDestination":"custom"} --></p>
+<figure><a href="https://substackcdn.com/image/fetch/$s_!0keG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73606906-6765-4c81-9cb9-306624c46cfd_1051x855.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!0keG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F73606906-6765-4c81-9cb9-306624c46cfd_1051x855.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" loading="lazy" decoding="async"></a></figure>
+<p><!-- /wp:image --><!-- wp:paragraph --></p>
+<p><em>(The FFR here is calculated from FFR futures on yfinance; the VN-Index has been converted into USD for consistency (so you won't see it break 1,500 =]]))</em></p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>The chart above shows the VN-Index against other assets (the S&amp;P 500, gold and oil) and the FFR, with Spearman correlations over a 252-day look-back window. I draw only a few preliminary observations:</p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The correlation between VN-Index and SPX returns seems to be the most consistently positive, with the highest share of time in positive correlation (almost 80% of the time), followed by oil prices (just over 40%) and, third, the FFR (quite interesting).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>More specifically, looking at the 252-day rolling Beta between these variables and the VN-Index, the SPX and oil also co-move the most, with Beta &gt; 0 about 79% and 67% of the time respectively (naturally, since Beta = correlation / std). R-squared (R2) (used to assess how much one variable explains another; e.g. 0.2 means 20% explained) also stays highest for the SPX and oil, although still fairly modest. Interestingly, at extremes (2020 and 2024), R-squared jumps sharply; my subjective view is that these extremes are crisis points where the whole market shares the same view (=]]).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Most of the time the FFR explains very little, but there are periods when it explains more, with R2 rising steadily – usually times when the other assets' correlations are fading.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p>Based on this, I will run a small test of a causal network: roughly, a Granger causality test of all the moves from these variables to the VN-Index. However, since this tests linear relationships, it must meet some statistical requirements for linear regression, one of which is a test of the stationarity of the time series. For that I use the "famously headache-inducing" ADF test, with the following results:</p>
+<p><!-- /wp:paragraph --><!-- wp:image {"linkDestination":"custom"} --></p>
+<figure><a href="https://substackcdn.com/image/fetch/$s_!qMVU!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ba0937d-72c0-48b9-8768-7b2af861783f_704x434.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!qMVU!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F6ba0937d-72c0-48b9-8768-7b2af861783f_704x434.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" loading="lazy" decoding="async"></a></figure>
+<p><!-- /wp:image --><!-- wp:paragraph --></p>
+<p>After testing, I can only use 5 of the 7 variables in this network; the two variables Market_FFR and Current_FFR plotted in section I cannot be used (no matter, since the distance already represents both).</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Then I tested with a maximum lag of 20 days and got this result:</p>
+<p><!-- /wp:paragraph --><!-- wp:image {"linkDestination":"custom"} --></p>
+<figure><a href="https://substackcdn.com/image/fetch/$s_!yKvG!,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3b3ae79-9f80-4e0f-ae9a-97b962ea6659_1420x1042.png" target="_blank" rel="noopener"><img src="https://substackcdn.com/image/fetch/$s_!yKvG!,w_1456,c_limit,f_auto,q_auto:good,fl_progressive:steep/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa3b3ae79-9f80-4e0f-ae9a-97b962ea6659_1420x1042.png" alt="[TECHNICAL INSIGHTS] – The FFR and Its Impact on Market Regimes (Part 1)" loading="lazy" decoding="async"></a></figure>
+<p><!-- /wp:image --><!-- wp:paragraph --></p>
+<h2 id="conclusions-of-part-1">Conclusions of Part 1:</h2>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>The results here are quite interesting:</p>
+<p><!-- /wp:paragraph --><!-- wp:list --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul><!-- wp:list-item --></ul>
+</li>
+</ul>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Changes in the FFR (distance) directly affect oil (OIL) returns, and this is a causal relationship that also runs "the other way round" (=]]). In other words, a move in one affects the other and vice versa (both watch each other to move).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Likewise, the VN-Index has a causal relationship with oil prices, and vice versa.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>Moves in the SPX affect the VN-Index and affect gold prices (GOLD). So if you trade gold, watch the SPX; likewise, if you trade the VN-Index, watch the SPX too. I also cannot hold both at the same time, because these two have an "extramarital" relationship with the SPX (=]]).</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --><!-- wp:list-item --></p>
+<ul>
+<li style="list-style-type: none;">
+<ul>
+<li>The SPX's Beta to the VN-Index is positive more than 80% of the time, and its R2 also covers the largest area among the exogenous factors. Combined with the results above, it is one of the most important explanatory factors with a big influence on VN-Index returns.</li>
+</ul>
+</li>
+</ul>
+<p><!-- /wp:list-item --></p>
+<p><!-- /wp:list --><!-- wp:paragraph --></p>
+<p>This post has become quite long; I hope it is useful to readers. In the next part I will write about creating trade ideas from these results and explain more about how the Granger network above is calculated. I hope you will keep following along.</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p>Best regards!</p>
+<p><!-- /wp:paragraph --><!-- wp:paragraph --></p>
+<p><em>Nguyen Le Khanh</em></p>
+<h2 id="technical-analysis-course-cmt-level-1">Technical Analysis Course – CMT Level 1</h2>
+<p>Green Chart designed this course specifically for candidates in Vietnam who want to study and prepare for the CMT Level I exam. The programme includes 25 sessions of theory, practice questions and mock exams. Students also receive the course textbook, question bank and mock exams free of charge for their exam preparation, and can retake the course for free for life.</p>
+<p><!-- wp:heading --> <!-- /wp:heading --> <!-- wp:paragraph --> <!-- /wp:paragraph --> <!-- wp:paragraph --> <!-- /wp:paragraph --></p>
+<p>See more details about the course <a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><strong>here.</strong></a></p>
+<p><!-- /wp:paragraph --></p>
+
+<!-- wp:paragraph -->
+
+<!-- /wp:paragraph --><div class="callout ground-cmt"><h3>Technical Analysis – CMT Level 1</h3><p style="color:var(--muted)">The foundations of technical analysis. Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>See the course</span><span aria-hidden="true">Opening the course</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="In this article"><div class="sticky"><div class="u390-side u390-art" data-for="art-fed-funds-rate-market-regimes-part-1-fed" aria-hidden="true"><span class="u390-lb">CHAPTER</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-fed-funds-rate-market-regimes-part-1-fed" aria-label="Contents"><p>In this article</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Technical Analysis – CMT Level 1</b><p>Starts 17 February 2027 · 27 sessions + 2 Applied CMT sessions · Online via Google Meet.</p><a class="more" href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">See the course</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Read next</span><h2 class="h2" id="h-rel">Related articles.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../do-statistics-lie-backtesting-multiple-testing-bias/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Do Statistics Lie?</h3><span class="meta tnum">3 May 2026 · 9 min read</span></article></a><a class="u228-c u251 card" href="../event-driven-strategies-vietnam-stock-market/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – Event-Driven Strategies in the Vietnamese Market</h3><span class="meta tnum">17 March 2026 · 11 min read</span></article></a><a class="u228-c u251 card" href="../vietnam-stock-market-efficiency-part-3-bayesian-var/"><article class="u228-in colcard"><span class="meta">Technical Analysis</span><h3>[TECHNICAL INSIGHTS] – What Form of Efficiency Does the Vietnamese Market Have? (Part 3)</h3><span class="meta tnum">14 March 2026 · 12 min read</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../technical-analysis/">See the category Technical Analysis</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Book a consultation"><div class="wrap signup"><div class="rv"><span class="eyebrow">Book a consultation</span><h2 class="h2" style="margin-top:12px">Start your <span class="uline">CMT journey.</span></h2><p class="lead" style="margin-top:16px">Green Chart will get back to you within 24 hours to advise on the right path and start date.</p><ul class="checks"><li>The first and only provider in Vietnam offering exam prep for all three CMT levels</li><li>Study online via Google Meet — ideal for working professionals</li><li>Free retakes under each course&#x27;s policy</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Demo: the form is valid and nothing is sent. The live site shows its thank-you popup here." data-steps="Sending|Checking|Done" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Full name</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Phone number</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Not sure yet, I need advice on the path</option><option value="khoa-hoc-cmt-level-1" selected>Technical Analysis – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Technical Analysis – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Technical Analysis – CMT Level 3</option><option value="module-bo-tro">Supplementary module: reading skills for CMT materials &amp; exam questions</option><option value="qtrr-tam-ly-giao-dich">Risk Management &amp; Trading Psychology</option><option value="giao-dich-co-phieu-stock-trading">Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Course of interest</label></div></div><label class="consent"><input type="checkbox" checked> I agree that Green Chart may contact me and process my information under the Privacy Policy.</label><button class="btn btn-green" type="submit">Book a consultation</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! The first and only provider in Vietnam offering exam prep for all three CMT levels.</span><span>Hanoi, Vietnam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Courses</b><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-1/">CMT Level 1</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-2/">CMT Level 2</a><a href="../cmt-1-2-3-course/technical-analysis-cmt-level-3/">CMT Level 3</a><a href="../cmt-english-module/">Supplementary module</a><a href="../cmt-1-2-3-course/risk-management-trading-psychology/">Risk Management &amp; Trading Psychology</a><a href="../cmt-1-2-3-course/stock-trading/">Stock Trading</a><a href="../cmt-1-2-3-course/">All courses</a></div><div><b>Knowledge</b><a href="../knowledge/">Knowledge</a><a href="../stock-market-knowledge/">Stock market knowledge</a><a href="../technical-analysis/">Technical Analysis</a><a href="../about-the-cmt-designation/">About the CMT Designation</a><a href="../investing-books/">Investing Books (PDF)</a><a href="../resources/">Resources</a><a href="../video-lecture/">Video lectures</a></div><div><b>Green Chart</b><a href="../about-greenchart/">About Green Chart</a><a href="../lecturer/">Lecturer</a><a href="../qa/">Q&amp;A</a><a href="../announcements/">Announcements</a><a href="../careers/">Careers</a><a href="../contact/">Contact</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Back to top"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", open submenu", "open": "Open menu", "close": "Close menu", "c": [{"t": "Courses", "c": [{"t": "All courses", "h": "../cmt-1-2-3-course/", "cur": false}, {"t": "CMT Level 1", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../cmt-1-2-3-course/technical-analysis-cmt-level-3/", "cur": false}, {"t": "Supplementary module", "h": "../cmt-english-module/", "cur": false}, {"t": "Risk Management & Trading Psychology", "h": "../cmt-1-2-3-course/risk-management-trading-psychology/", "cur": false}, {"t": "Stock Trading", "h": "../cmt-1-2-3-course/stock-trading/", "cur": false}]}, {"t": "Knowledge", "c": [{"t": "Knowledge", "h": "../knowledge/", "cur": false}, {"t": "Stock market knowledge", "h": "../stock-market-knowledge/", "cur": false}, {"t": "Stock Basics", "h": "../stock-basics/", "cur": false}, {"t": "Fundamental Analysis", "h": "../fundamental-analysis/", "cur": false}, {"t": "Accounts & Trading Guide", "h": "../trading-guide/", "cur": false}, {"t": "Portfolio Management", "h": "../portfolio-management/", "cur": false}, {"t": "Derivatives", "h": "../derivatives/", "cur": false}, {"t": "Market Glossary", "h": "../market-glossary/", "cur": false}, {"t": "Technical Analysis", "h": "../technical-analysis/", "cur": false}, {"t": "Technical Analysis – CMT", "h": "../technical-analysis-cmt/", "cur": false}, {"t": "About the CMT Designation", "h": "../about-the-cmt-designation/", "cur": false}, {"t": "Personal Finance", "h": "../personal-finance/", "cur": false}, {"t": "Trading Experience & Psychology", "h": "../trading-psychology/", "cur": false}, {"t": "Investing Books (PDF)", "h": "../investing-books/", "cur": false}]}, {"t": "Lecturer", "h": "../lecturer/", "cur": false}, {"t": "Resources", "h": "../resources/", "cur": false}, {"t": "Video lectures", "c": [{"t": "Video lectures", "h": "../video-lecture/", "cur": false}, {"t": "CMT video lectures", "h": "../cmt-video-lecture/", "cur": false}]}, {"t": "About Green Chart", "h": "../about-greenchart/", "cur": false}, {"t": "Q&A", "h": "../qa/", "cur": false}, {"t": "Announcements", "h": "../announcements/", "cur": false}, {"t": "Careers", "h": "../careers/", "cur": false}, {"t": "Contact", "h": "../contact/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Please enter a valid email, for example you@email.com", "tel": "Please enter a phone number, for example 0912 345 678", "name": "Please enter your full name so Green Chart knows how to address you", "year": "Year of birth has 4 digits, for example 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Highlight the selection", "cp": "Copy the quote", "hlDone": "Highlighted", "hlFail": "Select within one paragraph to highlight", "cpDone": "Quote copied"}</script>
+
+<script src="../../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

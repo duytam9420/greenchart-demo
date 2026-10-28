@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hướng Dẫn Cách Xem Biểu đồ Giá Chứng Khoán (dễ Hiểu Dễ áp Dụng) - Green Chart</title>
+<meta name="description" content="Trước khi tìm hiểu sâu hơn về kỹ thuật phân tích, ta cần xử lý một bước quan trọng: Cách xem biểu đồ giá cổ phiếu như thế nào? Và xem biểu đồ giá ở đâu?">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/cach-xem-bieu-do-gia-chung-khoan/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Hướng Dẫn Cách Xem Biểu đồ Giá Chứng Khoán (dễ Hiểu Dễ áp Dụng)</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/how-to-read-stock-price-charts/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><span aria-hidden="true">›</span><span>Hướng dẫn cách xem biểu đồ giá chứng khoán (dễ hiểu dễ áp…</span></nav><div class="art-cats"><a class="tag green" href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">Hướng dẫn cách xem biểu đồ giá chứng khoán (dễ hiểu dễ áp dụng)</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2022-10-09">09/10/2022</time></span><span>Cập nhật 03/07/2026</span><span>9 phút đọc</span></div></div></section><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-cach-xem-bieu-do-gia-chung-khoan"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#gia-dinh-quan-trong-trong-phan-tich-ky-thuat">Giả định quan trọng trong Phân tích Kỹ thuật</a></li><li><a href="#cach-xem-bieu-do-gia-chung-khoan">Cách xem biểu đồ giá chứng khoán</a></li><li><a href="#cac-nguon-tra-cuu-bieu-do-gia-mien-phi-pho-bien-nhat">Các nguồn tra cứu biểu đồ giá (miễn phí) phổ biến nhất</a></li><li><a href="#khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật – CMT Level 1</a></li></ol></details><figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-00-1024x576.jpg" alt="Hướng dẫn cách xem biểu đồ giá chứng khoán (dễ hiểu)" loading="lazy" decoding="async"><figcaption>Hướng dẫn cách xem biểu đồ giá chứng khoán (dễ hiểu)</figcaption></figure>
+
+<p class="lede">Trước khi đến những bước tiếp theo về các chỉ báo hay kỹ thuật phân tích, chúng ta sẽ cần xử lý một bước đầu vào rất quan trọng: cách xem biểu đồ giá cổ phiếu như thế nào? Và xem biểu đồ giá ở đâu là tốt nhất?</p>
+
+<h2 id="gia-dinh-quan-trong-trong-phan-tich-ky-thuat">Giả định quan trọng trong Phân tích Kỹ thuật</h2>
+
+<p>Tại sao các nhà giao dịch phải học cách xem biểu đồ giá? Không giống như Phân tích Cơ bản nhận định về cổ phiếu đang bị định giá quá cao hay quá thấp so với giá trị nội tại thực sự, <strong><a href="../phan-tich-ky-thuat-la-gi/">phân tích kỹ thuật</a> thừa nhận một giả định rằng “Giá phản ánh tất cả”</strong>. Các nhà phân tích kỹ thuật tin rằng, các thông tin cơ bản, tâm lý đám đông hay những yếu tố khác đều có thể tác động đến giá cả và chúng được phản ánh qua mức giá giao dịch trên thị trường. Phân tích kỹ thuật bao gồm việc đánh giá tất cả thông tin thể hiện qua biểu đồ giá, bất kể đó là thông tin nội bộ hay thông tin được công khai.&nbsp;</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-0-1024x683.jpg" alt=", Phân tích Kỹ thuật thừa nhận một giả định rằng “Giá phản ánh tất cả”" loading="lazy" decoding="async"><figcaption>Phân tích Kỹ thuật thừa nhận một giả định rằng: “Giá phản ánh tất cả”</figcaption></figure>
+
+<p>Phân tích Kỹ thuật sử dụng các dữ liệu đầu vào chính bao gồm giá (mở cửa, đóng cửa, cao nhất, thấp nhất trong phiên) và khối lượng giao dịch, được biểu diễn trên cùng một trục thời gian<strong>.</strong> Phân tích Kỹ thuật có một ưu điểm đó là bạn có thể sử dụng để phân tích bất kỳ một loại tài sản nào, không chỉ là cổ phiếu, hàng hóa hay forex. Giống như việc bạn học lái ô tô vậy, khi bạn biết lái ô tô và có bằng lái, bạn có thể nhảy lên bất cứ chiếc xe nào từ Mercedes đến Toyota hay Vinfast.</p>
+
+<p>Điều này hoàn toàn khác biệt so với Phân tích Cơ bản, chẳng hạn, nếu bạn biết đọc các báo cáo tài chính hay định giá doanh nghiệp, bạn sẽ chỉ có thể áp dụng chúng vào việc phân tích cổ phiếu thay vì phân tích thị trường Forex hay hàng hóa. Với Phân tích Kỹ thuật thì khác, bạn hoàn toàn có thể áp dụng các <a href="https://greenchart.vn/xac-dinh-thoi-diem-mua-ban-hieu-qua/duong-trung-binh-dong/" target="_blank" rel="noopener">đường MA</a>, <a href="../chi-bao-rsi/">chỉ báo RSI</a> hay <a href="../duong-macd-la-gi/">MACD</a> đơn giản vào mọi biểu đồ của mọi loại tài sản. Việc học cách xem biểu đồ giá là vô cùng quan trọng.</p>
+
+<h2 id="cach-xem-bieu-do-gia-chung-khoan">Cách xem biểu đồ giá&nbsp;chứng khoán</h2>
+
+<p>Có 5 loại biểu đồ giá thường được các nhà giao dịch sử dụng nhất trong Phân tích Kỹ thuật:</p>
+
+<ol>
+<li><a href="../bieu-do-nen-nhat-p1/">Biểu đồ nến Nhật</a> (Candlestick Chart).</li>
+
+<li>Biểu đồ dạng đường (Line Chart).</li>
+
+<li>Biểu đồ hình thanh (Bar Chart).</li>
+
+<li>Biểu đồ nến Heiken Ashi.</li>
+
+<li><a href="../bieu-do-hinh-diem-point-figure-chart-la-gi/">Biểu đồ Hình và Điểm</a> (Point &amp; Figure Chart).</li>
+</ol>
+
+<p>Bài viết này sẽ hướng dẫn chung nhất về cách xem biểu đồ giá chứng khoán, dựa trên các nền tảng cung cấp dữ liệu biểu đồ phổ biến (ví dụ bên dưới là biểu đồ giá bạn có thể tra cứu tại fireant.vn)<strong>,</strong> chúng ta sẽ đi sâu vào từng dạng biểu đồ được nêu trên ở các bài viết sau.</p>
+
+<p>Trên biểu đồ giá, chúng ta sẽ nhìn thấy biểu đồ gồm có 5 vùng chính:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-1.jpg" alt="Cách xem Biểu đồ giá Chứng khoán" loading="lazy" decoding="async"><figcaption>Cách xem Biểu đồ giá Chứng khoán</figcaption></figure>
+
+<h3 id="vung-1-du-lieu-bien-dong-gia">Vùng 1: Dữ liệu biến động giá</h3>
+
+<p>Biểu đồ được hình thành từ 2 trục chính:</p>
+
+<ul>
+<li>Trục dọc: Dữ liệu về biến động giá và chỉ báo kỹ thuật</li>
+
+<li>Trụng ngang: Dữ liệu thời gian.</li>
+</ul>
+
+<p>Dữ liệu giá gồm có 4 mốc chính cần lưu tâm là: Giá mở cửa (Open), Giá đóng cửa (Close), Giá cao nhất (High), Giá thấp nhất (Low). Cùng với sự phát triển của trường phái phân tích kỹ thuật, các nhà phân tích kỹ thuật đã sáng tạo ra nhiều dạng biểu đồ khác nhau để hiển thị dữ liệu biến động giá theo thời gian. Dựa trên nền tảng kiến thức và chiến lược giao dịch của cá nhân mà các nhà giao dịch có thể lựa chọn các loại thiết lập biểu đồ giá phù hợp, tối ưu như: nến Nhật, hình thanh, dạng đường, … để có thể quan sát dữ liệu giá trên biểu đồ.&nbsp;</p>
+
+<p>Đối với thị trường chứng khoán Việt Nam, giao dịch từ 9h00 sáng đến 14h45 (sàn HOSE), giá mở cửa được xác định dựa trên phiên ATO từ 9h00 &#8211; 9h15, giá đóng cửa được xác định dựa trên phiên ATC vào 14h30-14h45. Trong phiên giao dịch, giá sẽ biến động lên xuống, và giá cao nhất chính là mức cao nhất của phiên hôm đó, và giá thấp nhất cũng tương tự.&nbsp;Bạn có thể tìm hiểu kỹ hơn về các khung thời gian giao dịch tại thị trường Việt Nam <a href="../khung-thoi-gian-giao-dich/">tại đây</a>.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-2.jpg" alt="Biến động giá trong một phiên giao dịch chứng khoán Việt Nam" loading="lazy" decoding="async"><figcaption>Biến động giá trong một phiên giao dịch chứng khoán Việt Nam</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-3.jpg" alt="Biểu đồ nến Nhật" loading="lazy" decoding="async"><figcaption>Biểu đồ nến Nhật</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-4.jpg" alt="Biểu đồ hình thanh" loading="lazy" decoding="async"><figcaption>Biểu đồ hình thanh bar</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-5.jpg" alt="Biểu đồ dạng đường" loading="lazy" decoding="async"><figcaption>Biểu đồ dạng đường &#8211; line chart</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-6.jpg" alt="Biểu đồ Heiken Ashi" loading="lazy" decoding="async"><figcaption>Biểu đồ nến Heiken Ashi</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-7.jpg" alt="Biểu đồ Hình và Điểm" loading="lazy" decoding="async"><figcaption>Biểu đồ Hình và Điểm</figcaption></figure>
+
+<h3 id="vung-2-du-lieu-ve-khoi-luong-giao-dich">Vùng 2: Dữ liệu về khối lượng giao dịch</h3>
+
+<p>Khối lượng giao dịch (volume) là số lượng cổ phiếu được giao dịch trong một khoảng thời gian tùy theo thiết lập biểu đồ như: 1 giờ, 4 giờ, 1 ngày, 1 tuần, 1 tháng, … Thông thường, mỗi cây khối lượng sẽ có màu xanh &#8211; đỏ, màu xanh thể hiện giá đóng cửa cao hơn giá mở cửa; ngược lại, màu đỏ thể hiện giá đóng cửa thấp hơn giá mở cửa.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-8.jpg" alt="Cách xem biểu đồ giá: Khối lượng giao dịch hiển thị trên biểu đồ giá" loading="lazy" decoding="async"><figcaption>Cách xem biểu đồ giá: Khối lượng giao dịch hiển thị trên biểu đồ giá</figcaption></figure>
+
+<h3 id="vung-3-thanh-cong-cu-cai-dat-chi-bao">Vùng 3: Thanh công cụ cài đặt chỉ báo</h3>
+
+<p>Trong vùng thanh công cụ cài đặt chỉ báo gồm có các mục như sau:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-9.jpg" alt="Cách xem biểu đồ giá: Thanh công cụ cài đặt chỉ báo" loading="lazy" decoding="async"><figcaption>Cách xem biểu đồ giá: Thanh công cụ cài đặt chỉ báo</figcaption></figure>
+
+<p><strong>Mục 1: Điền tên mã cổ phiếu muốn quan sát</strong></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-10-1024x576.jpg" alt="Cách xem biểu đồ giá: Tìm kiếm mã cổ phiếu trên biểu đồ giá" loading="lazy" decoding="async"><figcaption>Cách xem biểu đồ giá: Tìm kiếm mã cổ phiếu trên biểu đồ giá</figcaption></figure>
+
+<p><strong>Mục 2: Điều chỉnh khung thời gian (Timeframe) ghi nhận dữ liệu giá.</strong><br>Việc điều chỉnh này sẽ giúp ta quan sát dữ liệu biến động giá theo thời gian cụ thể, có nhiều khung thời gian khác nhau từ nhỏ đến lớn như: 30 phút, 1 giờ, 4 giờ, 1 ngày, 1 tuần, 1 tháng, … Tùy theo nhu cầu và mục đích sử dụng mà các nhà giao dịch sẽ lựa chọn các khung thời gian phù hợp.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-11-1024x576.jpg" alt="Cách xem biểu đồ giá: Thiết lập khung thời gian trên biểu đồ giá" loading="lazy" decoding="async"><figcaption>Cách xem biểu đồ giá: Thiết lập khung thời gian trên biểu đồ giá</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-12-1024x576.jpg" alt="Ví dụ về biểu đồ nến Nhật thiết lập trên khung thời gian Tuần" loading="lazy" decoding="async"><figcaption>Ví dụ về biểu đồ nến Nhật thiết lập trên khung thời gian Tuần</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-13-1024x576.jpg" alt="Ví dụ về biểu đồ nến nhật thiết lập trên khung thời gian ngày" loading="lazy" decoding="async"><figcaption>Ví dụ về biểu đồ nến nhật thiết lập trên khung thời gian ngày</figcaption></figure>
+
+<p><strong>Mục 3: Điều chỉnh thiết lập dạng biểu đồ<br></strong>Như đã nói ở trên, có rất nhiều dạng biểu đồ kỹ thuật thuật khác nhau như nến Nhật, dạng đường hay hình thanh, … Tùy theo mục đích cá nhân của mỗi nhà giao dịch sẽ lựa chọn các thiết lập phù hợp.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-14.jpg" alt="Cách xem biểu đồ giá: Thiết lập loại biểu đồ giá" loading="lazy" decoding="async"><figcaption>Cách xem biểu đồ giá: Thiết lập loại biểu đồ giá</figcaption></figure>
+
+<p><strong>Mục 4: Mục này giúp nhà giao dịch có thể quan sát và so sánh nhiều mã cổ phiếu khác nhau trên cùng một biểu đồ</strong></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-15-1024x576.jpg" alt="Thiết lập so sánh 2 mã cổ phiếu HPG và HSG" loading="lazy" decoding="async"><figcaption>Thiết lập so sánh 2 mã cổ phiếu HPG và HSG</figcaption></figure>
+
+<p><strong>Mục 5: Thiết lập các chỉ báo kỹ thuật lên biểu đồ giá<br></strong>Đây là mục giúp các nhà giao dịch tìm kiếm và thiết lập các chỉ báo kỹ thuật như RSI, MACD, đường trung bình động (MA), … lên biểu đồ giá.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-16-1024x576.jpg" alt="Bảng tìm kiếm chỉ báo kỹ thuật" loading="lazy" decoding="async"><figcaption>Bảng tìm kiếm chỉ báo kỹ thuật</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-17-1024x576.jpg" alt="Thiết lập EMA(9) và Đường RSI hiển thị trên biểu đồ giá" loading="lazy" decoding="async"><figcaption>Thiết lập EMA(9) và Đường RSI hiển thị trên biểu đồ giá</figcaption></figure>
+
+<p><strong>Mục 6: Giúp quay lại các thao tác đã thực hiện, tương tự như Undo &#8211; Repeat trong Word hay Excel mà mọi người đã quen thuộc</strong></p>
+
+<h3 id="vung-4-quan-sat-thong-tin-chi-tiet">Vùng 4: Quan sát thông tin chi tiết</h3>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-18.jpg" alt="Quan sát thông tin chi tiết" loading="lazy" decoding="async"><figcaption>Quan sát thông tin chi tiết</figcaption></figure>
+
+<p>Ở vùng này, chúng ta có thể quan sát được chi tiết hơn về dữ liệu, thông tin của từng giao dịch (Từng cây nến) đang quan sát.&nbsp;</p>
+
+<ul>
+<li>O (Open): Giá mở cửa.</li>
+
+<li>H (High): Giá cao nhất.</li>
+
+<li>L (Low): Giá thấp nhất.</li>
+
+<li>C (Close): Giá đóng cửa.</li>
+
+<li>-0.40: Giá đóng cửa ngày giao dịch T giảm 0.40 (Nghìn đồng) so với ngày T &#8211; 1.</li>
+
+<li>-2.22%: Giá đóng cửa ngày giao dịch T giảm 2.22% so với ngày T &#8211; 1.</li>
+
+<li>Khối lượng (Volume): Thể hiện khối lượng cổ phiếu giao dịch trong ngày T.<br>(Đơn vị đo: M = triệu, K = Trăm nghìn).</li>
+
+<li>EMA: vùng này hiển thị các chỉ báo kỹ thuật được thiết lập trên biểu đồ (Trong ví dụ trên biểu đồ đang được thiết lập chỉ báo EMA).&nbsp;</li>
+</ul>
+
+<h3 id="vung-5-thanh-cong-cu-ve">Vùng 5: Thanh công cụ vẽ</h3>
+
+<p>Đây là vùng vô cùng quan trọng đối với rất nhiều nhà giao dịch bởi nó cung cấp các công cụ vẽ, đo lường, đánh dấu, … giúp các nhà giao dịch phân tích biểu đồ giá hiệu quả hơn.<br>Ví dụ như: Vẽ đường xu hướng, vẽ Hỗ trợ &#8211; Kháng cự, Vẽ đường Fibonacci, …</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-19-1024x576.jpg" alt="Thanh công cụ vẽ các loại đường" loading="lazy" decoding="async"><figcaption>Thanh công cụ vẽ các loại đường</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-20-1024x576.jpg" alt="Thanh công cụ vẽ Pitchfork, Gann, Fibonacci" loading="lazy" decoding="async"><figcaption>Thanh công cụ vẽ Pitchfork, Gann, Fibonacci</figcaption></figure>
+
+<h2 id="cac-nguon-tra-cuu-bieu-do-gia-mien-phi-pho-bien-nhat">Các nguồn tra cứu biểu đồ giá (miễn phí) phổ biến nhất</h2>
+
+<h3 id="tradingview-tradingview-com">TradingView (<a href="https://vn.tradingview.com/chart/36aPLjum/" target="_blank" rel="noopener">tradingview.com</a>)</h3>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-21.jpg" alt="Biểu đồ giá trên Tradingview" loading="lazy" decoding="async"><figcaption>Biểu đồ giá trên Tradingview</figcaption></figure>
+
+<p>Đây là trang Web quốc tế có thể nói là phổ biến nhất, cung cấp biểu đồ giá của tất cả các nhóm tài sản giao dịch khác nhau, trong đó có cổ phiếu. Với ưu điểm về nguồn dữ liệu đa dạng và cập nhật, Website này cho phép bạn xem được biểu đồ giá của các chỉ số chung mà không có ở các Website miễn phí khác như VNMIDCAP, VNSMALCAP, VNFIN, &#8230; Điểm trừ đó là bạn chỉ có được dùng tối đa 3 chỉ báo kỹ thuật với bản miễn phí (Free).</p>
+
+<h3 id="fireant-fireant-vn">Fireant (<a href="https://fireant.vn/charts" target="_blank" rel="noopener">Fireant.vn</a>)</h3>
+
+<p>Ưu điểm của Website này là khá thân thiện với người dùng khi có độ Việt hóa cao, rất thích hợp đối với những nhà đầu tư mới đang học cách xem biểu đồ giá chứng khoán. Đồng thời không giới hạn số lượng chỉ báo kỹ thuật như Tradingview. Ngoài ra, Fireant còn cung cấp khá nhiều thông tin kỹ thuật đáng chú ý khác như giao dịch của khối ngoại, tự doanh hay diễn biến tăng giảm của từng nhóm ngành. Điểm trừ đó là bạn không thể xem được diễn biến của biểu đồ giá chứng khoán phái sinh khi dùng bản Free.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-22.jpg" alt="Nền tảng FireAnt" loading="lazy" decoding="async"><figcaption>Nền tảng FireAnt</figcaption></figure>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-23.jpg" alt="Biểu đồ giá trên FireAnt" loading="lazy" decoding="async"><figcaption>Biểu đồ giá trên FireAnt</figcaption></figure>
+
+<h3 id="website-cua-cac-cong-ty-chung-khoan">Website của các công ty chứng khoán</h3>
+
+<p>Bên cạnh các Website chuyên dụng, mỗi công ty chứng khoán tùy vào mức độ hoàn thiện cũng cung cấp nguồn tra cứu biểu đồ giá cho khách hàng. Ví dụ, bạn có thể tra cứu biểu đồ giá của hợp đồng tương lai chỉ số VN30 thông qua Website của&nbsp;<strong><a href="https://banggia.mbs.com.vn/ptkt/index.html" target="_blank" rel="noopener">Chứng khoán MBS.</a></strong></p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2022/10/hdxbdck-24.jpg" alt="Biểu đồ giá trên Website của MBS" loading="lazy" decoding="async"><figcaption>Biểu đồ giá trên Website của công ty chứng khoán MBS</figcaption></figure>
+
+<h2 id="khoa-hoc-phan-tich-ky-thuat-cmt-level-1">Khóa học Phân tích kỹ thuật &#8211; CMT Level 1</h2>
+
+<p>Khóa học được Green Chart thiết kế dành riêng cho các bạn thí sinh muốn học và ôn thi CMT cấp độ 1 tại Việt Nam. Nội dung chương trình học bao gồm 27 buổi học lý thuyết, luyện đề và thi thử. Học viên cũng được cung cấp miễn phí giáo trình, bộ câu hỏi và đề thi thử phục vụ cho quá trình ôn thi. Học lại miễn phí trọn đời khóa học.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><strong>Tại đây.</strong></a></p>
+
+<p><strong>Happy trading !</strong></p><div class="callout ground-cmt"><h3>Phân tích kỹ thuật – CMT Level 1</h3><p style="color:var(--muted)">Nền tảng của phân tích kỹ thuật. Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-cach-xem-bieu-do-gia-chung-khoan" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-cach-xem-bieu-do-gia-chung-khoan" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-cmt"><span class="tag">CMT Level 1</span><b>Phân tích kỹ thuật – CMT Level 1</b><p>Khai giảng 17/02/2027 · 27 buổi + 2 buổi Applied CMT · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../technical-insights-thong-ke-co-lua-ai/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỐNG KÊ CÓ LỪA AI?</h3><span class="meta tnum">03/05/2026 · 11 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-event-driven-strategies-tai-thi-truong-viet-nam/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – EVENT DRIVEN STRATEGIES TẠI THỊ TRƯỜNG VIỆT NAM</h3><span class="meta tnum">17/03/2026 · 14 phút đọc</span></article></a><a class="u228-c u251 card" href="../technical-insights-thi-truong-viet-nam-la-hieu-qua-dang-gi-phan-3/"><article class="u228-in colcard"><span class="meta">Phân Tích Kỹ Thuật</span><h3>[TECHNICAL INSIGHTS] – THỊ TRƯỜNG VIỆT NAM LÀ HIỆU QUẢ DẠNG GÌ? (PHẦN 3)</h3><span class="meta tnum">14/03/2026 · 16 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../phan-tich-ky-thuat/">Xem chuyên mục Phân Tích Kỹ Thuật</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1" selected>Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich">Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>

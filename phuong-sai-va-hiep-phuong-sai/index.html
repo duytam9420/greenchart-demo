@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="vi" data-root="../" data-template="single-post">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Phương Sai Là Gì? Hiệp Phương Sai Là Gì? - Green Chart</title>
+<meta name="description" content="Trong chương trước, chúng ta đã đề cập đến lợi suất kỳ vọng, để tiếp tục, chúng ta sẽ cùng tìm hiểu về khái niệm &quot;Phương sai (variance) của danh mục đầu tư&quot;.">
+<meta name="robots" content="noindex,nofollow">
+<link rel="canonical" href="https://greenchart.vn/phuong-sai-va-hiep-phuong-sai/">
+<meta name="theme-color" content="#10302a">
+<link rel="icon" href="../img/logo_s.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Be+Vietnam+Pro:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/gc.e0503c92.css">
+<script>(function(){var h=document.documentElement,m=true;try{m=localStorage.getItem('gc-motion')!=='0'}catch(e){}if(matchMedia('(prefers-reduced-motion: reduce)').matches)m=false;if(m)h.classList.add('motion');try{if(localStorage.getItem('gc-notes')==='0')h.classList.add('hide-notes')}catch(e){}try{if(m&&sessionStorage.getItem('gc-cu')!==null)h.classList.add('is-cover','pre')}catch(e){}setTimeout(function(){if(!window.GC){h.classList.remove('motion','is-cover','pre')}},3000)})();</script>
+</head>
+<body>
+<div class="ux u321-cu" aria-hidden="true"><span>Phương Sai Là Gì? Hiệp Phương Sai Là Gì?</span></div>
+<a class="skip" href="#main">Bỏ qua tới nội dung</a>
+<div class="demo-bar" role="region" aria-label="Điều khiển bản demo"><div class="wrap"><span><strong>Bản demo greenchart.vn · bản hiệu ứng, đủ mọi trang</strong> · nguyên tắc thiết kế kiểu Apple + chuyển động từ lucianlabs.dev, màu theo bộ nhận diện Green Chart. Nội dung, số liệu, ảnh lấy từ dữ liệu trang thật (REST 15/10/2026, bản dịch tiếng Anh 10/2026).</span><div class="switches"><label class="switch"><input type="checkbox" id="notes" checked> Ghi chú tối ưu</label><label class="switch"><input type="checkbox" id="motion" checked> Chuyển động</label></div></div><nav class="pages" aria-label="Điều hướng nhanh bản demo"><span class="cur">Mẫu: <b>Bài viết</b> · VI</span><a href="../">Trang chủ</a><a href="../khoa-hoc-cmt/">Khoá học</a><a href="../kien-thuc/">Kiến thức</a><a href="../so-do-trang/" class=idx>Sơ đồ trang</a></nav></div>
+<header class="u212-hd"><div class="wrap"><a class="logo" href="../" aria-label="Green Chart, trang chủ" data-title="Green Chart"><img src="../img/logo_s.png" alt="Green Chart" width="480" height="145" loading="eager"></a><ul class="ux u373-ls"><li><a class="u373-a u373-1" href="../khoa-hoc-cmt/" data-mega="0">Khoá học</a></li><li><a class="u373-a u373-1" href="../kien-thuc/" data-mega="1" aria-current="page">Kiến thức</a></li><li><a class="u373-a u373-2" href="../giang-vien/">Giảng viên</a></li><li><a class="u373-a u373-2" href="../ve-greenchart/">Về Green Chart</a></li><li><a class="u373-a u373-2" href="../hoi-dap/">Hỏi đáp</a></li><li><a class="u373-a u373-5" href="../lien-he/">Liên hệ</a></li></ul><span class="lang" translate="no"><a href="./" lang="vi" hreflang="vi" aria-current="true" data-title="Tiếng Việt">VI</a><i>|</i><a href="../en/portfolio-variance-and-covariance-basics/" lang="en" hreflang="en" data-title="English">EN</a></span><a class="btn btn-light mag hd-cta" href="#dang-ky" aria-label="Đăng ký tư vấn"><span class="l">Đăng ký tư vấn</span><span class="s" aria-hidden="true">Tư vấn</span></a><button class="u286-bg" type="button" aria-expanded="false" aria-label="Mở menu" aria-controls="mmenu"><span aria-hidden="true"><i></i><i></i><i></i></span></button></div><span class="u212-pg" aria-hidden="true"></span><!-- Lucian UX/UI Prompt #354 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#354 --><div class="ux u354-wrap" aria-hidden="true"><span class="u354-car"></span><div class="u354-pn"><div class="u354-ct"><div class="u354-pg r"><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/" tabindex="-1"><i class="u354-ic tag">L1</i><div><b>CMT Level 1</b><span>27 buổi + 2 buổi Applied CMT · 8.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/" tabindex="-1"><i class="u354-ic tag">L2</i><div><b>CMT Level 2</b><span>24 buổi · 10.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/" tabindex="-1"><i class="u354-ic tag">L3</i><div><b>CMT Level 3</b><span>24 buổi · 12.000.000 ₫</span></div></a><a class="u354-it" href="../module-bo-tro/" tabindex="-1"><i class="u354-ic tag">M</i><div><b>Module bổ trợ</b><span>Đọc hiểu tài liệu &amp; đề thi CMT · 10 buổi · 2.500.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/" tabindex="-1"><i class="u354-ic g">+</i><div><b>Stock Trading</b><span>5 buổi · 6.000.000 ₫</span></div></a><a class="u354-it" href="../khoa-hoc-cmt/" tabindex="-1"><i class="u354-ic g">→</i><div><b>Tất cả khoá học</b><span>Lộ trình CMT và kỹ năng giao dịch</span></div></a></div><div class="u354-pg r"><div class="u354-row"><a class="u354-it" href="../kien-thuc/" tabindex="-1"><i class="u354-ic g">187</i><div><b>Kiến thức</b><span>187 bài viết miễn phí · 12 chuyên mục</span></div></a><a class="u354-it" href="../kien-thuc-chung-khoan/" tabindex="-1"><i class="u354-ic g">CK</i><div><b>Kiến thức chứng khoán</b><span>Cổ phiếu, phân tích cơ bản, giao dịch, danh mục, phái sinh</span></div></a></div><div class="u354-cats"><div><b>Kiến thức chứng khoán</b><a href="../co-phieu-la-gi/" tabindex="-1">Cổ Phiếu Là Gì?</a><a href="../phan-tich-co-ban/" tabindex="-1">Phân Tích Cơ Bản</a><a href="../huong-dan-giao-dich/" tabindex="-1">Mở Tài Khoản &amp; Giao Dịch</a><a href="../quan-lu-danh-muc-dau-tu/" tabindex="-1">Quản Lý Danh Mục Đầu Tư</a><a href="../chung-khoan-phai-sinh/" tabindex="-1">Chứng Khoán Phái Sinh</a><a href="../thuat-ngu-chung-khoan/" tabindex="-1">Thuật Ngữ Chứng Khoán</a></div><div><b>Phân tích kỹ thuật CMT</b><a href="../phan-tich-ky-thuat/" tabindex="-1">Phân Tích Kỹ Thuật</a><a href="../phan-tich-ky-thuat-cmt/" tabindex="-1">Phân Tích Kỹ Thuật - CMT</a><a href="../tim-hieu-ve-chung-chi-cmt/" tabindex="-1">Tìm Hiểu Về Chứng Chỉ CMT</a></div><div><b>Chủ đề khác</b><a href="../quan-ly-tai-chinh-ca-nhan/" tabindex="-1">Quản Lý Tài Chính Cá Nhân</a><a href="../kinh-nghiem-tam-ly-giao-dich/" tabindex="-1">Kinh Nghiệm &amp; Tâm Lý Giao Dịch</a><a href="../tu-sach-chung-khoan-pdf/" tabindex="-1">Sách Chứng Khoán PDF</a></div></div><div class="u354-row"><a class="u354-it" href="../tai-lieu/" tabindex="-1"><i class="u354-ic g">PDF</i><div><b>Tài liệu</b><span>Sách chứng khoán PDF và tài liệu CMT</span></div></a><a class="u354-it" href="../video-bai-giang/" tabindex="-1"><i class="u354-ic g">▶</i><div><b>Video bài giảng</b><span>Kho video và video bài giảng CMT</span></div></a></div></div></div></div></div></header><!-- Lucian UX/UI Prompt #286 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#286 --><nav class="ux u286-mn" id="mmenu" aria-label="Menu di động" hidden><div class="u286-nb"><button type="button" class="u286-bk" aria-label="Quay lại" hidden><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M9 2.5L4.5 7 9 11.5" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"/></svg></button><span class="u286-tt">Menu</span></div><div class="u286-vw"></div><div class="u286-ft"><a href="../hoi-dap/">Hỏi đáp</a><a href="#dang-ky">Đăng ký tư vấn</a></div></nav>
+<div class="u236-mn"><main id="main">
+<div class="view" id="v-bai-viet"><section class="band ground art-hero" aria-labelledby="h-art" style="overflow:hidden"><div class="ux u226" aria-hidden="true"><div class="u226-gd"></div><div class="u226-gl"></div><canvas class="u226-cv"></canvas><div class="u226-glow"></div></div><div class="note"><span class="n">Bài viết</span><b>Apple:</b> cột chữ 720 px (khoảng 70 ký tự mỗi dòng), cỡ chữ 19 px, ảnh bìa nổi lên khỏi nền xanh, mục lục dính bên phải. Trên điện thoại mục lục thu vào một nút "Trong bài này". Nội dung bài lấy nguyên từ WordPress (ảnh gốc trên greenchart.vn, liên kết nội bộ đổi sang trang demo). <b>Hiệu ứng:</b> <span class="fx">#390 số chương lăn như dải số bên mục lục, vòng tròn đo phần đã đọc trong chương</span><span class="fx">#275 mục lục: vạch xanh dài ra phủ mọi mục đang hiện</span><span class="fx">#281 bút dạ quét qua cụm từ in đậm của đoạn mở đầu</span><span class="fx">#220 bôi đen một câu: hiện thanh công cụ Tô sáng / Chép trích dẫn</span><span class="fx">#343 nút tên lửa lên đầu trang, vòng tròn đầy theo phần đã đọc</span><span class="fx">#212 thanh đọc dưới menu</span><span class="fx">#226</span><span class="fx">#216</span><span class="fx">#237</span></div><div class="wrap hero-in"><nav class="crumbs" aria-label="Breadcrumb"><a href="../">Trang chủ</a><span aria-hidden="true">›</span><a href="../quan-lu-danh-muc-dau-tu/">Quản Lý Danh Mục Đầu Tư</a><span aria-hidden="true">›</span><span>Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục…</span></nav><div class="art-cats"><a class="tag green" href="../quan-lu-danh-muc-dau-tu/">Quản Lý Danh Mục Đầu Tư</a></div><h1 class="u237"><span class="u237-ln"><span class="u237-in" style="--i:0">Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư</span></span></h1><div class="art-meta tnum"><span><b>Green Chart</b></span><span><time datetime="2022-09-15">15/09/2022</time></span><span>Cập nhật 03/07/2026</span><span>10 phút đọc</span></div></div></section><section class="band paper" style="padding-top:clamp(40px,5vw,72px)"><div class="art-wrap"><article class="prose" id="art-phuong-sai-va-hiep-phuong-sai"><details class="mtoc"><summary>Trong bài này <span aria-hidden="true">▾</span></summary><ol><li><a href="#Phuong-sai-(Variance)-la-gi">Phương sai (Variance) là gì?</a></li><li><a href="#Hiep-phuong-sai-(Covariance)-la-gi">Hiệp phương sai (Covariance) là gì?</a></li><li><a href="#khoa-hoc-stock-trading-for-a-living">Khóa học “Stock Trading For A Living”</a></li></ol></details><figure><img src="https://greenchart.vn/wp-content/uploads/2022/09/Kien-thuc-nen-tang-Phuong-sai-va-hiep-phuong-sai-1024x576.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai" loading="lazy" decoding="async"><figcaption>Kiến thức nền tảng: Phương sai và hiệp phương sai</figcaption></figure>
+
+<h2 id="Phuong-sai-(Variance)-la-gi"><strong>Phương sai (Variance) là gì?</strong><a></a></h2>
+
+<p class="lede">Trong chương trước, chúng ta đã đề cập đến lợi suất kỳ vọng, để tiếp tục, chúng ta sẽ cùng tìm hiểu về khái niệm &#8220;Phương sai (variance) của danh mục đầu tư&#8221;. Phương sai của danh mục đầu tư giúp chúng ta hiểu được rủi ro ở cấp độ danh mục. Hy vọng là bạn đã quen với khái niệm &#8216;Độ lệch chuẩn&#8217; với vai trò là một thước đo mức độ&nbsp;<a href="../rui-ro-trong-giao-dich-la-gi/">rủi ro</a>.</p>
+
+<p>Mặc dù chúng ta có thể dễ dàng đo lường rủi ro của một cổ phiếu bằng cách tính toán độ lệch chuẩn, nhưng việc tính toán rủi ro của một danh mục đầu tư lại là một bài toán hoàn toàn khác. Trong chương này, tôi sẽ giúp bạn hiểu được cách ước tính rủi ro ở cấp độ danh mục đầu tư.</p>
+
+<p>Tuy nhiên, trước khi tiến hành, chúng ta cần hiểu về khái niệm Phương sai và Hiệp phương sai. Cả Phương sai và Hiệp phương sai đều là các thước đo thống kê.&nbsp;</p>
+
+<p>Phương sai của lợi nhuận cổ phiếu là thước đo biên độ thay đổi lợi nhuận của một cổ phiếu so với lợi nhuận trung bình hàng ngày của nó. Công thức tính phương sai khá đơn giản như sau:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-1-1.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Công thức tính Phương sai</figcaption></figure>
+
+<p>Trong đó:</p>
+
+<p><strong>σ</strong><strong>2</strong>&nbsp; là Phương sai</p>
+
+<p><strong>X</strong>&nbsp;là mức lợi suất hàng ngày</p>
+
+<p><strong>µ</strong>&nbsp;là Lợi suất trung bình ngày</p>
+
+<p><strong>N</strong>&nbsp;là Tổng số quan sát</p>
+
+<p>Theo đó, phương sai được đo dưới dạng sigma bình phương; Tôi sẽ không đi sâu vào lý do của việc này vì nó tương đối phức tạp và chúng ta có thể sẽ bị lạc đề. Dù sao thì việc tính toán phương sai cũng khá đơn giản và ví dụ sau đây sẽ giúp bạn hiểu rõ hơn về khái niệm và công thức này.</p>
+
+<p>Giả sử lợi suất hàng ngày của một cổ phiếu trong 5 ngày liên tiếp là như sau:</p>
+
+<p>Ngày 1 &#8211; + 0,75%</p>
+
+<p>Ngày 2 &#8211; + 1,25%</p>
+
+<p>Ngày 3 &#8211; -0,55%</p>
+
+<p>Ngày 4 &#8211; -0,75%</p>
+
+<p>Ngày 5 &#8211; + 0,8%.</p>
+
+<p>Ta dễ dàng tính được lợi suất trung bình 5 ngày của cổ phiếu này là + 0,3%. Bây giờ chúng ta cần tính toán sự chênh lệch giữa lợi suất hàng ngày với mức lợi suất trung bình đã được tính trước đó rồi bình phương chúng lên.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-2-1.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"></figure>
+
+<p>Đến đây, chúng ta sẽ tính tổng các bình phương mức độ chênh lệch để ra được kết quả là 0,0318000%, sau đó chia giá trị này cho 5 quan sát (N) để có được phương sai cần tìm là</p>
+
+<p>0,0318000% / 5</p>
+
+<p><strong>σ</strong><strong>2</strong><strong>&nbsp;= 0,0063600%.</strong></p>
+
+<p>Vậy con số này cho chúng ta biết điều gì? Nó cho biết lợi nhuận hàng ngày chênh lệch như thế nào so với mức lợi nhuận kỳ vọng trung bình. Chính vì vậy, khi là một nhà đầu tư, bạn nên xem xét phương sai để xác định mức độ rủi ro của khoản đầu tư. Giá trị phương sai lớn cho thấy cổ phiếu có thể khá rủi ro và ngược lại. Trong ví dụ trên, tôi sẽ coi phương sai là cao vì chúng ta mới chỉ đang xem xét dữ liệu trong 5 ngày.</p>
+
+<p>Đến đây, chúng ta sẽ tiếp cận với một công thức khá thú vị bởi phương sai và độ lệch chuẩn có mối liên kết với nhau. Cụ thể:</p>
+
+<p><strong>Căn bậc hai của phương sai = Độ lệch chuẩn</strong></p>
+
+<p>Áp dụng cho ví dụ ở trên, độ lệch chuẩn lợi suất của cố phiếu trong 5 ngày (%) sẽ là&nbsp;~ 0,8%</p>
+
+<p>hay còn được gọi là độ biến động (volatility) của cổ phiếu (trong 5 ngày qua). Tuy nhiên tôi muốn bạn hiểu được phương sai và ý nghĩa thực sự của nó. Sau đó, chúng ta sẽ đưa phương sai và hiệp phương sai vào phương trình tính toán phương sai của danh mục đầu tư trong những nội dung tiếp theo.</p>
+
+<h2 id="Hiep-phuong-sai-(Covariance)-la-gi"><strong>Hiệp phương sai (Covariance) là gì?</strong><a></a></h2>
+
+<p>Hiệp phương sai cho biết hai (hoặc nhiều) biến có biến thiên cùng chiều hay không. Hai biến quan sát biến thiên cùng chiều sẽ cho giá trị hiệp phương sai dương và ngược lại khi chúng biến thiên ngược chiều nhau. Trên thị trường chứng khoán, hiệp phương sai sẽ cho biết giá của hai (hoặc nhiều) cổ phiếu biến thiên cùng chiều nếu hiệp phương sai giữa chúng mang giá trị dương và ngược lại.</p>
+
+<p>Tôi biết nhiều người sẽ dễ nhầm lẫn hiệp phương sai với &#8216;hệ số tương quan&#8217; (correlation), tuy nhiên, hai khái niệm này là hoàn toàn khác nhau và chúng ta sẽ thảo luận thêm về vấn đề này trong phần sau.</p>
+
+<p>Để hiểu rõ hơn về cách thức tính hiệp phương sai cho hai cổ phiếu, hãy tham khảo công thức sau:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-2-2.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Công thức tính Hiệp phương sai</figcaption></figure>
+
+<p>Trong đó:</p>
+
+<p><strong>Rt S1</strong>&nbsp;là Lợi tức hàng ngày của cổ phiếu 1</p>
+
+<p><strong>Avg Rt S1</strong>&nbsp;là Lợi tức trung bình của cổ phiếu 1 trong n ngày</p>
+
+<p><strong>Rt S2&nbsp;</strong>là Lợi tức hàng ngày của cổ phiếu 2</p>
+
+<p><strong>Avg Rt S2</strong>&nbsp;là Lợi tức trung bình của cổ phiếu 2 trong n ngày</p>
+
+<p><strong>n</strong>&nbsp;là Tổng số ngày</p>
+
+<p>Theo đó, hiệp phương sai giữa hai cổ phiếu được tính bằng tổng của các tích mức độ chênh lệch giữa lợi tức hàng ngày và lợi tức trung bình của nó trên cả hai cổ phiếu.</p>
+
+<p>Nghe có vẻ khó hiểu đúng không?</p>
+
+<p>Hãy cùng thực hiện một ví dụ áp dụng công thức trên để hiểu rõ về cách tính hiệp phương sai giữa hai cổ phiếu. Để dễ hình dung, tôi lựa chọn hai cổ phiếu là VPB và HPG và áp dụng công thức đã được trình bày trước đó qua excel để tính hiệp phương sai của hai cổ phiếu này.&nbsp;</p>
+
+<p>Trước khi tiếp tục, bạn nghĩ hiệp phương sai giữa VPB và HPG sẽ như thế nào khi đây đều là hai công ty có quy mô lớn tại Việt Nam nhưng hoạt động trên hai lĩnh vực hoàn toàn khác nhau?</p>
+
+<p>Dưới đây là các bước để tính hiệp phương sai trong excel (mặc dù excel có một hàm riêng biệt để tính hiệp phương sai nhưng tôi sẽ tiếp cận một cách chậm rãi để đảm bảo bạn có một cái nhìn rõ ràng về phương pháp tính này):</p>
+
+<p><strong>Bước 1</strong><br>Thu thập dữ liệu giá chứng khoán theo ngày. Để minh họa, tôi đã thu thập dữ liệu giá đóng cửa đã điều chỉnh của hai cổ phiếu VPB và HPG trong khoảng thời gian 1 tháng.</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-3-1.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Dữ liệu giá đóng cửa hàng ngày của VPB và HPG</figcaption></figure>
+
+<p><strong>Bước 2<br></strong>Tính mức lợi suất hàng ngày của cả hai cổ phiếu bằng % chênh lệch giá đóng cửa của ngày hôm nay so với giá đóng cửa của ngày hôm trước</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-4.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Variance(phương sai) là gì? Cách tính hiệp phương sai của danh mục đầu tư</figcaption></figure>
+
+<p><strong>Bước 3<br></strong>Tính giá trị trung bình mức lợi suất hàng ngày của 2 cổ phiếu</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-5.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Variance(phương sai) là gì? Cách tính hiệp phương sai của danh mục đầu tư</figcaption></figure>
+
+<p><strong>Bước 4<br></strong>Sau khi tính giá trị trung bình, lấy lợi tức hàng ngày trừ giá trị trung bình</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-6.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Variance(phương sai) là gì? Cách tính hiệp phương sai của danh mục đầu tư</figcaption></figure>
+
+<p><strong>Bước 5<br></strong>Nhân lần lượt chuỗi hai giá trị đã tính được trước đó với nhau:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-7.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Variance(phương sai) là gì? Cách tính hiệp phương sai của danh mục đầu tư</figcaption></figure>
+
+<p><strong>Bước 6<br></strong>Tính tổng các kết quả đã tính được ở bước trước. Bên cạnh đó, hãy xác định số quan sát của mẫu dữ liệu bằng cách sử dụng hàm COUNT.</p>
+
+<p><strong>Bước 7<br></strong>Chia tổng vừa tìm được cho tổng số quan sát đã trừ đi 1 tức là (n-1). Số quan sát trong trường hợp này là 19, do đó, số được sử dụng để tính sẽ là 18 Tổng được tính ở bước trước là 0,715%. Do đó, hiệp phương sai sẽ là</p>
+
+<p>= 0,00741 / 18</p>
+
+<p>=<strong>&nbsp;0,000412</strong></p>
+
+<p>Bạn có thể sử dụng dữ liệu trong ví dụ trên&nbsp;<a href="https://docs.google.com/spreadsheets/d/1_vbj33chvPKP8BShKWYvu7g37NDGoYqOybsiXstQ8TU/edit?usp=sharing" target="_blank" rel="noopener">tại đây</a></p>
+
+<p>Như bạn có thể thấy, giá trị hiệp phương sai là khá nhỏ. Tuy nhiên, đó không phải là vấn đề ở đây. Rõ ràng, vì hai cổ phiếu có hiệp phương sai dương cho thấy lợi nhuận của chúng biến thiên cùng chiều với nhau.</p>
+
+<p>Lưu ý &#8211; hiệp phương sai không cho chúng ta biết mức độ biến thiên mạnh hay yếu của hai cổ phiếu mà chỉ cho biết chiều của sự biến thiên. Mức độ biến thiên được xác định bằng hệ số tương quan (correlation), cụ thể được tính toán dựa trên công thức sau đây:</p>
+
+<figure><img src="https://greenchart.vn/wp-content/uploads/2023/05/Phuong-sai-va-hiep-phuong-sai-danh-muc-dau-tu-8-1.jpg" alt="Kiến thức nền tảng: Phương sai và hiệp phương sai danh mục đầu tư" loading="lazy" decoding="async"><figcaption>Công thức tính hệ số tương quan</figcaption></figure>
+
+<p>Trong đó</p>
+
+<p><strong>Cov (x, y)</strong>&nbsp;là hiệp phương sai giữa hai cổ phiếu x và y</p>
+
+<p><strong>σx</strong>&nbsp;là Độ lệch chuẩn của cổ phiếu x</p>
+
+<p><strong>σy</strong>&nbsp;là Độ lệch chuẩn của cổ phiếu y</p>
+
+<p>Trong trường hợp xây dựng danh mục đầu tư cổ phiếu, bạn nghĩ hiệp phương sai dương là tốt hay xấu? Hay đúng hơn là các nhà quản lý danh mục đầu tư mong muốn những cổ phiếu (trong danh mục đầu tư của họ) có hiệp phương sai dương hay không?</p>
+
+<p>Câu trả lời là họ cố gắng lựa chọn những cổ phiếu có hiệp phương sai âm. Lý do khá đơn giản, họ muốn danh mục đầu tư có thể giữ nguyên giá trị. Có nghĩa là nếu một cổ phiếu giảm giá thì ít nhất là cổ phiếu còn lại không bị giảm. Điều này giúp cân bằng danh mục đầu tư và giảm rủi ro tổng thể.</p>
+
+<p>Đến đây, hãy xem xét một danh mục đầu tư thông thường với nhiều hơn 2 cổ phiếu. Trên thực tế, một danh mục đầu tư tốt sẽ chứa ít nhất 12-15 cổ phiếu. Làm thế nào để đo hiệp phương sai trong trường hợp này?</p>
+
+<p>Đây là lúc mọi thứ bắt đầu trở nên phức tạp khi chúng ta sẽ phải đo hiệp phương sai của mỗi cổ phiếu với tất cả các cổ phiếu khác trong danh mục đầu tư. Hãy để tôi minh họa điều này với danh mục gồm 4 cổ phiếu sau đây:</p>
+
+<ol>
+<li>BID</li>
+
+<li>HPG</li>
+
+<li>PNJ</li>
+
+<li>VIC</li>
+</ol>
+
+<p>Trong trường hợp này, chúng ta cần tính hiệp phương sai giữa các cặp cổ phiếu sau:</p>
+
+<ol>
+<li>BID, HPG</li>
+
+<li>BID, PNJ</li>
+
+<li>BID, VIC</li>
+
+<li>HPG, PNJ</li>
+
+<li>HPG, VIC</li>
+
+<li>PNJ, VIC</li>
+</ol>
+
+<p>Lưu ý, hiệp phương sai giữa cổ phiếu 1 và cổ phiếu 2 không khác hiệp phương sai giữa cổ phiếu 2 và cổ phiếu 1. Chính vì vậy, như bạn thấy, với 4 cổ phiếu chúng ta chỉ cần tính 6 hiệp phương sai. Nhưng việc tính toán sẽ sự phức tạp hơn nhiều khi danh mục của chúng ta có 15 hoặc 20 cổ phiếu.</p>
+
+<p>Trên thực tế, khi chúng ta có nhiều hơn 2 cổ phiếu trong danh mục đầu tư, hiệp phương sai giữa chúng được tính và lập thành bảng bằng cách sử dụng ‘Ma trận Phương sai &#8211; Hiệp phương sai’. Mặc dù rất muốn trình bày ngay bây giờ, nhưng tôi nghĩ sẽ tốt hơn khi chúng ta cùng bàn luận chủ đề này trong chương tiếp theo.</p>
+
+<p><strong>Happy Trading !</strong></p>
+
+<h2 id="khoa-hoc-stock-trading-for-a-living">Khóa học &#8220;Stock Trading For A Living&#8221;</h2>
+
+<p>Khóa học được Green Chart thiết kế nhằm trang bị nền tảng vững chắc về <strong>phân tích cơ bản &amp; định giá cổ phiếu (Fundamental Analysis)</strong>, đồng thời định hướng học viên cách <strong>tích hợp hiệu quả vào hệ thống giao dịch hiện có</strong>, đặc biệt với nhà giao dịch đang sử dụng phân tích kỹ thuật <strong>(Technical Analysis)</strong>. Nội dung chương trình học bao gồm 05 buổi học lý thuyết và 06 tháng hướng dẫn thực hành giao dịch trên thị trường thực tế cùng giảng viên.</p>
+
+<p>Tham khảo thêm chi tiết về khóa học <a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/"><strong>Tại đây.</strong></a></p><div class="callout ground-deep"><h3>Quản trị rủi ro &amp; Tâm lý giao dịch</h3><p style="color:var(--muted)">Quản Trị Rủi Ro &amp; Tâm Lý Giao Dịch. Khai giảng 17/10/2026 · 5 buổi · Online qua Google Meet.</p><div class="cta-row left"><div class="ux u002" data-state="idle"><span class="u002-glow" aria-hidden="true"></span><div class="u002-mag"><a class="u002-btn" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/"><span class="u002-fill" aria-hidden="true"></span><span class="u002-txt"><span>Xem khoá học</span><span aria-hidden="true">Đang mở trang khoá</span></span><span class="u002-orb" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg><svg viewBox="0 0 24 24"><path d="M5 12h13M13 6l6 6-6 6"/></svg></span></a></div></div></div></div></article><aside class="art-side" aria-label="Trong bài này"><div class="sticky"><div class="u390-side u390-art" data-for="art-phuong-sai-va-hiep-phuong-sai" aria-hidden="true"><span class="u390-lb">CHƯƠNG</span><div class="u390-num"><div class="u390-strip"></div></div><div class="u390-tt"></div><svg class="u390-g" viewBox="0 0 40 40"><circle class="t" cx="20" cy="20" r="16"/><circle class="v" cx="20" cy="20" r="16"/></svg></div><nav class="ux u275-toc" data-for="art-phuong-sai-va-hiep-phuong-sai" aria-label="Mục lục"><p>Trong bài này</p><ul class="u275-ul"><span class="u275-mk" aria-hidden="true"></span></ul></nav><div class="mini-course ground-deep"><span class="tag green">Kỹ năng giao dịch</span><b>Quản trị rủi ro &amp; Tâm lý giao dịch</b><p>Khai giảng 17/10/2026 · 5 buổi · Online qua Google Meet.</p><a class="more" href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Xem khoá học</a></div></div></aside></div></section><section class="band paper-2 tight" aria-labelledby="h-rel"><div class="wrap"><div class="head left" style="margin-bottom:28px"><span class="eyebrow">Đọc tiếp</span><h2 class="h2" id="h-rel">Bài viết liên quan.</h2></div><div class="cards three" data-u228 data-stagger><a class="u228-c u251 card" href="../cac-phuong-phap-toi-uu-hoa-danh-muc-dau-tu-phan-1/"><article class="u228-in colcard"><span class="meta">Quản Lý Danh Mục Đầu Tư</span><h3>Các phương pháp tối ưu hóa danh mục đầu tư (Phần 1)</h3><span class="meta tnum">15/09/2022 · 9 phút đọc</span></article></a><a class="u228-c u251 card" href="../cac-phuong-phap-toi-uu-hoa-danh-muc-dau-tu-phan-2/"><article class="u228-in colcard"><span class="meta">Quản Lý Danh Mục Đầu Tư</span><h3>Các phương pháp tối ưu hóa danh mục đầu tư (Phần 2)</h3><span class="meta tnum">15/09/2022 · 8 phút đọc</span></article></a><a class="u228-c u251 card" href="../nen-dat-cat-lo-bao-nhieu-cho-moi-lenh-giao-dich/"><article class="u228-in colcard"><span class="meta">Quản Lý Danh Mục Đầu Tư</span><h3>Nên đặt cắt lỗ bao nhiêu % cho mỗi lệnh giao dịch?</h3><span class="meta tnum">15/09/2022 · 4 phút đọc</span></article></a></div><p style="text-align:center;margin-top:28px"><a class="more" href="../quan-lu-danh-muc-dau-tu/">Xem chuyên mục Quản Lý Danh Mục Đầu Tư</a></p></div></section><section class="band ground" id="dang-ky" aria-label="Đăng ký tư vấn"><div class="wrap signup"><div class="rv"><span class="eyebrow">Đăng ký tư vấn</span><h2 class="h2" style="margin-top:12px">Bắt đầu lộ trình <span class="uline">CMT của bạn.</span></h2><p class="lead" style="margin-top:16px">Green Chart liên hệ tư vấn lộ trình và lịch khai giảng phù hợp trong 24 giờ.</p><ul class="checks"><li>Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT</li><li>Học online qua Google Meet, phù hợp người đi làm</li><li>Học lại miễn phí theo chính sách của từng khoá</li></ul></div><form class="gform ux u025 rv " data-fid="lead" data-done="Bản demo: form hợp lệ, không gửi đi đâu. Trên web thật sẽ hiện popup cảm ơn như hiện nay." data-steps="Gửi thông tin|Kiểm tra|Hoàn tất" novalidate><div class="u025-f" data-kind="name"><div class="u025-box"><input class="u025-in" name="name" autocomplete="name" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Họ và tên</label></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="row2"><div class="u025-f" data-kind="tel"><div class="u025-box"><input class="u025-in" name="phone" type="tel" inputmode="tel" autocomplete="tel" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Số điện thoại</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div><div class="u025-f" data-kind="mail"><div class="u025-box"><input class="u025-in" name="email" type="email" inputmode="email" autocomplete="email" spellcheck="false" ><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Email</label><span class="u025-ok" aria-hidden="true"><svg viewBox="0 0 14 14"><path d="M3 7.3l2.7 2.7L11 4.5"/></svg></span></div><div class="u025-help"><span class="u025-msg" aria-live="polite"></span></div></div></div><div class="u025-f"><div class="u025-box"><select class="u025-in" name="course"><option value="">Chưa chắc, cần tư vấn lộ trình</option><option value="khoa-hoc-cmt-level-1">Phân tích kỹ thuật – CMT Level 1</option><option value="khoa-hoc-cmt-level-2">Phân tích kỹ thuật – CMT Level 2</option><option value="khoa-hoc-cmt-level-3">Phân tích kỹ thuật – CMT Level 3</option><option value="module-bo-tro">Module bổ trợ: Kỹ năng đọc hiểu tài liệu &amp; đề thi CMT</option><option value="qtrr-tam-ly-giao-dich" selected>Quản trị rủi ro &amp; Tâm lý giao dịch</option><option value="giao-dich-co-phieu-stock-trading">Giao dịch cổ phiếu – Stock Trading</option></select><span class="u025-line" aria-hidden="true"><i class="l"></i><i class="g"></i><i class="r"></i></span><label class="u025-lab">Khoá học quan tâm</label></div></div><label class="consent"><input type="checkbox" checked> Tôi đồng ý để Green Chart liên hệ tư vấn và xử lý thông tin theo Chính sách bảo mật.</label><button class="btn btn-green" type="submit">Đăng ký tư vấn</button><p class="ok" aria-live="polite"></p></form></div></section></div>
+</main></div>
+<div class="u236-sp" aria-hidden="true"></div><footer class="ux u236-ft"><div class="wrap"><div class="u236-cols"><div><b>Green Chart</b><span>Serious Education for Serious Traders! Đơn vị đầu tiên và duy nhất tại Việt Nam luyện thi đủ 3 level CMT.</span><span>Hà Nội, Việt Nam · 0971 089 578 · admin@greenchart.vn</span><span class="social"><a href="https://www.facebook.com/greenchartvn" rel="noopener">Facebook</a> · <a href="https://www.youtube.com/@greenchartvn" rel="noopener">YouTube</a> · <a href="https://t.me/Green_ChartVn" rel="noopener">Telegram</a></span></div><div><b>Khoá học</b><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-1/">CMT Level 1</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-2/">CMT Level 2</a><a href="../khoa-hoc-cmt/khoa-hoc-cmt-level-3/">CMT Level 3</a><a href="../module-bo-tro/">Module bổ trợ</a><a href="../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/">Quản trị rủi ro &amp; Tâm lý giao dịch</a><a href="../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/">Stock Trading</a><a href="../khoa-hoc-cmt/">Tất cả khoá học</a></div><div><b>Kiến thức</b><a href="../kien-thuc/">Kiến thức</a><a href="../kien-thuc-chung-khoan/">Kiến thức chứng khoán</a><a href="../phan-tich-ky-thuat/">Phân Tích Kỹ Thuật</a><a href="../tim-hieu-ve-chung-chi-cmt/">Tìm Hiểu Về Chứng Chỉ CMT</a><a href="../tu-sach-chung-khoan-pdf/">Sách Chứng Khoán PDF</a><a href="../tai-lieu/">Tài liệu</a><a href="../video-bai-giang/">Video bài giảng</a></div><div><b>Green Chart</b><a href="../ve-greenchart/">Về Green Chart</a><a href="../giang-vien/">Giảng viên</a><a href="../hoi-dap/">Hỏi đáp</a><a href="../thong-bao/">Thông báo</a><a href="../tuyen-dung/">Tuyển dụng</a><a href="../lien-he/">Liên hệ</a></div></div></div><div class="u236-wm" aria-hidden="true">Green Chart</div></footer><!-- Lucian UX/UI Prompt #343 · MIT License (c) 2026 Seokwoooo · https://lucianlabs.dev/uxui-prompt/#343 --><button class="ux u343-up" type="button" aria-label="Lên đầu trang"><svg viewBox="0 0 52 52" aria-hidden="true"><circle class="u343-ring" cx="26" cy="26" r="24"/><path class="u343-ar" d="M26 34V18M19 25l7-7 7 7"/><g class="u343-rk"><path class="f" d="M23 33h6l-3 7z"/><path class="b" d="M26 13c4 3 5 9 4 16h-8c-1-7 0-13 4-16z"/><circle class="w" cx="26" cy="22" r="2.2"/><path class="b" d="M22 26l-3 6h4zM30 26l3 6h-4z"/></g></svg></button>
+<script type="application/json" id="gc-menu">{"t": "Menu", "sub": ", mở menu con", "open": "Mở menu", "close": "Đóng menu", "c": [{"t": "Khoá học", "c": [{"t": "Tất cả khoá học", "h": "../khoa-hoc-cmt/", "cur": false}, {"t": "CMT Level 1", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-1/", "cur": false}, {"t": "CMT Level 2", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-2/", "cur": false}, {"t": "CMT Level 3", "h": "../khoa-hoc-cmt/khoa-hoc-cmt-level-3/", "cur": false}, {"t": "Module bổ trợ", "h": "../module-bo-tro/", "cur": false}, {"t": "Quản trị rủi ro & Tâm lý giao dịch", "h": "../khoa-hoc-cmt/qtrr-tam-ly-giao-dich/", "cur": false}, {"t": "Stock Trading", "h": "../khoa-hoc-cmt/giao-dich-co-phieu-stock-trading/", "cur": false}]}, {"t": "Kiến thức", "c": [{"t": "Kiến thức", "h": "../kien-thuc/", "cur": false}, {"t": "Kiến thức chứng khoán", "h": "../kien-thuc-chung-khoan/", "cur": false}, {"t": "Cổ Phiếu Là Gì?", "h": "../co-phieu-la-gi/", "cur": false}, {"t": "Phân Tích Cơ Bản", "h": "../phan-tich-co-ban/", "cur": false}, {"t": "Mở Tài Khoản & Giao Dịch", "h": "../huong-dan-giao-dich/", "cur": false}, {"t": "Quản Lý Danh Mục Đầu Tư", "h": "../quan-lu-danh-muc-dau-tu/", "cur": false}, {"t": "Chứng Khoán Phái Sinh", "h": "../chung-khoan-phai-sinh/", "cur": false}, {"t": "Thuật Ngữ Chứng Khoán", "h": "../thuat-ngu-chung-khoan/", "cur": false}, {"t": "Phân Tích Kỹ Thuật", "h": "../phan-tich-ky-thuat/", "cur": false}, {"t": "Phân Tích Kỹ Thuật - CMT", "h": "../phan-tich-ky-thuat-cmt/", "cur": false}, {"t": "Tìm Hiểu Về Chứng Chỉ CMT", "h": "../tim-hieu-ve-chung-chi-cmt/", "cur": false}, {"t": "Quản Lý Tài Chính Cá Nhân", "h": "../quan-ly-tai-chinh-ca-nhan/", "cur": false}, {"t": "Kinh Nghiệm & Tâm Lý Giao Dịch", "h": "../kinh-nghiem-tam-ly-giao-dich/", "cur": false}, {"t": "Sách Chứng Khoán PDF", "h": "../tu-sach-chung-khoan-pdf/", "cur": false}]}, {"t": "Giảng viên", "h": "../giang-vien/", "cur": false}, {"t": "Tài liệu", "h": "../tai-lieu/", "cur": false}, {"t": "Video bài giảng", "c": [{"t": "Video bài giảng", "h": "../video-bai-giang/", "cur": false}, {"t": "Video bài giảng CMT", "h": "../video-bai-giang-cmt-1/", "cur": false}]}, {"t": "Về Green Chart", "h": "../ve-greenchart/", "cur": false}, {"t": "Hỏi đáp", "h": "../hoi-dap/", "cur": false}, {"t": "Thông báo", "h": "../thong-bao/", "cur": false}, {"t": "Tuyển dụng", "h": "../tuyen-dung/", "cur": false}, {"t": "Liên hệ", "h": "../lien-he/", "cur": false}]}</script><script type="application/json" id="gc-form">{"mail": "Email chưa đúng dạng, ví dụ ban@email.com", "tel": "Nhập số điện thoại, ví dụ 0912 345 678", "name": "Nhập họ và tên để Green Chart biết cách xưng hô", "year": "Năm sinh gồm 4 chữ số, ví dụ 1995"}</script><script type="application/json" id="gc-strings">{"hl": "Tô sáng đoạn đã chọn", "cp": "Chép trích dẫn", "hlDone": "Đã tô sáng", "hlFail": "Chọn trong một đoạn để tô sáng", "cpDone": "Đã chép trích dẫn"}</script>
+
+<script src="../assets/gc.13d72b5f.js" defer></script>
+</body>
+</html>
